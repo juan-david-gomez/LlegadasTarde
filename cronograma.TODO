@@ -1,0 +1,24 @@
+✔ Registros de Llegadas @done (13-02-23 00:36)
+ ✔ insertar el registro en la base de datos @done (13-02-23 00:31)
+ ✔ validar que el estudiante exista en la base de datos @done (13-02-23 00:32)
+  ✔ Hacer el registro manualmente @done (13-03-03 14:13)
+    ✔ hacer la consulta a la base de datos @done (13-02-23 00:44)
+    ✔ recibir los datos ordenadamente @done (13-02-23 22:13)
+    ✔ hacer una tabla para el dialogo @done (13-02-23 22:13)
+    ✔ hacer la busqueda del los estudiantes @done (13-02-23 22:13)
+    ✔ enviar el codigo del estudiante seleccionado @done (13-03-03 14:13)
+    ✔ registrar el estudinate seleccionado @done (13-03-03 14:13)
+☐ Consultar los Registrso
+   ☐ hacer formularios de busqueda
+   ☐ enviar los datos 
+   ☐ consultar los registros coincidentes
+   ☐ enviar los registro
+    ☐ Eliminar registros
+       ☐ boton eliminar en la tabla
+       ☐ enviar codigo del registro a eliminar
+       ☐ eliminarlo
+    ☐ Editar registro 
+     ☐ boton editar en la tabla
+     ☐ abrir formulario de edicion
+     ☐ enviar los datos nuevos y codigo del registro
+     ☐ actualizar el registro   

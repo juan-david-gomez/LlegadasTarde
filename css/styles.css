@@ -1,0 +1,149 @@
+html 
+{
+    height:100%; 
+    
+}
+body
+{
+	background-color: #E8E8E8;
+	background-image: url("../img/bg.gif");
+    height:100%;
+    margin:0px; 
+    padding: 20px;
+}
+.menu 
+{
+  width: 600px;
+	 margin: 0 auto;
+}
+.menu a span
+{
+ 	
+	display: inline-block;
+	position: absolute;
+	margin-left: 0px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+  background-color: #D2D3CB;
+  color: #000000;
+  padding: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px; 
+	text-decoration: none;
+}
+.menu a img
+{
+	width: 80px;
+	height: 80px;
+	margin: 45px 10px 10px 0px;
+	
+}
+
+.menu a:hover
+{
+	text-decoration: none;
+}
+
+section
+{
+	width: 700px;
+	
+	margin-bottom: 20px;
+	background-color: #EAEAE8;
+	-webkit-border-radius: 20px;
+	border-radius: 20px; 
+	padding: 40px;
+	opacity: 0;
+	border: 2px solid #B1B4A7;
+	-webkit-box-shadow: 0px 0px 0px 5px rgba(1, 1, 1, 0.5);
+	-moz-box-shadow: 0px 0px 0px 5px rgba(1, 1, 1, 0.5);
+	margin: 0 auto;
+}
+h1
+{
+	color: #727564;
+	font-family: Impact;
+}
+.formulario
+{
+	padding: 20px;
+	margin: 0 auto;
+	width: 600px;
+	background-color: #F2F2F2;
+	-moz-border-radius: 5px; 
+   -webkit-border-radius: 5px;
+	border-radius: 5px; 
+}
+input[name = codigo]
+{
+   width: 100px; 
+   height: 40px; 
+   padding: 10px 20px 10px 20px; 
+   
+  text-align: center;
+   border-radius: 5px; 
+   -moz-border-radius: 5px; 
+   -webkit-border-radius: 5px;
+   -moz-box-shadow: 0px 1px 0px #f2f2f2;
+   -webkit-box-shadow: 0px 1px 0px #f2f2f2;
+   font-family: sans-serif;
+    font-size: 20px;
+   text-shadow: 0px -1px 0px #334f71;
+}
+textarea {
+   width: 300px; 
+   height: 70px; 
+   padding: 12px 20px 0px 20px; 
+   margin: 0 0 20px 0;
+  
+   border-radius: 5px; 
+   -moz-border-radius: 5px; 
+   -webkit-border-radius: 5px;
+   -moz-box-shadow: 0px 1px 0px #f2f2f2;
+   -webkit-box-shadow: 0px 1px 0px #f2f2f2;
+   font-family: sans-serif; font-size: 16px;
+    color: #000000; 
+   text-shadow: 0px -1px 0px #334f71;
+   resize:none;
+   }
+#buscar
+{
+
+   height: 40px; 
+   padding: 10px 20px 10px 20px; 
+  
+   text-align: center;
+   border-radius: 5px; 
+   -moz-border-radius: 5px; 
+   -webkit-border-radius: 5px;
+   -moz-box-shadow: 0px 1px 0px #f2f2f2;
+   -webkit-box-shadow: 0px 1px 0px #f2f2f2;
+   font-family: sans-serif;
+    font-size: 17px;
+   text-shadow: 0px -1px 0px #334f71;
+
+}
+#codigo
+{
+   font-family: sans-serif;
+   font-size: 20px;
+   text-shadow: 0px -1px 0px #334f71;
+}
+.frm 
+{
+	margin: 0 auto;
+	
+}
+input[type = radio]
+{
+  margin: 0;
+
+}
+input[type = text]
+{
+  text-align: center;
+}
+.table tbody tr:hover td,
+.table tbody tr:hover th {
+    background-color: inherit;
+}

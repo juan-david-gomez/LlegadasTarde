@@ -1,7 +1,9 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Llegadas_tarde extends CI_Controller {
-
+	
+	
+	private $validacion = "defecto";
 	public function __construct()
 	{
 		parent::__construct();
@@ -9,53 +11,89 @@ class Llegadas_tarde extends CI_Controller {
 		$this->load->model('ingresos');
 		$this->load->model('estudiantes');
 		$this->load->library('email','','correo');
+	
 	}
+	
 	//vallida el codigo del estudiante para hacer el registro de llegada tarde
 	public function validarEstudiante ()
 	{	
+		
 		$estudiante = $this->input->post('codigo');
-		$observaciones = $this->input->post('observaciones');
 		$respuesta = $this->estudiantes->consultar($estudiante,null,null,null);
 		if($respuesta)
 		{
-			$this->registrar($estudiante,$observaciones);
-		}else
+			foreach ($respuesta as $respuesta) {
+
+				
+					$NomEstudiante = $respuesta->nombres;
+					$ApeEstudiante = $respuesta->apellidos;
+					$GrupEstudiante = $respuesta->grd_13;
+				}
+
+			$xml = "<xml version=\"1.0\" encoding=\"utf-8\">
+					<estudiante>
+					<nombre>$NomEstudiante</nombre>
+					<apellido>$ApeEstudiante</apellido>
+					<grupo>$GrupEstudiante</grupo>
+					<existencia>si</existencia>
+					</estudiante>
+					</xml>";
+			echo $xml;
+		
+			$this->validacion = "Validado";
+			//$this->registrar($estudiante);
+		}else 
 		{
-			echo "El Estudiante No esta Registrado";
+			$xml = "<xml version=\"1.0\" encoding=\"utf-8\">
+					<estudiante>
+					<nombre>El Estudiante no Existe</nombre>
+					<apellido>El Estudiante no Existe</apellido>
+					<grupo>El Estudiante no Existe</grupo>
+					<existencia>no</existencia>
+					</estudiante>
+					</xml>";
+			echo $this->validacion;
+			echo $xml;
 		}
 	}
 	// registra las llegadas tarede
-	public function registrar($Estudiante,$Observaciones)
+	public function registrar()
 	{
-		
-		$estudiante = $Estudiante;
-		$observaciones = $Observaciones;
-		$usuarios = $this->session->userdata('id');
-		$fecha = date('Y-m-d');
-		$hora = date('h:i:s');
-		$respuesta = $this->ingresos->insertar($usuarios,$estudiante,$observaciones,$fecha,$hora);
+		$Estudiante = $this->input->post('codigo');
+		echo $val = $this->validar; 
+		if ($val == 1)
+		{ 
+			$estudiante = $Estudiante;
+			$usuarios = $this->session->userdata('id');
+			$fecha = date('Y-m-d');
+			$hora = date('h:i:s');
+			$respuesta = $this->ingresos->insertar($usuarios,$estudiante,"",$fecha,$hora);
 
-		if($respuesta)
-		{
+			if($respuesta)
+			{
 
-			echo "El Registro se Inserto Correctamente <br>";
+				echo "El Registro se Inserto Correctamente <br>";
 
-		  $this->correo->from('info@santamaria.com', 'Santa Maria de la Paz');
-		  $this->correo->to('jdavidg.e@hotmail.com');
-		  $this->correo->subject('Andres Lopez Llego tarde');
-		  $this->correo->message('<h1>Su hijo llego tarde</h1> <br> Fecha:'.$fecha.'<br>'.'Hora'.$hora);
-		if($this->correo->send())
-		  {
-		   echo 'Correo enviado al acudiente';
-		  }
+			  $this->correo->from('info@santamaria.com', 'Santa Maria de la Paz');
+			  $this->correo->to('jdavidg.e@hotmail.com');
+			  $this->correo->subject('Andres Lopez Llego tarde');
+			  $this->correo->message('<h1>Su hijo llego tarde</h1> <br> Fecha:'.$fecha.'<br>'.'Hora'.$hora);
+			if($this->correo->send())
+			  {
+			   echo 'Correo enviado al acudiente';
+			  }
 
-		  else
-		  {
-		   echo "No se envio el Correo al acudiente <br>";
-		  }
+			  else
+			  {
+			   echo "No se envio el Correo al acudiente <br>";
+			  }
+			}else
+			{
+				echo "Error al Insertar el Registro";
+			}
 		}else
 		{
-			echo "Error al Insertar el Registro";
+			echo "El Estudiante No se ah Validado";
 		}
 	}
 	//busca a el estudiante por distintos valores 

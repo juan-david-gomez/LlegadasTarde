@@ -24,7 +24,35 @@ class Ingresos extends CI_Model {
 
 	}
 
+	public function consutar($id,$usuario,$estudiante,$observaciones,$fecha,$hora)
+	{
+		$query = "SELECT * FROM ingresos ";
+		
+		if(!empty($id))
+		{
+			$query .= "WHERE id =".$id;
+		}
+		if(!empty($usuario))
+		{
+			$query .= "WHERE usuario =".$usuario;
+		}
+		if(!empty($estudiante))
+		{
 
+		}
+		if(!empty($observaciones))
+		{
+
+		}
+		if(!empty($fecha))
+		{
+
+		}
+		if(!empty($hora))
+		{
+
+		}
+	}
 }
 
 /* End of file ingresos.php */

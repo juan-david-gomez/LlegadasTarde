@@ -18,9 +18,13 @@
 <!-- Dialogo para Registrar  -->
 
 					<div id="registrar" style="display:none" >
-						<center><h1>Registrar una Asistencia</h1></center>
-						<label for="observaciones">Observaciones</label> 
-						<textarea name="observaciones" value="<?php echo set_value('observaciones'); ?>" cols="1" id="observaciones"></textarea>
+						<center><h1>Registro de Estudiantes</h1></center>
+						<label><strong>Nombre</strong></label>
+						<p id="Enombre"></p>
+						<label><strong>Apellido</strong></label>
+						<p id="Eapellido"></p>
+						<label><strong>Grupo</strong></label>
+						<p id="Egrupo"></p>
 						<hr>
 						<input type="button" value="Registrar" id="enviar" class="btn">
 						<input type="button" value="Cancelar" id="cancelar" class="btn">
@@ -29,19 +33,15 @@
 <!-- Dialogo para Buscar Estudiante  -->
 
 					<div id="estudiantes" style="display:none" >
-						<center><h1>Estudiantes</h1></center>
-						Nombre&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-						&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-						Apellido&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-						 &nbsp; &nbsp; &nbsp;  Grupo
+						<center><h1>Registrar una Asistencia</h1></center>
 						<br>
-						<input type="text" name="nombre" id="nombreE">
+						<input type="text" name="nombre" id="nombreE" placeholder="Nombre">
 						
 
-						<input type="text" name="apellido" id="apellidoE">
+						<input type="text" name="apellido" id="apellidoE" placeholder="Apellido">
 						
 						
-						<input type="text" name="grupo" id="grupoE" class="span2">
+						<input type="text" name="grupo" id="grupoE" class="span2" placeholder="Grupo">
 						<br>
 						<input type="button" value="Buscar" id="buscarE" class="btn">
 						<br><br>
@@ -73,7 +73,7 @@ $(document).ready(function(){
 	//se declaran las 2 entanas de dialogo registrar y buscar 
 	$('#registrar').dialog({
 		autoOpen: false,
-		height: 370,
+		height: 410,
 		title:"Registrar una Llegada Tarde",
 		width: 370,
 		modal: true,
@@ -101,8 +101,8 @@ $(document).ready(function(){
 	$('#enviar').click(function(){
 		$('#registrar').dialog('close');
 		var codigo = $('#Tcodigo').val();
-		var observaciones = $('#observaciones').val();
-		$.post("<?php echo site_url('llegadas_tarde/validarEstudiante') ?>", { codigo: codigo, observaciones: observaciones},
+		
+		$.post("<?php echo site_url('llegadas_tarde/registrar') ?>", { codigo: codigo},
 		  function(data){
 		    alert(data);
 		  });
@@ -114,6 +114,31 @@ $(document).ready(function(){
 
 	//abre la ventana cuando se envia el codigo 
 	$('.frm').submit(function () {
+		var codigo = $('#Tcodigo').val();
+		
+		$.post("<?php echo site_url('llegadas_tarde/validarEstudiante') ?>", { codigo: codigo},
+		  function(xml){
+		  	alert(xml);
+			xmlDoc = $.parseXML(xml),
+			$xml = $(xmlDoc),
+			$estudiante = $xml.find( "estudiante" );
+			
+		   
+		    var nombre = $estudiante.find("nombre").text();
+		    var apellido = $estudiante.find("apellido").text();
+		    var grupo = $estudiante.find("grupo").text();
+		    var existencia = $estudiante.find("existencia").text();
+		   if(existencia == "no")
+		    {
+		    	$("#enviar").css('display','none');
+		    }else
+		    {
+		    	$("#enviar").css('display','inline');
+		    }
+		    $('#Enombre').html(nombre);
+		    $('#Eapellido').html(apellido);
+		    $('#Egrupo').html(grupo);
+		  });
 		$('#registrar').dialog('open');
 
 		return false;
@@ -138,10 +163,7 @@ $(document).ready(function(){
 		  });
 
 	});
-	$(".es").click(function () {
-		
-		alert("codigo");
-	});
+	
 	
 })
 </script>

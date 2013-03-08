@@ -7,15 +7,16 @@
 				<div id="tabs">
 					<ul>
 					<li><a href="#tabs-1">Por Fecha</a></li>
-					<li><a href="#tabs-2">Por Estudiante</a></li>
+					<li><a href="#tabs-2">Por Estudiante o Grupo</a></li>
 					<li><a href="#tabs-3">Rango de Fechas</a></li>
 					</ul>
 				<div id="tabs-1">
 					<form action="" class="well" method="post">
 					<div class="busquedaF" >
 							<center>
-								<label for="date" id="date"><strong>Fecha Inicio</strong></label>
-							<input type="text" name="date" id="fecha" value="<?php echo date('Y-m-d'); ?>" class="span3" >
+								<center><h1>Buscar Por Fecha</h1></center>
+								<br>
+							<input type="text" name="date" id="fecha"  class="span3 fecha" placeholder="Fecha" >
 						
 						</center>
 					</div>
@@ -24,15 +25,11 @@
 				<div id="tabs-2">
 					<form action="" class="well" method="post">
 					<div class="busquedaF" >
-						&nbsp; &nbsp; &nbsp; &nbsp;
-							<strong>Nombre</strong>						&nbsp; &nbsp; &nbsp; &nbsp; 	&nbsp; &nbsp; &nbsp; &nbsp; 	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
-								<strong>Apellido</strong>
-&nbsp; &nbsp; &nbsp; &nbsp; 	&nbsp; &nbsp; &nbsp; &nbsp; 	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
-								<strong>Grupo</strong>
+							<center><h1>Busqueda Estudiante</h1></center>
 								<br>
-								<input type="text" name="nombre" id="nombre"  class="span4"  >
-								<input type="text" name="apellido" id="apellido" class="span4"  >
-								<input type="text" name="grupo" id="apellido" class="span4"  >
+								<input type="text" name="nombre" id="nombre"  class="span4"  placeholder="Nombre">
+								<input type="text" name="apellido" id="apellido" class="span4"  placeholder="Apellido" >
+								<input type="text" name="grupo" id="apellido" class="span4"   placeholder="Grupo">
 								<br>
 								<input type="submit" value="Buscar" class="btn">
 					</div>
@@ -51,16 +48,15 @@
 					</div> -->
 				</div>
 				<div id="tabs-3">
-				
+						
 					<form action="" class="well" method="post">
 					<div class="busquedaF" >
 						<center>
-							<strong>Fecha Inicial</strong>&nbsp; &nbsp; &nbsp; &nbsp; 	&nbsp; &nbsp; &nbsp; &nbsp; 
-							<strong>Fecha Final</strong>
-							<br>
-							<input type="text" name="date" id="fecha3" value="<?php echo date('Y-m-d'); ?>" class="span3" >
+								<center><h1>Busqueda Por Rango Fechas</h1></center>
+								<br>
+							<input type="text" name="date" id="fechaI" class="span3 fecha" placeholder="Fecha Inicial">
 							&nbsp; &nbsp; &nbsp; &nbsp;
-							<input type="text" name="date2" id="fecha3" value="<?php echo date('Y-m-d'); ?>" class="span3" >
+							<input type="text" name="date2" id="fechaF"  class="span3 fecha" placeholder="Fecha Final" >
 						</center>
 					</div>
 					</form>
@@ -156,8 +152,8 @@
 		$( "#tabs" ).tabs();
 
 		//activa el calendario
-		$('#fecha').datepicker();
-		$('#fecha').datepicker(
+		$('.fecha').datepicker();
+		$('.fecha').datepicker(
 			"option", "dateFormat",'yy-mm-dd'
 			);
 		//declara la ventana de dialogo para editar

@@ -3,7 +3,7 @@
 class Llegadas_tarde extends CI_Controller {
 	
 	
-	private $validacion = "defecto";
+	
 	public function __construct()
 	{
 		parent::__construct();
@@ -40,7 +40,7 @@ class Llegadas_tarde extends CI_Controller {
 					</xml>";
 			echo $xml;
 		
-			$this->validacion = "Validado";
+			
 			//$this->registrar($estudiante);
 		}else 
 		{
@@ -52,7 +52,7 @@ class Llegadas_tarde extends CI_Controller {
 					<existencia>no</existencia>
 					</estudiante>
 					</xml>";
-			echo $this->validacion;
+			
 			echo $xml;
 		}
 	}
@@ -60,8 +60,9 @@ class Llegadas_tarde extends CI_Controller {
 	public function registrar()
 	{
 		$Estudiante = $this->input->post('codigo');
-		echo $val = $this->validar; 
-		if ($val == 1)
+		$validacion = $this->input->post('validar');
+
+		if ($validacion == "true")
 		{ 
 			$estudiante = $Estudiante;
 			$usuarios = $this->session->userdata('id');
@@ -72,28 +73,37 @@ class Llegadas_tarde extends CI_Controller {
 			if($respuesta)
 			{
 
-				echo "El Registro se Inserto Correctamente <br>";
+				echo "<div class='alert alert-success' >
+				    <a class='close' data-dismiss='alert'>×</a>
+				    <p class='alert-heading'><strong>Felicidades!</strong>  El registro fue exitoso</p>
+				    </div>";
 
 			  $this->correo->from('info@santamaria.com', 'Santa Maria de la Paz');
 			  $this->correo->to('jdavidg.e@hotmail.com');
 			  $this->correo->subject('Andres Lopez Llego tarde');
 			  $this->correo->message('<h1>Su hijo llego tarde</h1> <br> Fecha:'.$fecha.'<br>'.'Hora'.$hora);
-			if($this->correo->send())
-			  {
-			   echo 'Correo enviado al acudiente';
-			  }
+			// if($this->correo->send())
+			//   {
+			//   	echo 'Correo enviado al acudiente';
+			//   }
+			//   else
+			//   {
+			//    	echo "No se envio el Correo al acudiente ";
+			//   }
 
-			  else
-			  {
-			   echo "No se envio el Correo al acudiente <br>";
-			  }
 			}else
 			{
-				echo "Error al Insertar el Registro";
+				echo "<div class='alert alert-error'>
+				    <a class='close' data-dismiss='alert'>×</a>
+				    <p class='alert-heading'><strong>Lo Siento</strong>  Erro al Hacer el Registro</p>
+				    </div>";
 			}
 		}else
 		{
-			echo "El Estudiante No se ah Validado";
+			echo "<div class='alert alert-error' >
+				    <a class='close' data-dismiss='alert'>×</a>
+				    <p class='alert-heading'><strong>Lo Siento</strong>  El Estudiante no ha sido Validado</p>
+				    </div>";
 		}
 	}
 	//busca a el estudiante por distintos valores 
@@ -104,6 +114,7 @@ class Llegadas_tarde extends CI_Controller {
 		$apellidos = $this->input->post('apellidos');
 		$grupo = $this->input->post('grupo');
 		$datos =  $this->estudiantes->consultar(null,$nombres,$apellidos,$grupo);
+
 		$url = site_url('llegadas_tarde/enviarCodigo/')."/";
 		if($datos)
 		{
@@ -121,6 +132,7 @@ class Llegadas_tarde extends CI_Controller {
 		{
 			echo "<td colspan='4'>No se Encuentra Ningun Estudiante</td>";
 		}
+			
 	}	
 	//enviar el codigo del estudiante al formulario para hacer el registro
 	public function enviarCodigo ($codigo)
@@ -130,6 +142,47 @@ class Llegadas_tarde extends CI_Controller {
 		$this->load->view('includes/cabezera',$data);
 		$this->load->view('llegadas_tarde/registrar', $data);
 		$this->load->view('includes/pie');
+	}
+
+	//buscar ingresos
+	public function buscarIngresos()
+	{
+
+		
+		$usuario = $this->input->post('usuario');
+		$nombres = $this->input->post('nombres');
+		$apellidos = $this->input->post('apellidos');
+		$grd_13 = $this->input->post('grd_13');
+		$observaciones = $this->input->post('observaciones');
+		$fecha = $this->input->post('fecha');
+		$hora = $this->input->post('hora');
+		$fechaI = $this->input->post('fechaI');
+		$fechaF = $this->input->post('fechaF');
+
+		$datos =  $this->ingresos->consutar(null,$usuario,$nombres,$apellidos,$grd_13,$observaciones,$fecha,$hora,$fechaI,$fechaF);
+		
+		if($datos)
+		{
+			foreach ($datos as $row) {
+				
+				echo '<tr>';
+				
+				echo '<td>'.$row->codigo.'</td>';
+				echo '<td>'.$row->nombres.'</td>';
+				echo '<td>'.$row->apellidos.'</td>';
+				echo '<td>'.$row->grd_13.'</td>';
+				echo '<td>'.$row->fecha.'</td>';
+				echo '<td>'.$row->hora.'</td>';
+				echo '<th>
+						<a href="#" title="" class="borrar">Borrar</a>
+						<a href="#" title="" class="editar">Ver</a>
+					  </th>';
+				echo '</tr>';
+			}
+		}else
+		{
+			echo "<td colspan='7'>No se Encuentra Ningun Registro</td>";
+		}
 	}
 }/* End of file llegadas_tarde.php */
 /* Location: ./application/controllers/llegadas_tarde.php */

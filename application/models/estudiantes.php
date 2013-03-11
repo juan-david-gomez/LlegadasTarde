@@ -22,10 +22,14 @@ class Estudiantes extends CI_Model {
 		{
 			$this->db->like('apellidos', $apellidos);
 		}
-		
+
 		$resul = $this->db->get();
-		if($resul->num_rows > 0){ 
+
+		
+
+		if( $resul->num_rows > 0){ 
 			$resultados = $resul->result();
+			
 			return $resultados;
 		}else
 		{

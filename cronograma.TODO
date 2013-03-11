@@ -10,9 +10,10 @@
     ✔ registrar el estudinate seleccionado @done (13-03-03 14:13)
 ☐ Consultar los Registrso
    ✔ hacer formularios de busqueda @done (13-03-05 13:42)
-   ☐ enviar los datos 
-   ☐ consultar los registros coincidentes
-   ☐ enviar los registro
+   ✔ enviar los datos @done (13-03-10 16:29)
+   ✔ consultar los registros coincidentes @done (13-03-10 16:29)
+   ✔ enviar los registro @done (13-03-11 00:28)
+   ☐ paginar los registros
     ☐ Eliminar registros
        ☐ boton eliminar en la tabla
        ☐ enviar codigo del registro a eliminar

@@ -2,6 +2,9 @@
 	<div class="span10 offset1">
 		<section>
 			<div class="formulario">
+				<div class="mensaje">
+				    
+				</div>
 				<center><h1>Registrar una Inasistencia</h1></center>
 				<form action="<?php echo site_url('usuarios/validar') ?>" class="frm well form-search" method="post">
 					<label for="usuario" id="codigo">Codigo</label>
@@ -29,6 +32,9 @@
 						<input type="button" value="Registrar" id="enviar" class="btn">
 						<input type="button" value="Cancelar" id="cancelar" class="btn">
 					</div> 
+
+					
+					
 
 <!-- Dialogo para Buscar Estudiante  -->
 
@@ -97,28 +103,32 @@ $(document).ready(function(){
 	$('#cerrar').click(function(){
 		$('#estudiantes').dialog('close');
 	});
+	// variable para saber si el estudiante fue validado
+	var validacion;
 	//le doy funcionalidad al boton registrar para hacer el envio de los datos
 	$('#enviar').click(function(){
+
 		$('#registrar').dialog('close');
 		var codigo = $('#Tcodigo').val();
-		
-		$.post("<?php echo site_url('llegadas_tarde/registrar') ?>", { codigo: codigo},
-		  function(data){
-		    alert(data);
-		  });
-		
+		var validar = validacion;
+	
+		$.post("<?php echo site_url('llegadas_tarde/registrar') ?>",{ codigo: codigo,validar: validar},function(data) {
+			$(".mensaje").html(data);
+		});
+	
 		$('#Tcodigo').val('');
 		$('#observaciones').val('');
 
 	});
-
+	
+	
 	//abre la ventana cuando se envia el codigo 
 	$('.frm').submit(function () {
 		var codigo = $('#Tcodigo').val();
 		
 		$.post("<?php echo site_url('llegadas_tarde/validarEstudiante') ?>", { codigo: codigo},
 		  function(xml){
-		  	alert(xml);
+		  	
 			xmlDoc = $.parseXML(xml),
 			$xml = $(xmlDoc),
 			$estudiante = $xml.find( "estudiante" );
@@ -131,14 +141,20 @@ $(document).ready(function(){
 		   if(existencia == "no")
 		    {
 		    	$("#enviar").css('display','none');
+		    	validacion = 'false';
+		    	
 		    }else
 		    {
 		    	$("#enviar").css('display','inline');
+		    	validacion = 'true';
+		    
 		    }
+
 		    $('#Enombre').html(nombre);
 		    $('#Eapellido').html(apellido);
 		    $('#Egrupo').html(grupo);
 		  });
+
 		$('#registrar').dialog('open');
 
 		return false;

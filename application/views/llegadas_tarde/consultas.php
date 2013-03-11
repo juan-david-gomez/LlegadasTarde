@@ -7,8 +7,8 @@
 				<div id="tabs">
 					<ul>
 					<li><a href="#tabs-1">Por Fecha</a></li>
-					<li><a href="#tabs-2">Por Estudiante o Grupo</a></li>
-					<li><a href="#tabs-3">Rango de Fechas</a></li>
+					<li><a href="#tabs-2">Por Estudiante y Rango de Fechas</a></li>
+				
 					</ul>
 				<div id="tabs-1">
 					<form action="" class="well" method="post">
@@ -23,44 +23,26 @@
 					</form>
 				</div>
 				<div id="tabs-2">
-					<form action="" class="well" method="post">
+					<form action="" class="well" method="post" id="Bestudi">
 					<div class="busquedaF" >
 							<center><h1>Busqueda Estudiante</h1></center>
 								<br>
 								<input type="text" name="nombre" id="nombre"  class="span4"  placeholder="Nombre">
 								<input type="text" name="apellido" id="apellido" class="span4"  placeholder="Apellido" >
-								<input type="text" name="grupo" id="apellido" class="span4"   placeholder="Grupo">
+								<input type="text" name="grupo" id="grupo" class="span4"   placeholder="Grupo">
+								<center>
+									<input type="text" name="date" id="fechaI" class="span3 fecha" placeholder="Fecha Inicial">
+									&nbsp; &nbsp; &nbsp; &nbsp;
+									<input type="text" name="date2" id="fechaF"  class="span3 fecha" placeholder="Fecha Final" >
+								</center>
 								<br>
 								<input type="submit" value="Buscar" class="btn">
+								<input type="button" value="limpiar" class="btn" id="limpiar">
 					</div>
 					</form>
-					<!-- <div class="busquedaF" >
-						<strong>Nombre</strong>						&nbsp; &nbsp; &nbsp; &nbsp; 	&nbsp; &nbsp; &nbsp; &nbsp; 	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
-								<strong>Apellido</strong>
-&nbsp; &nbsp; &nbsp; &nbsp; 	&nbsp; &nbsp; &nbsp; &nbsp; 	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-								<strong>Grupo</strong>
-								<br>
-								<input type="text" name="nombre" id="nombre"  class="span4"  >
-								<input type="text" name="apellido" id="apellido" class="span4"  >
-								<input type="text" name="grupo" id="apellido" class="span4"  >
-								<br>
-								<input type="submit" value="Buscar" class="btn">
-					</div> -->
+				
 				</div>
-				<div id="tabs-3">
-						
-					<form action="" class="well" method="post">
-					<div class="busquedaF" >
-						<center>
-								<center><h1>Busqueda Por Rango Fechas</h1></center>
-								<br>
-							<input type="text" name="date" id="fechaI" class="span3 fecha" placeholder="Fecha Inicial">
-							&nbsp; &nbsp; &nbsp; &nbsp;
-							<input type="text" name="date2" id="fechaF"  class="span3 fecha" placeholder="Fecha Final" >
-						</center>
-					</div>
-					</form>
-				</div>
+				
 				 <table class="table table-striped">
     						
 								<thead>
@@ -74,31 +56,9 @@
 								<th>Acciones</th>
 								</tr>
 								</thead>
-								<tbody>
-								<tr>
-								<td>3127239</td>
-								<td>Juan David</td>
-								<td>Gomez Escobar</td>
-								<td>11A</td>
-								<th><?php echo date('Y-m-d')?></th>
-								<th><?php echo date('h:i:s')?></th>
-								<th>
-									<a href="#" title="" class="borrar">Borrar</a>
-									<a href="#" title="" class="editar">Editar</a>
-								</th>
-								</tr>
-								<tr>
-								<td>3628384</td>
-								<td>Santiago Lopez</td>
-								<td>Lopez Estrada</td>
-								<td>9B</td>
-								<th><?php echo date('Y-m-d');?></th>
-								<th><?php echo date('h:i:s',time())?></th>
-								<th>
-									<a href="#" title="" class="borrar">Borrar</a>
-									<a href="#" title="" class="editar">Editar</a>
-								</th>
-								</tr>
+								<tbody id="datosIngresos">
+
+
 								</tbody>
     						</table>
 				</div>
@@ -164,8 +124,78 @@
 				width: 630,
 				modal: true,
 			});
-	
-		
+			//boton limpiar del busqueda de estudiantes
+			$("#limpiar").click(function() {
+				$("#nombre").val("");
+				$("#apellido").val("");
+				$("#grupo").val("");
+				$("#fechaI").val("");
+				$("#fechaF").val("");
+			})
+
+		//envia los datos de la busqueda por estuudiante y deuelve los resultados
+		$("#Bestudi").submit(function() {
+
+			var usuario = "";
+			var nombres = $("#nombre").val();
+			var apellidos = $("#apellido").val();
+			var grd_13 = $("#grupo").val();
+			var observaciones = "";
+			var fecha = "";
+			var hora = "";
+			var fechaI = $("#fechaI").val();
+			var fechaF = $("#fechaF").val();
+
+			$.post("<?php echo site_url('llegadas_tarde/buscarIngresos') ?>",
+				{
+				  usuario: usuario, 
+				  nombres: nombres,
+				  apellidos:apellidos,
+				  grd_13:grd_13,
+				  observaciones:observaciones,
+				  fecha:fecha,
+				  hora:hora,
+				  fechaI:fechaI,
+				  fechaF:fechaF
+				},function(data){
+			  	//alert(data);
+
+			   	$('#datosIngresos').html(data);
+			  });
+			return false;
+		})
+		//envia los datos de de la busqueda de registros
+		$('#fecha').change(function () {
+
+			var usuario = "";
+			var nombres = "";
+			var apellidos = "";
+			var grd_13 = "";
+			var observaciones = "";
+			var fecha = $(this).val();
+			var hora = "";
+			var fechaI = "" ;
+			var fechaF = "";
+
+			$.post("<?php echo site_url('llegadas_tarde/buscarIngresos') ?>",
+				{
+				  usuario: usuario, 
+				  nombres: nombres,
+				  apellidos:apellidos,
+				  grd_13:grd_13,
+				  observaciones:observaciones,
+				  fecha:fecha,
+				  hora:hora,
+				  fechaI:fechaI,
+				  fechaF:fechaF
+				},
+			  function(data){
+			  	//alert(data);
+
+			   	$('#datosIngresos').html(data);
+			  });
+
+		});
 
 		//eventos de los botones borrar de acciones
 		$('.borrar').click(function () {

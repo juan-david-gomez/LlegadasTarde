@@ -1,27 +1,27 @@
 <div class="row-fluid" >
 			<div class="span11 offset1" >
 				<div class="menu">
-					<a class="dock-item2" href="<?= site_url('inicio/abrir/registrar') ?>">
+					<a class="dock-item2" href="<?php echo site_url('inicio/abrir/registrar') ?>">
 			  			<span>Registrar Llegada</span>
 			  			<?php echo img('img/resgistration.png')?>
 			  		</a> 
 
-					<a class="dock-item2" href="<?= site_url('inicio/abrir/consultas') ?>">
+					<a class="dock-item2" href="<?php echo site_url('inicio/abrir/consultas') ?>">
 					  	<span>Consultar Llegadas</span>
 					  	<?php echo img('img/consutar.png') ?>
 					</a> 
 
-					<a class="dock-item2" href="<?= site_url('inicio/abrir/cuenta') ?>">
+					<a class="dock-item2" href="<?php echo site_url('inicio/abrir/cuenta') ?>">
 					  	<span>Mi Cuenta</span>
 					 	<?php echo img('img/user.png') ?>
 					</a> 
 
-					<a class="dock-item2" href="<?= site_url('inicio/abrir/usuarios') ?>">
+					<a class="dock-item2" href="<?php echo site_url('inicio/abrir/usuarios') ?>">
 					  	<span>Usuarios</span>
 					  	<?php echo img('img/users.png') ?>
 					</a> 
 
-					<a class="dock-item2" href="<?= site_url('usuarios/logout') ?>">
+					<a class="dock-item2" href="<?php echo site_url('usuarios/logout') ?>">
 					  	<span>Cerrar Sesion</span>
 					  	<?php echo img('img/logout.png') ?>
 					</a>

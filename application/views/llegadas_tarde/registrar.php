@@ -8,9 +8,7 @@
 				<center><h1>Registrar una Inasistencia</h1></center>
 				<form action="<?php echo site_url('usuarios/validar') ?>" class="frm well form-search" method="post">
 					<label for="usuario" id="codigo">Codigo</label>
-					<input type="text" name="codigo" value="<?php if (isset($codigo)) {
-						echo $codigo;
-					} ?>" class="span7 " id="Tcodigo" >
+					<input type="text" name="codigo" value="" class="span7 " id="Tcodigo" >
 
 					<input type="button" value="Buscar" id="buscar">
 				</form>
@@ -19,15 +17,28 @@
 	</div>
 </div>
 <!-- Dialogo para Registrar  -->
-
 					<div id="registrar" style="display:none" >
 						<center><h1>Registro de Estudiantes</h1></center>
-						<label><strong>Nombre</strong></label>
-						<p id="Enombre"></p>
-						<label><strong>Apellido</strong></label>
-						<p id="Eapellido"></p>
-						<label><strong>Grupo</strong></label>
-						<p id="Egrupo"></p>
+						<div style="height:230px;width:470px">
+							<div style="float:left;">
+								<h4>Estudiante</h4>
+								<label><strong>Nombre</strong></label>
+								<input type="text" id="Enombre">
+								<label><strong>Apellido</strong></label>
+								<input type="text" id="Eapellido">
+								<label><strong>Grupo</strong></label>
+								<input type="text" id="Egrupo">
+							</div>
+							<div style="float:right;">
+								<h4>Acudiente</h4>
+								<label><strong>Nombre</strong></label>
+								<input type="text" id="Anombre">  					
+								<label><strong>Apellido</strong></label>
+								<input type="text" id="Aapellido">
+								<label><strong>Email</strong></label>
+								<input type="text" id="Aemal">
+							</div>
+						</div>
 						<hr>
 						<input type="button" value="Registrar" id="enviar" class="btn">
 						<input type="button" value="Cancelar" id="cancelar" class="btn">
@@ -50,6 +61,7 @@
 						<input type="text" name="grupo" id="grupoE" class="span2" placeholder="Grupo">
 						<br>
 						<input type="button" value="Buscar" id="buscarE" class="btn">
+						<input type="button" value="Limpiar" id="limpiar" class="btn">
 						<br><br>
 						    <table class="table ">
     						
@@ -79,9 +91,9 @@ $(document).ready(function(){
 	//se declaran las 2 entanas de dialogo registrar y buscar 
 	$('#registrar').dialog({
 		autoOpen: false,
-		height: 410,
+		height: 430,
 		title:"Registrar una Llegada Tarde",
-		width: 370,
+		width: 520,
 		modal: true,
 		
 
@@ -91,7 +103,7 @@ $(document).ready(function(){
 		autoOpen: false,
 		title:"Buscar un Estudiante",
 		height: 470,
-		width: 660,
+		width: 680,
 		modal: true
 
 	});
@@ -150,9 +162,9 @@ $(document).ready(function(){
 		    
 		    }
 
-		    $('#Enombre').html(nombre);
-		    $('#Eapellido').html(apellido);
-		    $('#Egrupo').html(grupo);
+		    $('#Enombre').val(nombre);
+		    $('#Eapellido').val(apellido);
+		    $('#Egrupo').val(grupo);
 		  });
 
 		$('#registrar').dialog('open');
@@ -179,7 +191,19 @@ $(document).ready(function(){
 		  });
 
 	});
-	
-	
+	//envia el codigo del estudinate en la lista a el campo para hacer el registro
+	$(document).delegate(".es","click",function() {
+		$("#Tcodigo").val($(this).attr('codigo'));
+		$('#estudiantes').dialog('close');
+		return false;
+	});
+	// funcionalidad del boton limpiar del cuadro de busqueda de estudiantes
+	$("#limpiar").click(function() {
+		$('#nombreE').val("");
+		
+		$('#apellidoE').val("");
+		
+		$('#grupoE').val("");
+	});
 })
 </script>

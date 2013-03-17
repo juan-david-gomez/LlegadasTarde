@@ -28,6 +28,7 @@ class Llegadas_tarde extends CI_Controller {
 					$NomEstudiante = $respuesta->nombres;
 					$ApeEstudiante = $respuesta->apellidos;
 					$GrupEstudiante = $respuesta->grd_13;
+					
 				}
 
 			$xml = "<xml version=\"1.0\" encoding=\"utf-8\">
@@ -115,17 +116,17 @@ class Llegadas_tarde extends CI_Controller {
 		$grupo = $this->input->post('grupo');
 		$datos =  $this->estudiantes->consultar(null,$nombres,$apellidos,$grupo);
 
-		$url = site_url('llegadas_tarde/enviarCodigo/')."/";
+		
 		if($datos)
 		{
 			foreach ($datos as $row) {
-				$url = site_url('llegadas_tarde/enviarCodigo/')."/".$row->codigo;
+				$info = "nombre='".$row->nombres."' apellidos='".$row->apellidos."' grupo='".$row->grd_13."' codigo='".$row->codigo."' href='#			' ";
 				echo '<tr>';
 				
-				echo '<td><a href="'.$url.'"  class="es" >'.$row->codigo.'</a></td>';
-				echo '<td><a href="'.$url.'"  class="es" >'.$row->nombres.'</a></td>';
-				echo '<td><a href="'.$url.'" class="es" >'.$row->apellidos.'</a></td>';
-				echo '<td><a href="'.$url.'"  class="es" >'.$row->grd_13.'</a></td>';
+				echo '<td><a '.$info.'  class="es" >'.$row->codigo.'</a></td>';
+				echo '<td><a '.$info.'  class="es" >'.$row->nombres.'</a></td>';
+				echo '<td><a '.$info.' class="es" >'.$row->apellidos.'</a></td>';
+				echo '<td><a '.$info.'  class="es" >'.$row->grd_13.'</a></td>';
 				echo '</tr>';
 			}
 		}else
@@ -134,21 +135,11 @@ class Llegadas_tarde extends CI_Controller {
 		}
 			
 	}	
-	//enviar el codigo del estudiante al formulario para hacer el registro
-	public function enviarCodigo ($codigo)
-	{
-		$data['codigo']=$codigo;
-		$data['titulo'] = "regitrar";
-		$this->load->view('includes/cabezera',$data);
-		$this->load->view('llegadas_tarde/registrar', $data);
-		$this->load->view('includes/pie');
-	}
 
 	//buscar ingresos
 	public function buscarIngresos()
 	{
-
-		
+		$id =  $this->input->post('id');
 		$usuario = $this->input->post('usuario');
 		$nombres = $this->input->post('nombres');
 		$apellidos = $this->input->post('apellidos');
@@ -159,29 +150,58 @@ class Llegadas_tarde extends CI_Controller {
 		$fechaI = $this->input->post('fechaI');
 		$fechaF = $this->input->post('fechaF');
 
-		$datos =  $this->ingresos->consutar(null,$usuario,$nombres,$apellidos,$grd_13,$observaciones,$fecha,$hora,$fechaI,$fechaF);
+		$datos =  $this->ingresos->consutar($id,$usuario,$nombres,$apellidos,$grd_13,$observaciones,$fecha,$hora,$fechaI,$fechaF);
 		
 		if($datos)
 		{
 			foreach ($datos as $row) {
 				
-				echo '<tr>';
+				echo '<tr class="'.$row->id.'">';
 				
-				echo '<td>'.$row->codigo.'</td>';
-				echo '<td>'.$row->nombres.'</td>';
-				echo '<td>'.$row->apellidos.'</td>';
-				echo '<td>'.$row->grd_13.'</td>';
-				echo '<td>'.$row->fecha.'</td>';
-				echo '<td>'.$row->hora.'</td>';
+				echo '<td class="codigo">'.$row->codigo.'</td>';
+				echo '<td class="nombre">'.$row->nombres.'</td>';
+				echo '<td class="apellido">'.$row->apellidos.'</td>';
+				echo '<td class="grupo">'.$row->grd_13.'</td>';
+				echo '<td class="fecha">'.$row->fecha.'</td>';
+				echo '<td class="hora">'.$row->hora.'</td>';
+				echo '<td style="display:none" class="observaciones">'.$row->observaciones.'</td>';
 				echo '<th>
-						<a href="#" title="" class="borrar">Borrar</a>
-						<a href="#" title="" class="editar">Ver</a>
+						<center>
+						<a class="borrar" href="" title="Borrar" id="'.$row->id.'" >'.img('img/eliminar.png').'</a>
+						<a href=""  id="'.$row->id.'" title="Editar" class="editar" >'.img('img/editar.png').'</a>
+						</center>
 					  </th>';
 				echo '</tr>';
 			}
 		}else
 		{
 			echo "<td colspan='7'>No se Encuentra Ningun Registro</td>";
+		}
+	}
+	public function eliminar()
+	{
+		$id = $this->input->post('id');
+		if ($this->ingresos->eliminar($id))
+		{
+			echo "Registro Eliminado Correctamente";
+		}else
+		{
+			echo "El Registro No se Pudo Insertar";
+		}
+	}
+	public function editar()	
+	{
+		$id = $this->input->post('id');
+		$estudiante = $this->input->post('estudiante');
+		$observaciones = $this->input->post('observaciones');
+		$resul = $this->ingresos->actualizar($id,$estudiante,$observaciones);
+		
+		if ($resul)
+		{
+			echo "si";
+		}else
+		{
+			echo "no";
 		}
 	}
 }/* End of file llegadas_tarde.php */

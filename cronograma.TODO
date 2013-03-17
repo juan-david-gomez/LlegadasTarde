@@ -13,13 +13,12 @@
    ✔ enviar los datos @done (13-03-10 16:29)
    ✔ consultar los registros coincidentes @done (13-03-10 16:29)
    ✔ enviar los registro @done (13-03-11 00:28)
-   ☐ paginar los registros
-    ☐ Eliminar registros
-       ☐ boton eliminar en la tabla
+   ☐ Eliminar registros
+       ✔ boton eliminar en la tabla @done (13-03-12 20:15)
        ☐ enviar codigo del registro a eliminar
        ☐ eliminarlo
-    ☐ Editar registro 
-     ☐ boton editar en la tabla
-     ☐ abrir formulario de edicion
+   ☐ Editar registro 
+     ✔ boton editar en la tabla @done (13-03-12 20:15)
+     ✔ abrir formulario de edicion @done (13-03-12 20:15)
      ☐ enviar los datos nuevos y codigo del registro
      ☐ actualizar el registro   

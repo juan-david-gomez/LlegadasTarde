@@ -26,11 +26,8 @@ class Ingresos extends CI_Model {
 
 	public function consutar($id,$usuario,$nombres,$apellidos,$grd_13,$observaciones,$fecha,$hora,$fechaI,$fechaF)
 	{
-		$query = "select e.codigo,e.nombres,e.apellidos,e.grd_13,i.fecha,i.hora 
-				  from estudiantes e,ingresos i 
-				  where e.codigo = i.estudiante";
 
-		$this->db->select('codigo,nombres,apellidos,grd_13,fecha,hora,observaciones');
+		$this->db->select('id,codigo,nombres,apellidos,grd_13,fecha,hora,observaciones');
 		$this->db->from('estudiantes');
 		$this->db->from('ingresos');
 		$where = "codigo = estudiante";
@@ -42,7 +39,7 @@ class Ingresos extends CI_Model {
 		}
 		if(!empty($usuario))
 		{
-			$this->db->like('usuario', $usuario);
+			$this->db->where('usuario', $usuario);
 		}
 		if(!empty($nombres))
 		{
@@ -77,6 +74,32 @@ class Ingresos extends CI_Model {
 		if ($result->num_rows > 0) {
 			$resultados = $result->result();
 			return $resultados;
+		}else
+		{
+			return false;
+		}
+	}
+	public function eliminar($id)		
+	{
+		if ($this->db->delete('ingresos', array('id' => $id))) {
+			return true;
+		}else
+		{
+			return false;
+		}
+	}
+	public function actualizar($id,$estudiante,$observaciones)
+	{
+		
+		$data = array(
+               'estudiante' => $estudiante,
+               'observaciones' => ''.$observaciones.'',
+            );
+
+		$this->db->where('id', $id);
+		if($this->db->update('ingresos', $data))
+		{
+			return true;
 		}else
 		{
 			return false;

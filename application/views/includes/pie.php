@@ -11,6 +11,16 @@
 					  	<?php echo img('img/consutar.png') ?>
 					</a> 
 
+					<a class="dock-item2" href="<?php echo site_url('inicio/abrir/estudiantes') ?>">
+					  	<span>Estudiantes</span>
+					  	<?php echo img('img/estudiantes.png') ?>
+					</a>
+					
+					<a class="dock-item2" href="<?php echo site_url('inicio/abrir/acudientes') ?>">
+					  	<span>Acudiente</span>
+					  	<?php echo img('img/acudientes.png') ?>
+					</a>
+
 					<a class="dock-item2" href="<?php echo site_url('inicio/abrir/cuenta') ?>">
 					  	<span>Mi Cuenta</span>
 					 	<?php echo img('img/user.png') ?>

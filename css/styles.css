@@ -13,7 +13,7 @@ body
 }
 .menu 
 {
-  width: 600px;
+  width: 700px;
 	 margin: 0 auto;
 }
 .menu a span
@@ -59,7 +59,7 @@ section
 	-moz-box-shadow: 0px 0px 0px 5px rgba(1, 1, 1, 0.5);
 	margin: 0 auto;
 }
-h1
+h1,h2
 {
 	color: #727564;
 	font-family: Impact;

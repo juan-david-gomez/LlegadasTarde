@@ -9,7 +9,7 @@ class Llegadas_tarde extends CI_Controller {
 		parent::__construct();
 		date_default_timezone_set("America/Bogota");
 		$this->load->model('ingresos');
-		$this->load->model('estudiantes');
+		$this->load->model('estudiante');
 		$this->load->library('email','','correo');
 	
 	}
@@ -19,7 +19,7 @@ class Llegadas_tarde extends CI_Controller {
 	{	
 		
 		$estudiante = $this->input->post('codigo');
-		$respuesta = $this->estudiantes->consultar($estudiante,null,null,null);
+		$respuesta = $this->estudiante->consultar($estudiante,null,null,null);
 		if($respuesta)
 		{
 			foreach ($respuesta as $respuesta) {
@@ -69,34 +69,28 @@ class Llegadas_tarde extends CI_Controller {
 			$usuarios = $this->session->userdata('id');
 			$fecha = date('Y-m-d');
 			$hora = date('h:i:s');
+
+
 			$respuesta = $this->ingresos->insertar($usuarios,$estudiante,"",$fecha,$hora);
 
 			if($respuesta)
 			{
 
+				$mensaje = $this->enviarCorreo($estudiante);
+
 				echo "<div class='alert alert-success' >
 				    <a class='close' data-dismiss='alert'>×</a>
-				    <p class='alert-heading'><strong>Felicidades!</strong>  El registro fue exitoso</p>
+				    <p class='alert-heading'><strong>Felicidades!</strong>  El registro fue exitoso | ".$mensaje."</p>
 				    </div>";
 
-			  $this->correo->from('info@santamaria.com', 'Santa Maria de la Paz');
-			  $this->correo->to('jdavidg.e@hotmail.com');
-			  $this->correo->subject('Andres Lopez Llego tarde');
-			  $this->correo->message('<h1>Su hijo llego tarde</h1> <br> Fecha:'.$fecha.'<br>'.'Hora'.$hora);
-			// if($this->correo->send())
-			//   {
-			//   	echo 'Correo enviado al acudiente';
-			//   }
-			//   else
-			//   {
-			//    	echo "No se envio el Correo al acudiente ";
-			//   }
+			
 
 			}else
 			{
+				$mensaje = $this->enviarCorreo($estudiante);
 				echo "<div class='alert alert-error'>
 				    <a class='close' data-dismiss='alert'>×</a>
-				    <p class='alert-heading'><strong>Lo Siento</strong>  Erro al Hacer el Registro</p>
+				    <p class='alert-heading'><strong>Lo Siento</strong>  Erro al Hacer el Registro|".$mensaje."</p>
 				    </div>";
 			}
 		}else
@@ -114,7 +108,7 @@ class Llegadas_tarde extends CI_Controller {
 		$nombres = $this->input->post('nombres');
 		$apellidos = $this->input->post('apellidos');
 		$grupo = $this->input->post('grupo');
-		$datos =  $this->estudiantes->consultar(null,$nombres,$apellidos,$grupo);
+		$datos =  $this->estudiante->consultar(null,$nombres,$apellidos,$grupo);
 
 		
 		if($datos)
@@ -150,7 +144,7 @@ class Llegadas_tarde extends CI_Controller {
 		$fechaI = $this->input->post('fechaI');
 		$fechaF = $this->input->post('fechaF');
 
-		$datos =  $this->ingresos->consutar($id,$usuario,$nombres,$apellidos,$grd_13,$observaciones,$fecha,$hora,$fechaI,$fechaF);
+		$datos =  $this->ingresos->consutar($id,$usuario,$nombres,$apellidos,$grd_13,$observaciones,$fecha,$hora,$fechaI,$fechaF,"");
 		
 		if($datos)
 		{
@@ -203,6 +197,47 @@ class Llegadas_tarde extends CI_Controller {
 		{
 			echo "no";
 		}
+	}
+	public function enviarCorreo($estudiante)
+	{
+		 $datos =  $this->ingresos->consutar(null,null,null,null,null,null,null,null,null,null,$estudiante);
+		if($datos)
+		{
+			foreach ($datos as $row) {
+				
+				
+				
+				$codigo = $row->codigo;
+				$nombre = $row->nombres;
+				$apellido = $row->apellidos;
+				$grupo = $row->grd_13;
+				$fecha = $row->fecha;
+				$hora = $row->hora;
+				$observaciones = $row->observaciones;
+			}
+			 $mensaje = "<h1>Colegio VID</h1>
+			 			<h4>Se Informa que el estudiante ah Llegado Terde</h4> 
+			 			<p>Codigo: ".$codigo."</p>
+			 			<p>Nombre: ".$nombre." ".$apellido."</p>
+			 			<p>Grupo: ".$grupo."</p>
+			 			<p>Fecha: ".$fecha."</p>
+			 			<p>Hora: ".$hora."</p>";
+
+			  $this->correo->from('info@santamaria.com', 'Santa Maria de la Paz');
+			  $this->correo->to('jdavidg.e@hotmail.com');
+			  $this->correo->subject('Colegio VID');
+			  $this->correo->message($mensaje);
+			if($this->correo->send())
+			  {
+			  	return 'Correo enviado al acudiente';
+			  }
+			  else
+			  {
+			   	return "No se envio el Correo al acudiente ";
+			  }
+		
+		}
+			 
 	}
 }/* End of file llegadas_tarde.php */
 /* Location: ./application/controllers/llegadas_tarde.php */

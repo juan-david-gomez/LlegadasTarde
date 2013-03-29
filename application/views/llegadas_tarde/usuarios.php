@@ -1,120 +1,230 @@
 <div class="row-fluid">
 	<div class="span10 offset1">
 		<section>
-			<div class="formulario">
-				<h1 align="center">Usuarios</h1>
-				
-				 <table class="table table-striped">
+			<center><h1>USUARIOS</h1></center>
+			<div id="tabs">
+			 	<ul>
+			 		<li><a href="#tabs-2" >Insertar Usuarios</a></li>
+			 		<li><a href="#tabs-1" >Buscar Usuarios</a></li>
+			 		
+			 	</ul>
+			 	
+			 	<div id="tabs-2">
+			 		<form action="<?php echo site_url('usuarios/validarInsercion') ?>" method="post" class="well" id="InsertEstudiante">
+			 			<div id="mensaje">
+
+			 					<?php if(isset($mensaje)){echo $mensaje;} ?>
+						 		<?php echo validation_errors(); ?>
+						  		
+			 			</div>
+			 			<h2 align="center">Registrar un Usuario</h2>
+			 			<br>
+			 			<center>
+			 			<input type="text" name="nombre" id="Unombre" placeholder="Nombre" class="span4" value="<?php echo set_value('nombre'); ?>">
+						</center>
+						<input type="text" name="usuario" id="Uusuario" placeholder="Usuario" class="span4" value="<?php echo set_value('usuario'); ?>">
+
+						<input type="password" name="clave" id="Uclave" class="span4" placeholder="Contraseña" class="span4" value="<?php echo set_value('clave'); ?>" style="text-align: center;">
+						
+						<input type="text" name="rango" id="Urango"  placeholder="Rango" class="span4" value="<?php echo set_value('rango'); ?>" >
+							 
+					
+						<br>
+						<input type="submit" value="Insertar" id="Uinsertar" class="btn">
+						<input type="button" value="Limpiar" id="Ulimpiar" class="btn">
+			 		</form>
+			 	</div>
+			 	<div id="tabs-1">
+			 		<form action="" method="post" class="well">
+			 			<h2 align="center">Buscar Por Nombre y Codigo</h2>
+			 			<br>
+			 			<center>
+			 			<input type="text" name="id" id="idU" placeholder="Id">
+			 			</center>
+			 		
+			 			<input type="text" name="nombre" id="nombreU" placeholder="Nombre" class="span4">
+						<input type="text" name="usuario" id="usuarioU" placeholder="Usuario" class="span4">
+						<input type="password" name="clave" id="claveU" class="span4" placeholder="Contraseña" style="text-align: center;">
+						<br>
+						<input type="button" value="Buscar" id="buscarU" class="btn">
+						<input type="button" value="Limpiar" id="limpiar" class="btn">
+			 		</form>
+			 	</div>
+			 	<table class="table table-striped">
     						
 								<thead>
 								<tr class="ui-widget-header ">
-								<th>Codigo</th>
-								<th>Nombres</th>
-								<th>Usuario</th>
-								<th>Contraseña</th>
-								
+								<th>Id</th>
+								<th>Nombre</th>
+								<th>Usuaruario</th>
+								<th>Rango</th>
 								<th>Acciones</th>
 								</tr>
 								</thead>
-								<tbody>
-								<tr>
-								<td>1</td>
-								<td>Juan David Gomez</td>
-								<td>admin</td>
-								<td>admin</td>
+								<tbody id="datosUsuarios">
 								
-								<th>
-									<a href="#" title="" class="borrar">Borrar</a>
-									<a href="#" title="" class="editar">Editar</a>
-								</th>
-								</tr>
-								
+
 								</tbody>
-    						</table>
-			</div>
-			
+    			</table>
+			</div><!-- tabs -->
+
+				
 		</section>
 	</div>
-</div>
+</div><!-- row fluid -->
+<!-- dialogo para editar los estudiantes  -->
 <div class="Dialogeditar" style="display:none">
-	<h1 align="center">Editar Registros de los Estudiantes</h1>
+	<h1 align="center">Editar  Usuario</h1>
 	<hr>
 	<form action=""  id="modify" class="" method="post">
-		Codigo:
-		<input type="text" name="Enombre" value="3127239">
+		<div style="width:450px;height:100px">
+				<div style="float:right;width:200px">
+					
+					Usuario:
+					<input type="text" id="UDusuario" value="" >	
+					Nombre:
+					<input type="text" id="UDnombre" value="" >
+							
+					<br>
+					<br>
+					<div>
+						<input type="button" id="modificar" value="Modificar" class="btn">
+						<input type="button" id="cancelar" value="Cancelar" class="btn">
+					</div> 
+
+				</div >
+				<div style="float:left;width:230px">
+					Id:
+					<input type="text" id="UDid" value=""  >
+
+					Contraseña:
+					<input type="password" id="UDclave" value="" style="text-align: center;">
+
+					Rango:
+					<input type="text" id="UDrango" value="" >
+				
+				</div>
+		</div>
 		
-		Nombre:
-		<input type="text" name="Enombre" value="Juan David">
-		<br>
-		Usuario:
-		<input type="text" name="Enombre" value="Gomez Escoabar">
-		
-		Contraseña:
-		<input type="text" name="Enombre" value="11A">
-		<br>
-		Fecha:
-		<input type="text" name="Enombre" value="<?php echo date('m/d/Y')?>">
-		
-		Hora:
-		<input type="text" name="Enombre" value="<?php echo date('h:i:s',time())?>">
-		<hr>
-		<input type="submit" id="modificar" value="Modificar" class="btn">
-		<input type="button" id="cancelar" value="Cancelar" class="btn">
 	</form>
-</div>
+</div>				
 <script type="text/javascript">
-	$(document).ready(inicio());
-	function inicio () 
-	{
-		//activa el calendario
-		$('#fecha').datepicker();
-		//declara la ventana de dialogo para editar
-			$('.Dialogeditar').dialog({
+$(function() {
+	//activa las pestañas del Estudiantes
+	$("#tabs").tabs();
+	//dialogo para editar estudiantes
+	$('.Dialogeditar').dialog({
 				autoOpen: false,
-				height: 368,
-				title:"Modificar una Llegada Tarde",
-				width: 630,
+				height: 351,
+				title:"Modificar un estudiante",
+				width: 543,
 				modal: true,
-			});
-
-		//Evente del radio para cambiar de modo de busqueda
-		$("#estudiante").click(function(){
-			$(".busquedaF").css('display','none');
-			$(".busquedaE").css('display','block');
+	});
+	//Boton cancelar del dialogo para editar
+	$("#cancelar").click(function() {
 			
-		});
-		$("#fechaLLegadas").click(function(){
-			$(".busquedaE").css('display','none');
-	 		$(".busquedaF").css('display','block');
-			
-		});
+		  $('.Dialogeditar').dialog('close'); 
 
-		//eventos de los botones borrar de acciones
-		$('.borrar').click(function () {
+	});
+
+	//Bonton buscar el cual trae los resultados de la base de datos
+	$("#modificar").click(function() {	
+		var id = $("#UDid").val();
+		var nombre = $("#UDnombre").val();
+		var usuario = $("#UDusuario").val();
+		var clave = $("#UDclave").val();
+		var rango = $("#UDrango").val();
+		
+		$.post("<?php echo site_url('usuarios/modificar') ?>", {id:id, nombre:nombre, usuario: usuario,clave:clave,rango:rango},
+			  function(data){
+		   	alert(data);
+		   		
+		});
+		$('.Dialogeditar').dialog('close');
+	})
+
+	//Bonton buscar el cual trae los resultados de la base de datos
+	$("#buscarU").click(function() {	
+		var id = $("#idU").val();
+		var nombre = $("#nombreU").val();
+		var usuario = $("#usuarioU").val();
+		var clave = $("#claveU").val();
+		//var rango = $("#rangoU").val();
+		var rango = "";
+		$.post("<?php echo site_url('usuarios/buscarUsuario') ?>", {id:id, nombre: nombre, usuario: usuario, clave:clave,rango:rango },
+			  function(data){
+		   	$('#datosUsuarios').html(data);
+		   	
+		});
+	})
+
+	
+
+	//boton de borrar en las acciones dle registros
+	$(document).delegate('.borrar',"click",function () {
+
+			var iden = $(this).attr('id');
+			
 			var res = confirm('Esta seguro Que dese eliminar el Registros ?');
 			if (res ==  true)
 			{
-				alert('Registro Borrado');
+				
+			$.post("<?php echo site_url('usuarios/eliminar') ?>",
+				{
+				  id: iden
+				},
+			  function(data){
+		  		//alert(data); 
+
+			  });
+				var id = "."+iden;
+			
+				$(id).hide();
 			}else
 			{
-
+				
 			}
-		})
-		//eventos de los botones editar de acciones
-		$('.editar').click(function () {
+			return false;
+		});
+	//boton de editar en las acciones del registros
+	$(document).delegate('.editar',"click",function () {
+			var id = $(this).attr('id');
+			var nombre = $("."+id+"  .nombre").html();
+			var usuario = $("."+id+"  .usuario").html();
+			var clave = $("."+id+"  .clave").html();
+			var rango = $("."+id+"  .rango").html();
+
+			
+			$("#UDid").val(id);
+			$("#UDnombre").val(nombre);
+			$("#UDusuario").val(usuario);
+			$("#UDclave").val(clave);
+			$("#UDrango").val(rango);
+			
+			
+		
 			//abre el dialogo de editar
 			$('.Dialogeditar').dialog('open');
-		})
-		//eventos de los botones cancelar de el dialogo 
-		$('#cancelar').click(function () {
-			//cierra el dialogo de editar
-			$('.Dialogeditar').dialog('close');
-		})
-		$('#modify').submit(function () {
-			$('.Dialogeditar').dialog('close');
-			alert('Registro Modificado');
 			return false;
 		})
-	}
+	// funcionalidad del boton limpiar del cuadro de busqueda de estudiantes
+		$("#limpiar").click(function() {
+			$('#idU').val("");
+			$('#nombreU').val("");
+			$('#usuarioU').val("");
+			$('#claveU').val("");
+			
+			});
+		// funcionalidad del boton limpiar del cuadro de insercion de estudiantes
+		$("#Ulimpiar").click(function() {
+			$('#Uid').val("");
+			$('#Unombre').val("");
+			$('#Uusuario').val("");
+			$('#Uclave').val("");
+			$('#Urango').val("");
+			});
+
+		
+})//fin function principal
 
 </script>

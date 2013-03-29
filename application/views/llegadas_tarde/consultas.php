@@ -18,7 +18,7 @@
 								<br>
 							<input type="text" name="date" id="fecha"  class="span3 fecha" placeholder="Fecha" >
 						
-						</center>
+					</center>
 					</div>
 					</form>
 				</div>

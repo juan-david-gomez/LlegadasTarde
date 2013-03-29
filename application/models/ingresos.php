@@ -24,7 +24,7 @@ class Ingresos extends CI_Model {
 
 	}
 
-	public function consutar($id,$usuario,$nombres,$apellidos,$grd_13,$observaciones,$fecha,$hora,$fechaI,$fechaF)
+	public function consutar($id,$usuario,$nombres,$apellidos,$grd_13,$observaciones,$fecha,$hora,$fechaI,$fechaF,$codigo)
 	{
 
 		$this->db->select('id,codigo,nombres,apellidos,grd_13,fecha,hora,observaciones');
@@ -36,6 +36,10 @@ class Ingresos extends CI_Model {
 		if(!empty($id))
 		{
 			$this->db->where('id', $id);
+		}
+		if(!empty($codigo))
+		{
+			$this->db->where('codigo', $codigo);
 		}
 		if(!empty($usuario))
 		{

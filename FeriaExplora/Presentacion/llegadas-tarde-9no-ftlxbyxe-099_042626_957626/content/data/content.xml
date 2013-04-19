@@ -1,0 +1,1597 @@
+<zuiprezi>
+  <version>5</version>
+  <zui-table>
+    <settings>
+      
+      <autoplay>
+        
+        <delay>4000</delay>
+        
+      </autoplay>
+      
+      <bounds x="-33390.99316219979" y="-31940.191649188928" width="66781.98632439958" height="63880.383298377856"/>
+      <aspectratio>off</aspectratio>
+      <languages>
+        <language>es</language>
+      </languages>
+      <spellcheck active="false"/>
+    </settings>
+    <object id="2_815608" type="button" x="0" y="-6888.582300294048" r="0" s="83.64477245040027" class="invisible">
+      <type>invisible</type>
+      <size>
+        <w>799.4430908458057</w>
+        <h>600</h>
+      </size>
+      <meta>
+        <parentTemplate>tabletop</parentTemplate>
+      </meta>
+    </object>
+    <object id="117_796579" type="image" x="3.120411628266357" y="10164.298402341961" r="0" s="41.80637052430423">
+      <source w="1158" h="1041" bt="17.45" bl="330">325262139.swf<url>325262139.swf</url>
+      </source>
+      <sourceUrl>asztal.swf</sourceUrl>
+      <meta>
+        <parentTemplate>tabletop</parentTemplate>
+      </meta>
+    <resource><id>
+        325262139
+        </id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/d/1/6/c02e74a02702180c61b3e3c1d3df7904b38ec.swf</url></resource></object>
+    <object id="16_796579" type="image" x="-1438.2747071137087" y="-8809.56354405398" r="0" s="31.220494544911272">
+      <source w="690" h="573" bt="61.85" bl="29">325143595.swf<url>325143595.swf</url>
+      </source>
+      <sourceUrl>monitor.swf</sourceUrl>
+      <meta>
+        <parentTemplate>tabletop</parentTemplate>
+      </meta>
+    <resource><id>
+        325143595
+        </id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/2/c/0/885c35a58f6f810e4fc96e6d09b54271025a5.swf</url></resource></object>
+    <object id="45_815608" type="button" x="16867.068272629935" y="-1088.9680085390255" r="0" s="14.441360819876003" class="invisible">
+      <type>invisible</type>
+      <size>
+        <w>796.9639468690702</w>
+        <h>600</h>
+      </size>
+      <meta>
+        <parentTemplate>tabletop</parentTemplate>
+      </meta>
+    </object>
+    <object id="22_796579" type="image" x="16867" y="-807.9" r="0" s="24.629156741693564">
+      <source w="191" h="263" bt="758.05" bl="448.7">325143619.swf<url>325143619.swf</url>
+      </source>
+      <sourceUrl>ipad.swf</sourceUrl>
+      <meta>
+        <parentTemplate>tabletop</parentTemplate>
+      </meta>
+    <resource><id>
+        325143619
+        </id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/f/9/d/3605084eadc331850769155dcd0cd074021e5.swf</url></resource></object>
+    <object id="8_815608" type="button" x="13075.112978760453" y="9196.137555851543" r="0" s="18.048254947861853" class="invisible">
+      <type>invisible</type>
+      <size>
+        <w>796.4147650572329</w>
+        <h>597.3110737929242</h>
+      </size>
+      <meta>
+        <parentTemplate>tabletop</parentTemplate>
+      </meta>
+    </object>
+    <object id="28_796579" type="image" x="12942.912179801868" y="9242.134986803503" r="89.8856142293129" s="36.68110526818778">
+      <source w="258" h="349" bt="668.55" bl="166.8">325143631.swf<url>325143631.swf</url>
+      </source>
+      <sourceUrl>simalap.swf</sourceUrl>
+      <meta>
+        <parentTemplate>tabletop</parentTemplate>
+      </meta>
+    <resource><id>
+        325143631
+        </id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/a/6/0/f3aa1e31d2138144611ef804b4aac53556fad.swf</url></resource></object>
+    <object id="9_815608" type="button" x="-13883.35817673989" y="8167.225396115543" r="0" s="14.907002430621738" class="invisible">
+      <type>invisible</type>
+      <size>
+        <w>643.5317208133044</w>
+        <h>849.387391030066</h>
+      </size>
+      <meta>
+        <parentTemplate>tabletop</parentTemplate>
+      </meta>
+    </object>
+    <object id="33_796579" type="image" x="-13930.568019474655" y="8209.128417374872" r="0" s="33.99321549933805">
+      <source w="258" h="350" bt="344.9" bl="1160.85">325153999.swf<url>325153999.swf</url>
+      </source>
+      <sourceUrl>kockaslap.swf</sourceUrl>
+      <meta>
+        <parentTemplate>tabletop</parentTemplate>
+      </meta>
+    <resource><id>
+        325153999
+        </id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/1/c/3/63766c6c585a7f58696bdd34db5f9c384a735.swf</url></resource></object>
+    <object id="27_796579" type="image" x="14173.25891293333" y="10723.950609245965" r="0" s="25.120773754187983">
+      <source w="720" h="54" bt="772.45" bl="687">325143627.swf<url>325143627.swf</url>
+      </source>
+      <sourceUrl>vonalzo.swf</sourceUrl>
+      <meta>
+        <parentTemplate>tabletop</parentTemplate>
+      </meta>
+    <resource><id>
+        325143627
+        </id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/d/a/9/e93ac8d7ed45205c93a7435b82d338970b45e.swf</url></resource></object>
+    <object id="31_796579" type="image" x="-1521.1875299716999" y="7286.861989919693" r="0" s="30.274969890579555">
+      <source w="373" h="448" bt="267.75" bl="751">325143635.swf<url>325143635.swf</url>
+      </source>
+      <sourceUrl>laptop.swf</sourceUrl>
+      <meta>
+        <parentTemplate>tabletop</parentTemplate>
+      </meta>
+    <resource><id>
+        325143635
+        </id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/a/9/a/4741be1d11788c8e3928021c26fa9225c65a8.swf</url></resource></object>
+    <object id="18_796579" type="image" x="-9340.49818726155" y="-1010.3467104750575" r="0" s="30.778909713162655">
+      <source w="17" h="134" bt="602.8" bl="665.1">325143605.swf<url>325143605.swf</url>
+      </source>
+      <sourceUrl>lc.swf</sourceUrl>
+      <meta>
+        <parentTemplate>tabletop</parentTemplate>
+      </meta>
+    <resource><id>
+        325143605
+        </id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/1/f/9/af56f717cf33cd6356319468386d72deb3971.swf</url></resource></object>
+    <object id="17_796579" type="image" x="19986.98982355342" y="5610.944922829897" r="-147.6690205783224" s="30.778909713162623">
+      <source w="17" h="134" bt="602.8" bl="561.3">325143607.swf<url>325143607.swf</url>
+      </source>
+      <sourceUrl>sc.swf</sourceUrl>
+      <meta>
+        <parentTemplate>tabletop</parentTemplate>
+      </meta>
+    <resource><id>
+        325143607
+        </id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/c/9/6/939090d801729b97dfd385c153a709e4b6138.swf</url></resource></object>
+    <object id="20_796579" type="image" x="-11846.998132272305" y="-1010.488557092873" r="0" s="30.778909713162655">
+      <source w="17" h="134" bt="602.8" bl="641.05">325143609.swf<url>325143609.swf</url>
+      </source>
+      <sourceUrl>zc.swf</sourceUrl>
+      <meta>
+        <parentTemplate>tabletop</parentTemplate>
+      </meta>
+    <resource><id>
+        325143609
+        </id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/4/7/c/36ece08f61ec8baa9c1f1307e78ef046fd7e9.swf</url></resource></object>
+    <object id="21_796579" type="image" x="-11044.67191161667" y="-1010.8663276511879" r="0" s="29.983222908549376">
+      <source w="17" h="134" bt="603.5" bl="536.3">325143617.swf<url>325143617.swf</url>
+      </source>
+      <sourceUrl>pc.swf</sourceUrl>
+      <meta>
+        <parentTemplate>tabletop</parentTemplate>
+      </meta>
+    <resource><id>
+        325143617
+        </id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/b/e/0/8db9db8f6a083615994dcc1aba676e80b0a13.swf</url></resource></object>
+    <object id="30_796579" type="image" x="-10210.302014329493" y="-1010.317762483624" r="0" s="30.778909713162655">
+      <source w="17" h="134" bt="602.8" bl="586.3">325143633.swf<url>325143633.swf</url>
+      </source>
+      <sourceUrl>nc.swf</sourceUrl>
+      <meta>
+        <parentTemplate>tabletop</parentTemplate>
+      </meta>
+    <resource><id>
+        325143633
+        </id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/3/b/8/e3273a101161da1e9187e7a93a82af74ee89d.swf</url></resource></object>
+    <object id="23_796579" type="image" x="-20222.59066633158" y="10769.995722203" r="0" s="25.668495015923064">
+      <source w="100" h="160" bt="860" bl="770">325143625.swf<url>325143625.swf</url>
+      </source>
+      <sourceUrl>szamologep.swf</sourceUrl>
+      <meta>
+        <parentTemplate>tabletop</parentTemplate>
+      </meta>
+    <resource><id>
+        325143625
+        </id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/8/1/a/21951af42dec8ead6273fc8305f524d6633cb.swf</url></resource></object>
+    <object id="34_796579" type="shape" x="12901.350667587842" y="9841.463572378692" r="-1.3120850217940909e-14" s="7.767116781385623" class="line2">
+      <geom type="line">
+        <sp>805.3905446301932 0</sp>
+        <ep>-805.3905446301931 0</ep>
+        <t>8</t>
+      </geom>
+      <meta>
+        <parentTemplate>tabletop</parentTemplate>
+      </meta>
+    </object>
+    <object id="35_796579" type="label" x="13075.622910074428" y="5538.323917608299" r="0" s="40.602973450441105" class="head">
+      <textfield autoSize="true">
+        <x>-74.75</x>
+        <y>-16.35</y>
+        <text><![CDATA[Metodologia]]></text>
+        <annotations>r0-11 { align: left; }</annotations>
+      </textfield>
+      <meta>
+        <parentTemplate>tabletop</parentTemplate>
+      </meta>
+    </object>
+    <object id="0_815608" type="shape" x="15867.749210717524" y="-10205.963410707938" r="-1.4033418597069747e-14" s="14.94112237748355" class="poly3">
+      <geom type="poly">
+        <p x="-148.99921522091006" y="-205.49985427574313"/>
+        <p x="148.99921522091006" y="-205.49985427574313"/>
+        <p x="148.99921522091006" y="205.49985427574313"/>
+        <p x="-148.99921522091006" y="205.49985427574313"/>
+        <t>9</t>
+        <r>0</r>
+      </geom>
+      <meta>
+        <parentTemplate>tabletop</parentTemplate>
+      </meta>
+    </object>
+    <object id="36_796579" type="image" x="16017.305015958751" y="-10267.699181748936" r="0" s="20.404281557530187">
+      <source w="270" h="365" bt="170" bl="680">325203193.swf<url>325203193.swf</url>
+      </source>
+      <sourceUrl>képkeret.swf</sourceUrl>
+      <meta>
+        <parentTemplate>tabletop</parentTemplate>
+      </meta>
+    <resource><id>
+        325203193
+        </id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/e/e/e/0e081696ece9f94461905e353cbb1ca4efcd4.swf</url></resource></object>
+    <object id="1_815608" type="persistentgroup" x="16017.305015958751" y="-10267.699181748936" r="0" s="14.94112237748355">
+      <m o="0_815608"/>
+      <m o="36_796579"/>
+      <meta>
+        <parentTemplate>tabletop</parentTemplate>
+      </meta>
+    </object>
+    <object id="25_796579" type="image" x="-8510.593689511194" y="-1018.9717652525937" r="0" s="30.778909713162655">
+      <source w="17" h="134" bt="602.8" bl="615.65">325143623.swf<url>325143623.swf</url>
+      </source>
+      <sourceUrl>kc.swf</sourceUrl>
+      <meta>
+        <parentTemplate>tabletop</parentTemplate>
+      </meta>
+    <resource><id>
+        325143623
+        </id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/7/e/5/f4410fb5b147b1765854efc3bc50c6b7a1479.swf</url></resource></object>
+    <object id="40_796579" type="shape" x="11622.8186748178" y="9085.112451546034" r="-90" s="7.767116781385616" class="line2">
+      <geom type="line">
+        <sp>-93.71510250028992 0</sp>
+        <ep>93.71510250028992 0</ep>
+        <t>8</t>
+      </geom>
+      <meta>
+        <parentTemplate>tabletop</parentTemplate>
+      </meta>
+    </object>
+    <object id="41_796579" type="shape" x="14124.085822574143" y="9115.35840171861" r="-90" s="7.767116781385616" class="line2">
+      <geom type="line">
+        <sp>-93.71510250028992 0</sp>
+        <ep>93.71510250028992 0</ep>
+        <t>8</t>
+      </geom>
+      <meta>
+        <parentTemplate>tabletop</parentTemplate>
+      </meta>
+    </object>
+    <object id="42_796579" type="shape" x="16648.511707429043" y="9106.403528522642" r="-90" s="7.767116781385616" class="line2">
+      <geom type="line">
+        <sp>-93.71510250028992 0</sp>
+        <ep>93.71510250028992 0</ep>
+        <t>8</t>
+      </geom>
+      <meta>
+        <parentTemplate>tabletop</parentTemplate>
+      </meta>
+    </object>
+    <object id="43_796579" type="shape" x="19156.913082354316" y="9113.567427079424" r="-90" s="7.767116781385616" class="line2">
+      <geom type="line">
+        <sp>-93.71510250028992 0</sp>
+        <ep>93.71510250028992 0</ep>
+        <t>8</t>
+      </geom>
+      <meta>
+        <parentTemplate>tabletop</parentTemplate>
+      </meta>
+    </object>
+    <object id="44_796579" type="shape" x="9097.574104942698" y="9119.788707405027" r="-90" s="7.767116781385616" class="line2">
+      <geom type="line">
+        <sp>-93.71510250028992 0</sp>
+        <ep>93.71510250028992 0</ep>
+        <t>8</t>
+      </geom>
+      <meta>
+        <parentTemplate>tabletop</parentTemplate>
+      </meta>
+    </object>
+    <object id="32" type="button" x="17913.770699479745" y="8614.477211831578" r="0" s="3.9408239877270907" class="invisible">
+      <type>invisible</type>
+      <size>
+        <w>623.8109133352788</w>
+        <h>600</h>
+      </size>
+    </object>
+    <object id="19" type="button" x="17896.902290162547" y="8641.768378125262" r="0" s="3.8613735713146937" class="roundrect">
+      <type>roundrect</type>
+      <size>
+        <w>612.2511485451761</w>
+        <h>600</h>
+      </size>
+    </object>
+    <object id="46_796579" type="label" x="17896.842263064587" y="7877.44832991669" r="0" s="22.307487031320914" class="head">
+      <textfield autoSize="true">
+        <x>-9.2</x>
+        <y>-16.35</y>
+        <text><![CDATA[5]]></text>
+        <annotations>r0-1 { align: left; }</annotations>
+      </textfield>
+      <meta>
+        <parentTemplate>tabletop</parentTemplate>
+      </meta>
+    </object>
+    <object id="11" type="button" x="7864.312992603236" y="8612.145805665788" r="0" s="3.8613735713146946" class="roundrect">
+      <type>roundrect</type>
+      <size>
+        <w>612.2511485451761</w>
+        <h>600</h>
+      </size>
+    </object>
+    <object id="47_796579" type="label" x="7863.695855676997" y="7880.152840376705" r="0" s="21.89539557890988" class="head">
+      <textfield>
+        <x>-8</x>
+        <y>-16.35</y>
+        <text><![CDATA[1]]></text>
+        <annotations>r0-1 { align: left; }</annotations>
+      </textfield>
+      <meta>
+        <parentTemplate>tabletop</parentTemplate>
+      </meta>
+    </object>
+    <object id="25" type="button" x="10375.648857778631" y="8626.408525738867" r="0" s="3.9485020006161515" class="invisible">
+      <type>invisible</type>
+      <size>
+        <w>614.0134689783638</w>
+        <h>600</h>
+      </size>
+    </object>
+    <object id="12" type="button" x="10380.174528571055" y="8654.867514941845" r="0" s="3.8613735713146924" class="roundrect">
+      <type>roundrect</type>
+      <size>
+        <w>612.2511485451761</w>
+        <h>600</h>
+      </size>
+    </object>
+    <object id="48_796579" type="label" x="10380.05054075379" y="7867.031040511469" r="0" s="23.451073439973023" class="head">
+      <textfield autoSize="true">
+        <x>-10.2</x>
+        <y>-16.35</y>
+        <text><![CDATA[2]]></text>
+        <annotations>r0-1 { align: left; }</annotations>
+      </textfield>
+      <meta>
+        <parentTemplate>tabletop</parentTemplate>
+      </meta>
+    </object>
+    <object id="14" type="button" x="12888.493279884835" y="8617.220042614865" r="0" s="3.8613735713146924" class="roundrect">
+      <type>roundrect</type>
+      <size>
+        <w>612.2511485451761</w>
+        <h>600</h>
+      </size>
+    </object>
+    <object id="26" type="button" x="12888.21899680651" y="8640.999956365002" r="0" s="2.7069254795183437" class="invisible">
+      <type>invisible</type>
+      <size>
+        <w>800</w>
+        <h>838.1943602555701</h>
+      </size>
+    </object>
+    <object id="49_796579" type="label" x="12946.18454862485" y="7788.541810068742" r="0" s="24.508914361290206" class="head">
+      <textfield autoSize="true">
+        <x>-10.15</x>
+        <y>-16.35</y>
+        <text><![CDATA[3]]></text>
+        <annotations>r0-1 { align: left; }</annotations>
+      </textfield>
+      <meta>
+        <parentTemplate>tabletop</parentTemplate>
+      </meta>
+    </object>
+    <object id="29" type="button" x="15384.537863443418" y="8617.0829010757" r="0" s="3.930701112529841" class="invisible">
+      <type>invisible</type>
+      <size>
+        <w>624.1500000000001</w>
+        <h>600</h>
+      </size>
+    </object>
+    <object id="16" type="button" x="15384.675004982582" y="8617.220042614865" r="0" s="3.8613735713146924" class="roundrect">
+      <type>roundrect</type>
+      <size>
+        <w>612.2511485451761</w>
+        <h>600</h>
+      </size>
+    </object>
+    <object id="50_796579" type="label" x="15442.776428924597" y="7850.414783210572" r="0" s="22.307487031320896" class="head">
+      <textfield autoSize="true">
+        <x>-10.05</x>
+        <y>-16.35</y>
+        <text><![CDATA[4]]></text>
+        <annotations>r0-1 { align: left; }</annotations>
+      </textfield>
+      <meta>
+        <parentTemplate>tabletop</parentTemplate>
+      </meta>
+    </object>
+    <object id="4" type="button" x="-18182.91097008955" y="-6559.068393607669" r="0" s="9.192678953257493" class="invisible">
+      <type>invisible</type>
+      <size>
+        <w>954.8076923076924</w>
+        <h>600</h>
+      </size>
+    </object>
+    <object id="7" type="button" x="-20240.65119447925" y="-6541.788559672977" r="0" s="4.635001659632495" class="invisible">
+      <type>invisible</type>
+      <size>
+        <w>690.6287069988139</w>
+        <h>600</h>
+      </size>
+    </object>
+    <object id="98_796579" type="image" x="-20222.516803672224" y="-6130.926520502566" r="0" s="18.88105273800796">
+      <source w="160" h="177" bt="341.25" bl="920">325247539.swf<url>325247539.swf</url>
+      </source>
+      <sourceUrl>postitz.swf</sourceUrl>
+      <meta>
+        <parentTemplate>tabletop</parentTemplate>
+      </meta>
+    <resource><id>
+        325247539
+        </id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/4/6/6/4c40320534d3ad47a13c00dfef696655c7dbe.swf</url></resource></object>
+    <object id="99_796579" type="image" x="-20222.539717964355" y="6008.08912301035" r="0" s="18.88105273800796">
+      <source w="160" h="177" bt="340" bl="520">325247819.swf<url>325247819.swf</url>
+      </source>
+      <sourceUrl>postitk.swf</sourceUrl>
+      <meta>
+        <parentTemplate>tabletop</parentTemplate>
+      </meta>
+    <resource><id>
+        325247819
+        </id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/3/a/2/1c5903485c882243d4feca0c9bf7a5442428c.swf</url></resource></object>
+    <object id="8" type="button" x="-16600.7776035214" y="-6486.246236311464" r="0" s="4.966727757059732" class="invisible">
+      <type>invisible</type>
+      <size>
+        <w>671.0701107011071</w>
+        <h>600</h>
+      </size>
+    </object>
+    <object id="100_796579" type="image" x="-16604.72814768401" y="-6131.0250167258055" r="0" s="18.88105273800796">
+      <source w="160" h="177" bt="341.25" bl="720">325247821.swf<url>325247821.swf</url>
+      </source>
+      <sourceUrl>postitr.swf</sourceUrl>
+      <meta>
+        <parentTemplate>tabletop</parentTemplate>
+      </meta>
+    <resource><id>
+        325247821
+        </id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/1/d/3/870e03a1595db441af303898fb5b452eec5d5.swf</url></resource></object>
+    <object id="102_796579" type="label" x="-20205.152229055224" y="12071.280190311805" r="0" s="7.540945849236116" class="head">
+      <textfield autoSize="true">
+        <x>-10.15</x>
+        <y>-16.35</y>
+        <text><![CDATA[0]]></text>
+        <annotations>r0-1 { color: #fff; }
+r0-1 { align: left; }</annotations>
+      </textfield>
+      <meta>
+        <parentTemplate>tabletop</parentTemplate>
+      </meta>
+    </object>
+    <object id="103_796579" type="label" x="-20690.317832630448" y="12078.632612514808" r="0" s="7.540945849236116" class="head">
+      <textfield autoSize="true">
+        <x>-10.7</x>
+        <y>-16.35</y>
+        <text><![CDATA[+]]></text>
+        <annotations>r0-1 { color: #fff; }
+r0-1 { align: left; }</annotations>
+      </textfield>
+      <meta>
+        <parentTemplate>tabletop</parentTemplate>
+      </meta>
+    </object>
+    <object id="104_796579" type="label" x="-21182.930120231784" y="12071.280190311805" r="0" s="7.540945849236116" class="head">
+      <textfield autoSize="true">
+        <x>-8.05</x>
+        <y>-16.35</y>
+        <text><![CDATA[-]]></text>
+        <annotations>r0-1 { color: #fff; }
+r0-1 { align: left; }</annotations>
+      </textfield>
+      <meta>
+        <parentTemplate>tabletop</parentTemplate>
+      </meta>
+    </object>
+    <object id="105_796579" type="label" x="-19713.105512392573" y="12078.632612514808" r="0" s="7.540945849236116" class="head">
+      <textfield autoSize="true">
+        <x>-10.35</x>
+        <y>-16.35</y>
+        <text><![CDATA[=]]></text>
+        <annotations>r0-1 { color: #fff; }
+r0-1 { align: left; }</annotations>
+      </textfield>
+      <meta>
+        <parentTemplate>tabletop</parentTemplate>
+      </meta>
+    </object>
+    <object id="106_796579" type="label" x="-19400.061997826153" y="11478.750370208076" r="0" s="7.540945849236116" class="head">
+      <textfield autoSize="true">
+        <x>-9.7</x>
+        <y>-16.35</y>
+        <text><![CDATA[9]]></text>
+        <annotations>r0-1 { color: #fff; }
+r0-1 { align: left; }</annotations>
+      </textfield>
+      <meta>
+        <parentTemplate>tabletop</parentTemplate>
+      </meta>
+    </object>
+    <object id="107_796579" type="label" x="-20210.807938442158" y="11488.553599812081" r="0" s="7.540945849236116" class="head">
+      <textfield autoSize="true">
+        <x>-9.35</x>
+        <y>-16.35</y>
+        <text><![CDATA[8]]></text>
+        <annotations>r0-1 { color: #fff; }
+r0-1 { align: left; }</annotations>
+      </textfield>
+      <meta>
+        <parentTemplate>tabletop</parentTemplate>
+      </meta>
+    </object>
+    <object id="101_796579" type="label" x="-21058.88156101186" y="11478.844632031187" r="0" s="7.540945849236116" class="head">
+      <textfield autoSize="true">
+        <x>-9.45</x>
+        <y>-16.35</y>
+        <text><![CDATA[7]]></text>
+        <annotations>r0-1 { color: #fff; }
+r0-1 { align: left; }</annotations>
+      </textfield>
+      <meta>
+        <parentTemplate>tabletop</parentTemplate>
+      </meta>
+    </object>
+    <object id="108_796579" type="label" x="-21053.508637094288" y="10237.227897954466" r="0" s="7.540945849236116" class="head">
+      <textfield autoSize="true">
+        <x>-8</x>
+        <y>-16.35</y>
+        <text><![CDATA[1]]></text>
+        <annotations>r0-1 { color: #fff; }
+r0-1 { align: left; }</annotations>
+      </textfield>
+      <meta>
+        <parentTemplate>tabletop</parentTemplate>
+      </meta>
+    </object>
+    <object id="109_796579" type="label" x="-20204.775181762758" y="10237.227897954466" r="0" s="7.540945849236116" class="head">
+      <textfield autoSize="true">
+        <x>-10.2</x>
+        <y>-16.35</y>
+        <text><![CDATA[2]]></text>
+        <annotations>r0-1 { color: #fff; }
+r0-1 { align: left; }</annotations>
+      </textfield>
+      <meta>
+        <parentTemplate>tabletop</parentTemplate>
+      </meta>
+    </object>
+    <object id="110_796579" type="label" x="-19380.361276795014" y="10212.81408576756" r="0" s="7.540945849236116" class="head">
+      <textfield autoSize="true">
+        <x>-10.15</x>
+        <y>-16.35</y>
+        <text><![CDATA[3]]></text>
+        <annotations>r0-1 { color: #fff; }
+r0-1 { align: left; }</annotations>
+      </textfield>
+      <meta>
+        <parentTemplate>tabletop</parentTemplate>
+      </meta>
+    </object>
+    <object id="111_796579" type="label" x="-21054.356993502333" y="10840.880613185822" r="0" s="7.540945849236116" class="head">
+      <textfield autoSize="true">
+        <x>-10.05</x>
+        <y>-16.35</y>
+        <text><![CDATA[4]]></text>
+        <annotations>r0-1 { color: #fff; }
+r0-1 { align: left; }</annotations>
+      </textfield>
+      <meta>
+        <parentTemplate>tabletop</parentTemplate>
+      </meta>
+    </object>
+    <object id="112_796579" type="label" x="-20220.045597107463" y="10841.25766047828" r="0" s="7.540945849236116" class="head">
+      <textfield autoSize="true">
+        <x>-9.2</x>
+        <y>-16.35</y>
+        <text><![CDATA[5]]></text>
+        <annotations>r0-1 { color: #fff; }
+r0-1 { align: left; }</annotations>
+      </textfield>
+      <meta>
+        <parentTemplate>tabletop</parentTemplate>
+      </meta>
+    </object>
+    <object id="113_796579" type="label" x="-19401.570186996003" y="10856.339552176749" r="0" s="7.540945849236116" class="head">
+      <textfield autoSize="true">
+        <x>-9.5</x>
+        <y>-16.35</y>
+        <text><![CDATA[6]]></text>
+        <annotations>r0-1 { color: #fff; }
+r0-1 { align: left; }</annotations>
+      </textfield>
+      <meta>
+        <parentTemplate>tabletop</parentTemplate>
+      </meta>
+    </object>
+    <object id="114_796579" type="label" x="-19234.255450966066" y="12078.632612514808" r="0" s="7.540945849236116" class="head">
+      <textfield autoSize="true">
+        <x>-8.85</x>
+        <y>-16.35</y>
+        <text><![CDATA[c]]></text>
+        <annotations>r0-1 { align: left; }</annotations>
+      </textfield>
+      <meta>
+        <parentTemplate>tabletop</parentTemplate>
+      </meta>
+    </object>
+    <object id="115_796579" type="persistentgroup" x="-20222.59066633158" y="10769.995722203" r="0" s="11.39531245051382">
+      <m o="23_796579"/>
+      <m o="102_796579"/>
+      <m o="103_796579"/>
+      <m o="104_796579"/>
+      <m o="105_796579"/>
+      <m o="106_796579"/>
+      <m o="107_796579"/>
+      <m o="101_796579"/>
+      <m o="108_796579"/>
+      <m o="109_796579"/>
+      <m o="110_796579"/>
+      <m o="111_796579"/>
+      <m o="112_796579"/>
+      <m o="113_796579"/>
+      <m o="114_796579"/>
+      <meta>
+        <parentTemplate>tabletop</parentTemplate>
+      </meta>
+    </object>
+    <object id="139_796579" type="image" x="-15179.197736111304" y="-7582.031435085814" r="45.061582631090374" s="2.693721129514537">
+      <source w="453" h="428" bt="341.8" bl="640.95">233792494.swf<url>233792494.swf</url>
+      </source>
+      <sourceUrl>069_KAPCS.swf</sourceUrl>
+      <meta>
+        <parentTemplate>tabletop</parentTemplate>
+      </meta>
+    <resource><id>
+        233792494
+        </id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/b/8/e/d768fd64385e3c1f6d67e7c403e653ca79243.swf</url></resource></object>
+    <object id="174_796579" type="image" x="17959.970741213852" y="-13227.034504593996" r="-1.2713238277343209e-14" s="1.8263712246468347">
+      <source w="585" h="344" bt="37.7" bl="647.1">233792558.swf<url>233792558.swf</url>
+      </source>
+      <sourceUrl>051_bolygó.swf</sourceUrl>
+      <meta>
+        <parentTemplate>tabletop</parentTemplate>
+      </meta>
+    <resource><id>
+        233792558
+        </id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/e/9/a/8380a0fa635c00d11c4cf86e467b56b086798.swf</url></resource></object>
+    <object id="175_796579" type="image" x="13843.907200664486" y="-13227.61373596138" r="-10.138731205442602" s="2.662109823126916">
+      <source w="294" h="246" bt="415.25" bl="494.5">233792390.swf<url>233792390.swf</url>
+      </source>
+      <sourceUrl>109_heart.swf</sourceUrl>
+      <extra>
+        <fixed_avm1_pos>1</fixed_avm1_pos>
+      </extra>
+      <meta>
+        <parentTemplate>tabletop</parentTemplate>
+      </meta>
+    <resource><id>
+        233792390
+        </id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/8/d/1/dd1402e1f3afb06450e29ee57cb0a0547be65.swf</url></resource></object>
+    <object id="176_796579" type="image" x="17040.032521445635" y="-13308.7257364196" r="-1.2713238277343207e-14" s="1.2488769749476256">
+      <source w="565" h="565" bt="252.9" bl="997.05">233792624.swf<url>233792624.swf</url>
+      </source>
+      <sourceUrl>026_repcsi.swf</sourceUrl>
+      <extra>
+        <fixed_avm1_pos>1</fixed_avm1_pos>
+      </extra>
+      <meta>
+        <parentTemplate>tabletop</parentTemplate>
+      </meta>
+    <resource><id>
+        233792624
+        </id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/d/c/6/67a8ae993fb59b1a61103399c8e628ea0b450.swf</url></resource></object>
+    <object id="173_796579" type="image" x="13843.653203330945" y="-13227.063452585435" r="-10.138731205442609" s="4.401898184414286">
+      <source w="79" h="79" bt="500.35" bl="920.85">245885924.swf<url>245885924.swf</url>
+      </source>
+      <sourceUrl>16_smile.swf</sourceUrl>
+      <meta>
+        <parentTemplate>tabletop</parentTemplate>
+      </meta>
+    <resource><id>
+        245885924
+        </id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/9/d/e/a26fa2ffb9a856d759d07094abe58f93e8b56.swf</url></resource></object>
+    <object id="5_815608" type="button" x="-20222.754223618318" y="-6144.900945331692" r="0" s="3.092292176402536" class="invisible">
+      <type>invisible</type>
+      <size>
+        <w>796.8932038834952</w>
+        <h>600</h>
+      </size>
+      <meta>
+        <parentTemplate>tabletop</parentTemplate>
+      </meta>
+    </object>
+    <object id="11_815608" type="label" x="-20238.514713057928" y="-6394.250940147131" r="0" s="7.1442530029477735" class="body">
+      <textfield>
+        <x>-165.85</x>
+        <y>-61.7</y>
+        <text><![CDATA[Diseñar una aplicación que permita optimizar el proceso de registro de llegadas tarde a un colegio.]]></text>
+        <w>331.75</w>
+        <h>123.4</h>
+        <annotations>r0-99 { align: left; }</annotations>
+      </textfield>
+    </object>
+    <object id="15_815608" type="button" x="-16604.276405692526" y="-5981.159058101616" r="0" s="3.4843039282222157" class="invisible">
+      <type>invisible</type>
+      <size>
+        <w>796.8932038834952</w>
+        <h>600</h>
+      </size>
+      <meta>
+        <parentTemplate>tabletop</parentTemplate>
+      </meta>
+    </object>
+    <object id="16_815608" type="label" x="-16753.359204519573" y="-7471.7455019065" r="0" s="15.39842877454266" class="strong">
+      <textfield autoSize="true">
+        <x>-60.55</x>
+        <y>-17.9</y>
+        <text><![CDATA[Especifico]]></text>
+        <annotations>r0-10 { align: left; }</annotations>
+      </textfield>
+    </object>
+    <object id="17_815608" type="label" x="-16627.896089312595" y="-5943.358834438872" r="0" s="5.613341645173251" class="body">
+      <textfield>
+        <x>-232.6</x>
+        <y>-181.1</y>
+        <text><![CDATA[permitir que una institución pueda tener control sobre las personas que entran tarde permitiéndoles mantener registro histórico de cada estudiante.
+
+Hacer más eficiente el manejo de dicha información haciéndola accesible desde cualquier lugar y en cualquier momento.
+
+Desarrollar una aplicación web siguiendo estándares  de programación y modelo de datos]]></text>
+        <w>465.25</w>
+        <h>362.2</h>
+        <annotations>r0-148 { align: left; }
+r149-267 { align: left; }
+r268-354 { align: left; }</annotations>
+      </textfield>
+    </object>
+    <object id="18_815608" type="button" x="-1506.2682056794163" y="4280.709634356199" r="0" s="10.548947008587836" class="invisible">
+      <type>invisible</type>
+      <size>
+        <w>1060.705875544872</w>
+        <h>652.4140625</h>
+      </size>
+      <meta>
+        <parentTemplate>tabletop</parentTemplate>
+      </meta>
+    </object>
+    <object id="19_815608" type="label" x="-1653.5994179381194" y="2025.012606985846" r="0" s="27.36136242701851" class="strong">
+      <textfield autoSize="true">
+        <x>-143.6</x>
+        <y>-17.9</y>
+        <text><![CDATA[¿ Cual es el Problema ?]]></text>
+        <annotations>r0-23 { align: left; }</annotations>
+      </textfield>
+    </object>
+    <object id="20_815608" type="label" x="-1617.9824230276454" y="5151.892689603452" r="0" s="17.767118459102928" class="body">
+      <textfield>
+        <x>-273.7</x>
+        <y>-121.4</y>
+        <text><![CDATA[Hoy en dia en cualquier lugar donde hallan persona laborando o estuidando siempre se ven sometidos a un horario pero este aveces no se cumple estrictamente y es casi necesario tener un control de dicha falta.
+Mi proyecto busca optimizar dicho control para hacerlo mas efectivo y maneje mejor la información]]></text>
+        <w>547.4</w>
+        <h>242.8</h>
+        <annotations>r0-209 { align: left; }
+r209-306 { align: left; }</annotations>
+      </textfield>
+    </object>
+    <object id="21_815608" type="button" x="-1161.542675206859" y="-10463.83994746995" r="0" s="20.947943267239026" class="invisible">
+      <type>invisible</type>
+      <size>
+        <w>1022.5507830670736</w>
+        <h>600</h>
+      </size>
+      <meta>
+        <parentTemplate>tabletop</parentTemplate>
+      </meta>
+    </object>
+    <object id="23_815608" type="label" x="-951.763970767473" y="-9264.101597545156" r="0" s="32.553776073595415" class="body">
+      <textfield>
+        <x>-276</x>
+        <y>-121.4</y>
+        <text><![CDATA[Este Proyecto es una aplicacion web que permitira a los usuarios mantener el control de las llegadas tarde a una Institución.
+Al se una aplicacion web correra sobre un explorador y podra ser accedida por multiples usuarios a la vez permitiendo hacer registros y a su vez consultarlos.]]></text>
+        <w>552</w>
+        <h>212.95</h>
+        <annotations>r0-126 { align: left; }
+r126-284 { align: left; }</annotations>
+      </textfield>
+    </object>
+    <object id="34_815608" type="label" x="15611.907413211746" y="-1871.3073107875434" r="0" s="12.680900150558196" class="strong">
+      <textfield autoSize="true">
+        <x>-47.05</x>
+        <y>-17.9</y>
+        <text><![CDATA[Nombre:]]></text>
+        <annotations>r0-7 { align: left; }</annotations>
+      </textfield>
+    </object>
+    <object id="35_815608" type="label" x="17504.345444237755" y="-1901.235906023253" r="0" s="12.680900150558196" class="body">
+      <textfield autoSize="true">
+        <x>-97.2</x>
+        <y>-16.9</y>
+        <text><![CDATA[Juan david gomez]]></text>
+        <annotations>r0-16 { align: left; }</annotations>
+      </textfield>
+    </object>
+    <object id="39_815608" type="button" x="-20204.742736931996" y="5868.334356628329" r="0" s="3.4843039282222157" class="invisible">
+      <type>invisible</type>
+      <size>
+        <w>796.8932038834952</w>
+        <h>600</h>
+      </size>
+      <meta>
+        <parentTemplate>tabletop</parentTemplate>
+      </meta>
+    </object>
+    <object id="39" type="button" x="-13921.991919026477" y="5682.6653875786515" r="0" s="10.658100857160276" class="invisible">
+      <type>invisible</type>
+      <size>
+        <w>798.3315954118873</w>
+        <h>600</h>
+      </size>
+    </object>
+    <object id="43" type="button" x="-14413.507195391083" y="6874.4939336854" r="0" s="6.1002120574410394" class="invisible">
+      <type>invisible</type>
+      <size>
+        <w>1012.40089449075</w>
+        <h>600</h>
+      </size>
+    </object>
+    <object id="38" type="image" x="-14493.255000415082" y="6914.67640466052" r="0" s="7.745603268030366">
+      <source w="750" h="488">555203533.png<url>555203533.png</url>
+      </source>
+      <sourceUrl>BDColegio.png</sourceUrl>
+    <resource><id>
+        555203533
+        </id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/3/b/5/7244445ae2346a3c5e9fad151a2acafc76858.png</url></resource></object>
+    <object id="40_815608" type="labelwithplaceholder" x="-20285.150118082365" y="5037.977202072916" r="0" s="5.868456879141054" class="strong">
+      <placeholder text="Click to add text" x="-112.35" y="-17.9" align="center" width="224.7"/>
+    </object>
+    <object id="41_815608" type="labelwithplaceholder" x="-20979.178513418832" y="5540.258883852154" r="0" s="5.868456879141054" class="body">
+      <placeholder text="Click to add text" x="-94.2" y="-16.9"/>
+    </object>
+    <object id="42_815608" type="button" x="15967.738528435615" y="-11053.015041336714" r="0" s="4.52743098401217" class="invisible">
+      <type>invisible</type>
+      <size>
+        <w>800</w>
+        <h>817.9223217142039</h>
+      </size>
+      <meta>
+        <parentTemplate>tabletop</parentTemplate>
+      </meta>
+    </object>
+    <object id="36" type="button" x="15934.961700575364" y="-11053.015041336714" r="0" s="4.509683325016036" class="invisible">
+      <type>invisible</type>
+      <size>
+        <w>800</w>
+        <h>800</h>
+      </size>
+    </object>
+    <object id="43_815608" type="label" x="16051.460683548195" y="-12522.43552708536" r="0" s="8.397699696474714" class="strong">
+      <textfield autoSize="true">
+        <x>-105.75</x>
+        <y>-17.9</y>
+        <text><![CDATA[Marco Teorico]]></text>
+        <w>211.55</w>
+        <h>35.85</h>
+        <annotations>r0-13 { align: center; }</annotations>
+      </textfield>
+    </object>
+    <object id="44_815608" type="label" x="15979.60127157332" y="-10819.120146292118" r="0" s="4.284540661466691" class="body">
+      <textfield>
+        <x>-400.9</x>
+        <y>-330.35</y>
+        <text><![CDATA[Diseño Web: es una actividad que consiste en la planificación, diseño e implementación de sitios web. No es simplemente una aplicación del diseño convencional, ya que requiere tener en cuenta la navegabilidad, interactividad, usabilidad, arquitectura de la información y la interacción de medios como el audio, texto, imagen, enlaces y vídeo.
+
+Servidor Web: es un programa informático que procesa una aplicación del lado del servidor realizando conexiones bidireccionales y/o unidireccionales y síncronas o asíncronas con el cliente generando o cediendo una respuesta en cualquier lenguaje o Aplicación del lado del cliente. El código recibido por el cliente suele ser compilado y ejecutado por un navegador web.
+
+Bases de Datos Relacionales: es una base de datos que cumple con el modelo relacional, el cual es el modelo más utilizado en la actualidad para implementar bases de datos ya planificadas. Permiten establecer interconexiones (relaciones) entre los datos
+
+Programación: es el proceso de diseñar, codificar, depurar y mantener el código fuente de programas computacionales. El código fuente es escrito en un lenguaje de programación. El propósito de la programación es crear programas que exhiban un comportamiento deseado]]></text>
+        <w>801.8</w>
+        <h>660.7</h>
+        <annotations>r12-342 { color: #7a8082; }
+ r357-712 { color: #7a8082; }
+ r742-966 { color: #7a8082; }
+ r982-1233 { color: #7a8082; }
+r0-343 { align: left; }
+r344-713 { align: left; }
+r714-967 { align: left; }
+r968-1233 { align: left; }</annotations>
+      </textfield>
+    </object>
+    <object id="3" type="button" x="1120.7892288196767" y="-25123.438554882523" r="0" s="16.575276131547714" class="roundrect">
+      <type>roundrect</type>
+      <size>
+        <w>2333.3333333333335</w>
+        <h>600</h>
+      </size>
+    </object>
+    <object id="48_815608" type="label" x="1243.942330989156" y="-25326.682315923917" r="0" s="136.3983011568475" class="head">
+      <textfield>
+        <x>-125.2</x>
+        <y>-30.75</y>
+        <text><![CDATA[Control de Llegadas
+Tarde]]></text>
+        <w>250.4</w>
+        <h>61.5</h>
+        <annotations>r0-20 { align: left; }
+r20-25 { align: left; }
+r20-25 { blockIndent: 72; }</annotations>
+      </textfield>
+    </object>
+    <object id="17" type="label" x="-14335.07127793491" y="3100.555443474869" r="0" s="24.68389758423783" class="head">
+      <textfield autoSize="true">
+        <x>-171.8</x>
+        <y>-16.35</y>
+        <text><![CDATA[Acerca de la Aplicacion]]></text>
+        <w>343.6</w>
+        <h>32.75</h>
+        <annotations>r0-23 { align: center; }</annotations>
+      </textfield>
+    </object>
+    <object id="2" type="label" x="-1159.7469225879076" y="-14765.968038922303" r="0" s="56.74017138988964" class="strong">
+      <textfield autoSize="true">
+        <x>-112.35</x>
+        <y>-17.9</y>
+        <text><![CDATA[Descripción]]></text>
+        <w>224.7</w>
+        <h>35.85</h>
+        <annotations>r0-11 { align: center; }</annotations>
+      </textfield>
+    </object>
+    <object id="5" type="label" x="-18544.37762988595" y="-8545.447117503649" r="0" s="27.75367268085508" class="head">
+      <textfield autoSize="true">
+        <x>-61</x>
+        <y>-16.35</y>
+        <text><![CDATA[Objetivos]]></text>
+        <annotations>r0-9 { align: left; }</annotations>
+      </textfield>
+    </object>
+    <object id="6" type="label" x="-20222.690215915864" y="-7469.629760993148" r="0" s="20.496070589478727" class="strong">
+      <textfield>
+        <x>-47.55</x>
+        <y>-17.9</y>
+        <text><![CDATA[General]]></text>
+        <annotations>r0-7 { align: left; }</annotations>
+      </textfield>
+    </object>
+    <object id="9" type="shape" x="6646.336868040589" y="9113.025388972497" r="-90" s="7.767116781385616" class="line2">
+      <geom type="line">
+        <sp>-93.71510250028992 0</sp>
+        <ep>93.71510250028992 0</ep>
+        <t>8</t>
+      </geom>
+      <meta>
+        <parentTemplate>tabletop</parentTemplate>
+      </meta>
+    </object>
+    <object id="21" type="label" x="7884.788224400455" y="8348.861478778297" r="0" s="6.0342277232261585" class="strong">
+      <textfield>
+        <x>-192.95</x>
+        <y>-17.9</y>
+        <text><![CDATA[Análisis del proceso a optimizar]]></text>
+        <w>385.95</w>
+        <h>35.85</h>
+        <annotations>r0-32 { align: center; }</annotations>
+      </textfield>
+    </object>
+    <object id="22" type="label" x="7876.930014206346" y="8968.508095184043" r="0" s="5.4856615665692345" class="body">
+      <textfield>
+        <x>-194.7</x>
+        <y>-61.7</y>
+        <text><![CDATA[En este paso se analiza el proceso a optimizar en este caso el procedimiento de registro de un llegada tarde]]></text>
+        <w>389.4</w>
+        <h>123.4</h>
+        <annotations>r0-108 { align: left; }</annotations>
+      </textfield>
+    </object>
+    <object id="23" type="label" x="10380.380240879798" y="8341.634119664344" r="0" s="6.0342277232261585" class="strong">
+      <textfield>
+        <x>-165.2</x>
+        <y>-17.9</y>
+        <text><![CDATA[Recopilacion de Informacion]]></text>
+        <annotations>r0-27 { align: center; }</annotations>
+      </textfield>
+    </object>
+    <object id="24" type="label" x="10325.057343980949" y="8893.004820797178" r="0" s="5.4856615665692345" class="body">
+      <textfield>
+        <x>-180.6</x>
+        <y>-46.75</y>
+        <text><![CDATA[En este paso se recopila toda la informacion y se comienza a modelar la base de datos]]></text>
+        <w>361.25</w>
+        <h>93.55</h>
+        <annotations>r0-85 { align: left; }</annotations>
+      </textfield>
+    </object>
+    <object id="27" type="label" x="12888.342424191758" y="8325.116729984089" r="0" s="6.0342277232261585" class="strong">
+      <textfield>
+        <x>-150.35</x>
+        <y>-17.9</y>
+        <text><![CDATA[Desarrollo del Software]]></text>
+        <annotations>r0-23 { align: center; }</annotations>
+      </textfield>
+    </object>
+    <object id="28" type="label" x="12863.794088681361" y="9045.24009505851" r="0" s="5.485661566569232" class="body">
+      <textfield>
+        <x>-178.9</x>
+        <y>-76.6</y>
+        <text><![CDATA[Se analiza el sistema a realizar y se buscan las tecnologias apropiadas y herramientas a utilizar y posteriormente se procesede a su codificación]]></text>
+        <w>357.8</w>
+        <h>153.25</h>
+        <annotations>r0-145 { align: left; }</annotations>
+      </textfield>
+    </object>
+    <object id="30" type="label" x="15318.531640643676" y="8385.321865677188" r="0" s="6.0342277232261585" class="strong">
+      <textfield>
+        <x>-139.9</x>
+        <y>-17.9</y>
+        <text><![CDATA[Pruevas y Correcciones]]></text>
+        <annotations>r0-22 { align: right; }</annotations>
+      </textfield>
+    </object>
+    <object id="31" type="label" x="15401.61198506937" y="8936.692566810021" r="0" s="5.485661566569232" class="body">
+      <textfield>
+        <x>-178</x>
+        <y>-46.75</y>
+        <text><![CDATA[Despues de su codificación se le hacen pruevas y se corrigen los posibles errores]]></text>
+        <w>356</w>
+        <h>93.55</h>
+        <annotations>r0-81 { align: left; }</annotations>
+      </textfield>
+    </object>
+    <object id="33" type="label" x="17890.33321043658" y="8489.386985421403" r="0" s="6.0342277232261585" class="strong">
+      <textfield>
+        <x>-179</x>
+        <y>-33.85</y>
+        <text><![CDATA[Recapitulacion de requerimientos y mejoras]]></text>
+        <w>358.05</w>
+        <h>67.7</h>
+        <annotations>r0-42 { align: center; }</annotations>
+      </textfield>
+    </object>
+    <object id="34" type="label" x="17899.096554789172" y="9111.546720532337" r="0" s="5.485661566569232" class="body">
+      <textfield>
+        <x>-173.25</x>
+        <y>-61.7</y>
+        <text><![CDATA[En esta fase se revisan los requerimientos y se hacen las mejoras necesarias y despues se hace la implementacion]]></text>
+        <w>346.5</w>
+        <h>123.4</h>
+        <annotations>r0-112 { align: left; }</annotations>
+      </textfield>
+    </object>
+    <object id="37" type="label" x="-14492.711929967272" y="4222.192970290613" r="0" s="18.741041805797696" class="strong">
+      <textfield>
+        <x>-185.05</x>
+        <y>-17.9</y>
+        <text><![CDATA[Modelo de la Base de Datos]]></text>
+        <annotations>r0-26 { align: left; }</annotations>
+      </textfield>
+    </object>
+    <object id="42" type="button" x="-14194.355015806641" y="11389.810539898119" r="0" s="7.926503781887786" class="invisible">
+      <type>invisible</type>
+      <size>
+        <w>1107.740585774059</w>
+        <h>600</h>
+      </size>
+    </object>
+    <object id="40" type="label" x="-14391.064720749579" y="9799.178556303908" r="0" s="22.835541313757336" class="strong">
+      <textfield>
+        <x>-180.8</x>
+        <y>-17.9</y>
+        <text><![CDATA[Modelo-Vista-Controlador]]></text>
+        <w>361.6</w>
+        <h>35.85</h>
+        <annotations>r0-24 { align: center; }</annotations>
+      </textfield>
+    </object>
+    <object id="44" type="button" x="-14535.01459909059" y="12033.141500117526" r="0" s="4.999762358967871" class="invisible">
+      <type>invisible</type>
+      <size>
+        <w>1159.9335915882675</w>
+        <h>600</h>
+      </size>
+    </object>
+    <object id="41" type="image" x="-14537.620288334712" y="12032.798646269615" r="-1.3120850217940915e-14" s="7.256197005973077">
+      <source w="780" h="402">555335133.png<url>555335133.png</url>
+      </source>
+      <sourceUrl>MVC.png</sourceUrl>
+    <resource><id>
+        555335133
+        </id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/0/e/9/bc10b759a8f66251c34bf1439d791699011b3.png</url></resource></object>
+    <object id="45" type="label" x="15567.548730609496" y="-1108.8665273652678" r="0" s="12.680900150558202" class="strong">
+      <textfield autoSize="true">
+        <x>-41.6</x>
+        <y>-17.9</y>
+        <text><![CDATA[Grado:]]></text>
+        <annotations>r0-6 { align: left; }</annotations>
+      </textfield>
+    </object>
+    <object id="46" type="label" x="16443.61261456827" y="-1138.79512260098" r="0" s="12.680900150558202" class="body">
+      <textfield autoSize="true">
+        <x>-11.55</x>
+        <y>-16.9</y>
+        <text><![CDATA[11]]></text>
+        <annotations>r0-2 { align: left; }</annotations>
+      </textfield>
+    </object>
+    <object id="47" type="label" x="15615.061324857088" y="-223.17903913483315" r="0" s="12.680900150558202" class="strong">
+      <textfield autoSize="true">
+        <x>-46.65</x>
+        <y>-17.9</y>
+        <text><![CDATA[Colegio:]]></text>
+        <annotations>r0-8 { align: left; }</annotations>
+      </textfield>
+    </object>
+    <object id="48" type="label" x="17058.595490553365" y="-253.10763437054345" r="0" s="12.680900150558202" class="body">
+      <textfield autoSize="true">
+        <x>-61.4</x>
+        <y>-16.9</y>
+        <text><![CDATA[Colegio VID]]></text>
+        <annotations>r0-11 { align: left; }</annotations>
+      </textfield>
+    </object>
+    <object id="0_6509122" type="button" x="15963.249999999998" y="-11892.849999999999" r="0" s="1.2387297797216035" class="invisible">
+      <type>invisible</type>
+      <size>
+        <w>2785.5505383813825</w>
+        <h>600</h>
+      </size>
+    </object>
+    <object id="1_6509122" type="button" x="15972.000000000002" y="-11064.900000000001" r="0" s="1.398787952023249" class="invisible">
+      <type>invisible</type>
+      <size>
+        <w>2493.5712088588125</w>
+        <h>600</h>
+      </size>
+    </object>
+    <object id="4_6509122" type="button" x="15973.35" y="-10312.85" r="0" s="0.9683683446931223" class="invisible">
+      <type>invisible</type>
+      <size>
+        <w>3584.514721919302</w>
+        <h>600</h>
+      </size>
+    </object>
+    <object id="5_6509122" type="button" x="15976.7" y="-9653.9" r="0" s="1.0106090576568354" class="invisible">
+      <type>invisible</type>
+      <size>
+        <w>3458.9341692789963</w>
+        <h>600</h>
+      </size>
+    </object>
+    <object id="0_6510292" type="label" x="16885.95" y="-2815.9" r="0" s="19.26183311772007" class="head">
+      <textfield autoSize="true">
+        <x>-97.8</x>
+        <y>-16.35</y>
+        <text><![CDATA[Muchas Gracias]]></text>
+        <annotations>r0-14 { align: left; }</annotations>
+      </textfield>
+    </object>
+  </zui-table>
+  <path>
+    <s>
+      <eagle o="2_815608"/>
+    </s>
+    <s>
+      <eagle o="48_815608"/>
+    </s>
+    <s>
+      <eagle o="21_815608"/>
+    </s>
+    <s>
+      <eagle o="18_815608"/>
+    </s>
+    <s>
+      <eagle o="4"/>
+    </s>
+    <s>
+      <eagle o="7"/>
+    </s>
+    <s>
+      <eagle o="8"/>
+    </s>
+    <s>
+      <eagle o="8_815608"/>
+    </s>
+    <s>
+      <eagle o="11"/>
+    </s>
+    <s>
+      <eagle o="25"/>
+    </s>
+    <s>
+      <eagle o="26"/>
+    </s>
+    <s>
+      <eagle o="29"/>
+    </s>
+    <s>
+      <eagle o="32"/>
+    </s>
+    <s>
+      <eagle o="36"/>
+    </s>
+    <s>
+      <eagle o="0_6509122"/>
+    </s>
+    <s>
+      <eagle o="1_6509122"/>
+    </s>
+    <s>
+      <eagle o="4_6509122"/>
+    </s>
+    <s>
+      <eagle o="5_6509122"/>
+    </s>
+    <s>
+      <eagle o="9_815608"/>
+    </s>
+    <s>
+      <eagle o="39"/>
+    </s>
+    <s>
+      <eagle o="43"/>
+    </s>
+    <s>
+      <eagle o="42"/>
+    </s>
+    <s>
+      <eagle o="44"/>
+    </s>
+    <s>
+      <eagle o="45_815608"/>
+    </s>
+  </path>
+  <style type="text/css"><![CDATA[
+@font-face
+{
+	src: url('Crial-Black.swf');
+	fontFamily: head;
+}
+
+@font-face
+{
+	src: url('LoveYaLikeASister.swf');
+	fontFamily: body;
+}
+
+@font-face
+{
+	src: url('jd.swf');
+	fontFamily: strong;
+}
+
+ZLabel
+{
+	padding: 1.2;
+}
+
+ZLabel.head
+{
+	fontFamily: head;
+	color: #000;
+}
+
+.line5
+{
+	gradStartColor: #000;
+	gradEndColor: #000;
+	borderColor: #000;
+	color: #000;
+}
+
+.poly5
+{
+	gradStartColor: #fff;
+	borderThickness: 9;
+	gradEndColor: #fff;
+	borderColor: #000;
+}
+
+ZLabel.strong
+{
+	fontFamily: strong;
+	color: #7f0000;
+}
+
+.line1
+{
+	gradStartColor: #828cc5;
+	gradEndColor: #828cc5;
+	borderColor: #828cc5;
+	color: #828cc5;
+}
+
+.poly1
+{
+	gradStartColor: #fff;
+	borderThickness: 9;
+	gradEndALpha: 1;
+	gradStartAlpha: 1;
+	gradEndColor: #fff;
+	borderColor: #828cc5;
+}
+
+ZLabel.body
+{
+	fontFamily: body;
+	color: #000;
+}
+
+Background
+{
+	gradStart: #fff;
+	gradEnd: #fff;
+}
+
+Grid
+{
+	color: #b8b8b8;
+}
+
+ZFrame.circle
+{
+	gradStartColor: #d03e3e;
+	borderThickness: 0;
+	gradEndColor: #d03e3e;
+	borderColor: #d03e3e;
+}
+
+.line4
+{
+	gradStartColor: #7f0000;
+	gradEndColor: #7f0000;
+	borderColor: #7f0000;
+	color: #7f0000;
+}
+
+.poly4
+{
+	gradStartColor: #d03e3e;
+	borderThickness: 0;
+	gradEndColor: #d03e3e;
+	borderColor: #d03e3e;
+}
+
+ZFrame.bracket
+{
+	gradStartColor: #4e69ff;
+	borderThickness: 0;
+	gradEndColor: #4e69ff;
+	borderColor: #4e69ff;
+}
+
+.line2
+{
+	gradStartColor: #fc0;
+	gradEndColor: #fc0;
+	borderColor: #fc0;
+	color: #fc0;
+}
+
+.poly2
+{
+	gradStartColor: #828cc5;
+	borderThickness: 0;
+	gradEndColor: #828cc5;
+	borderColor: #828cc5;
+}
+
+ZFrame.roundrect
+{
+	gradStartColor: #ffe685;
+	borderThickness: 0;
+	gradStartAlpha: 0.7;
+	gradEndColor: #ffe685;
+	borderColor: #ffe685;
+	radius: 5;
+	gradEndAlpha: 0.8;
+}
+
+ZCurveLine
+{
+	color: #333;
+}
+
+ZArrow
+{
+	gradStartColor: #333;
+	gradEndColor: #333;
+	thickness: 7;
+	borderThickness: 0;
+	borderColor: #7f7f7f;
+	lockTintAlpha: 0;
+}
+
+.line3
+{
+	gradStartColor: #d03e3e;
+	gradEndColor: #d03e3e;
+	borderColor: #d03e3e;
+	color: #d03e3e;
+}
+
+.poly3
+{
+	gradStartColor: #fff;
+	borderThickness: 9;
+	gradEndColor: #fff;
+	borderColor: #d03e3e;
+}
+
+ZMarker
+{
+	color: #e4fe92;
+}
+
+ZPath
+{
+	thickness: 5;
+	textColor: #fff;
+	alpha: 0.8;
+	color: #5aa7cb;
+}
+
+ZPath Ball.base
+{
+	fillColor: #5aa7cb;
+	radius: 15;
+	alpha: 0.8;
+}
+
+ZPath Ball.mid
+{
+	fillColor: #5aa7cb;
+	radius: 7;
+	alpha: 0.8;
+}
+
+ZVideo
+{
+	padding: 1.2;
+}
+
+ZSmartGroup.circle
+{
+	skinClass: hu.kibu.zui.model.skins.CircleFrameSkin;
+}
+
+CircleFrameSkin
+{
+	gradStartAlpha: 1;
+	gradEndColor: #fff;
+	highlightBorderAlpha: 0.6;
+	thickness: 25;
+	borderColor: #fff;
+	gradEndAlpha: 0.7;
+	editOpenAlpha: 0.6;
+	borderThickness: 0;
+	highlightFillAlpha: 0.2;
+	highlightFillColor: #fff;
+	gradStartColor: #fff;
+	borderAlpha: 1;
+	highlightBorderColor: #fff;
+}
+
+ZSmartGroup.bracket
+{
+	skinClass: hu.kibu.zui.model.skins.BracketFrameSkin;
+}
+
+BracketFrameSkin
+{
+	gradStartAlpha: 1;
+	gradEndColor: #000;
+	highlightBorderAlpha: 0.5;
+	thickness: 25;
+	borderColor: #888;
+	gradEndAlpha: 1;
+	editOpenAlpha: 0.8;
+	borderThickness: 0;
+	highlightFillAlpha: 0.2;
+	highlightFillColor: #fff;
+	gradStartColor: #444;
+	borderAlpha: 0.5;
+	highlightBorderColor: #888;
+}
+
+ZSmartGroup.roundrect
+{
+	skinClass: hu.kibu.zui.model.skins.RoundRectFrameSkin;
+}
+
+RoundRectFrameSkin
+{
+	gradStartAlpha: 1;
+	gradEndColor: #fff;
+	highlightBorderAlpha: 0.7;
+	borderColor: #fff;
+	radius: 0;
+	gradEndAlpha: 0.7;
+	editOpenAlpha: 0.6;
+	borderThickness: 0;
+	highlightFillAlpha: 0.2;
+	highlightFillColor: #333;
+	gradStartColor: #fff;
+	borderAlpha: 0.7;
+	highlightBorderColor: #333;
+}
+
+ZSmartGroup.hidden
+{
+	skinClass: hu.kibu.zui.model.skins.HiddenFrameSkin;
+}
+
+HiddenFrameSkin
+{
+	gradStartColor: #fff;
+	gradEndColor: #fff;
+	highlightBorderColor: #000;
+	highlightBorderAlpha: 0.6;
+	highlightFillAlpha: 0.4;
+	highlightFillColor: #fff;
+	gradStartAlpha: 0.6;
+	borderThickness: -1;
+	radius: 40;
+	gradEndAlpha: 0.01;
+}
+
+ZYoutube
+{
+	lockTintColor: #fff;
+}
+
+ZLoadedImage
+{
+	lockTintColor: #fff;
+}
+
+ZCircle
+{
+	gradStartAlpha: 1;
+	borderThickness: 0;
+	borderAlpha: 1;
+	thickness: 100;
+	lockTintALpha: 0;
+	borderColor: #000;
+	radius: 0;
+	alpha: 0.8;
+	gradEndAlpha: 1;
+	color: #fff;
+}
+
+ZPoly
+{
+	gradStartAlpha: 1;
+	borderThickness: 0;
+	borderAlpha: 1;
+	thickness: 100;
+	lockTintALpha: 0;
+	borderColor: #000;
+	radius: 0;
+	alpha: 1;
+	gradEndAlpha: 1;
+	color: #fff;
+}
+
+]]></style>
+  <hash>7411ad0a</hash>
+<sync><oid>9no-ftlxbyxe</oid><hash>7411ad0a</hash></sync><config>mLUy4gT5GHybWSGrCJ8aQcudatWW3oyEimyZ2OfI1Hu64M/ehLA81+ji9dyIwADHTT09gpcBnxVENnPM+Qn3n4jbSkT6LVoKM8rI/1XHhNI+iIjXhcQZ28S37bY4f6+4ptP+aReMMCEMIviBnK8MYPMQJECzo4BQHShzEkgnml4X/OC4nuWvk0f3IpbKDKLwXDgBu9wSWJX7yCRe79+fLaHb0tbK+17lQ0KJPycu892HUzSnnFhUf0q6mPWZrxqcD3x5J8rlETY6kVBdIZWzu659YXO9QF63Zp+tBxpYJJaWdHo93Ke5Poe/Lfu36UDguVjTNmrCS5fdg9NSe1rK0g==</config></zuiprezi>

@@ -10,7 +10,7 @@
 			 	</ul>
 			 	
 			 	<div id="tabs-2">
-			 		<form action="<?php echo site_url('estudiantes/validar') ?>" method="post" class="well" id="InsertEstudiante">
+			 		<form action="<?php echo site_url('acudiantes/validar') ?>" method="post" class="well" id="InsertEstudiante">
 			 			<div id="mensaje">
 
 			 					<?php if(isset($mensaje)){echo $mensaje;} ?>

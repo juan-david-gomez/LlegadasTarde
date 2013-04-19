@@ -62,6 +62,7 @@ margin: 0 auto;">
 <script type="text/javascript">
 $(function() {
 
+	
 
 	function miUsuario () {
 		var id = <?php echo $this->session->userdata('id'); ?> ;

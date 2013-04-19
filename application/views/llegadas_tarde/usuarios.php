@@ -118,7 +118,7 @@ $(function() {
 				height: 351,
 				title:"Modificar un estudiante",
 				width: 543,
-				modal: true,
+				modal: true
 	});
 	//Boton cancelar del dialogo para editar
 	$("#cancelar").click(function() {

@@ -7,6 +7,7 @@ class Acudientes extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('acudiente');
+		$this->load->model('estudiante');
 	}
 
 	public function validar()
@@ -45,12 +46,24 @@ class Acudientes extends CI_Controller {
         }
         else
         {
-            $mensaje = $this->insertar($estudiante,$nombre,$apellido,$email);
-           	$data['titulo'] = "acudiente";
-           	$data['mensaje'] = $mensaje;
-		 	$this->load->view('includes/cabezera',$data);
-			$this->load->view("llegadas_tarde/acudientes");
-			$this->load->view('includes/pie');
+
+        	if ($this->estudiante->consultar($estudiante,"","","")) 
+        	{	
+        		$mensaje = $this->insertar($estudiante,$nombre,$apellido,$id,$email);
+        	}else
+        	{
+        		$mensaje = "<div class='alert alert-error' >
+				    <a class='close' data-dismiss='alert'>×</a>
+				    <p class='alert-heading'><strong>Error!</strong> El Codigo del estudiante No existe</p>
+				    </div>";
+        	}
+        		$data['titulo'] = "acudiente";
+        		$data['mensaje'] = $mensaje;
+			 	$this->load->view('includes/cabezera',$data);
+				$this->load->view("llegadas_tarde/acudientes");
+				$this->load->view('includes/pie');
+
+            
         }
 	}
 
@@ -68,9 +81,51 @@ class Acudientes extends CI_Controller {
 		{
 				return "<div class='alert alert-error' >
 				    <a class='close' data-dismiss='alert'>×</a>
-				    <p class='alert-heading'><strong>Lo Siento!</strong>  El Acudiante no fue insertado Correctamente </p>
+				    <p class='alert-heading'><strong>Lo Siento!</strong>  El Acudiante no fue insertado Correctamente : ".$respuesta['error']."</p>
 				    </div>";
 		}
+	}
+
+	public function buscarAcudiente ()
+
+	{
+		$id = $this->input->post('id');
+		$estudiante = $this->input->post('codigo');
+		
+		
+		
+		$datos =  $this->acudiente->consutar($id,$estudiante,null,null,null);
+
+		
+		if($datos)
+		{
+			foreach ($datos as $row) {
+				$info = "id='".$row->id."'
+						 estudiante='".$row->estudiante."' 
+						 nombre='".$row->nombre."'
+						 apellido='".$row->apellido."' 
+						 email='".$row->email."'' 
+						 href='#' ";
+
+				echo '<tr class="'.$row->id.'">';
+				
+				echo '<td><a '.$info.'  class="id" >'.$row->id.'</a></td>';
+				echo '<td><a '.$info.'  class="nombre" >'.$row->nombre.'</a></td>';
+				echo '<td><a '.$info.' class="apellido" >'.$row->apellido.'</a></td>';
+				echo '<td><a '.$info.'  class="email" >'.$row->email.'</a></td>';
+				echo '<th>
+						<center>
+						<a class="borrar" href="" title="Borrar" id="'.$row->id.'" >'.img('img/eliminar.png').'</a>
+						<a href=""  id="'.$row->id.'" title="Editar" class="editar" >'.img('img/editar.png').'</a>
+						</center>
+					  </th>';
+				echo '</tr>';
+			}
+		}else
+		{
+			echo "<center><td colspan='4'>No se Encuentra Ningun Acudiante</td></center>";
+		}
+			
 	}
 }
 

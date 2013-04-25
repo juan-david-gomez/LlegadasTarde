@@ -33,6 +33,7 @@
 						<br>
 						<input type="submit" value="Insertar" id="Einsertar" class="btn">
 						<input type="button" value="Limpiar" id="Elimpiar" class="btn">
+						<input type="button" value="Buscar Estudiante" id="" class="btn Ebuscar">
 
 			 		</form>
 					
@@ -42,31 +43,31 @@
 			 			<h2 align="center">Buscar Estudiante o Acudiente</h2>
 			 			<br>
 			 			<center>
-			 			<div class="input-append">	
+			 			
 			 			<input type="text" name="estudiante" id="Ecodigo" placeholder="Codigo Estudiante" class = "span5">
-			 			<button class="btn"><i class="icon-search" style="margin-top : -5px"></i></button>	
-			 			</div>
+			 			
 
 			 			<input type="text" name="id" id="Aidentificacion" placeholder="Identificacion Acudiente" class="span5">
 			 			</center>
 			 			
 						<br>
-						<input type="button" value="Buscar" id="buscarE" class="btn">
-						<input type="button" value="Limpiar" id="limpiar" class="btn">
+						<input type="button" value="Buscar" id="buscarA" class="btn">
+						<input type="button" value="Limpiar" id="limpiarA" class="btn">
+						<input type="button" value="Buscar Estudiante" id="" class="btn Ebuscar">
 			 		</form>
 			 	</div>
 			 	<table class="table table-striped">
     						
 								<thead>
 								<tr class="ui-widget-header ">
-								<th>Codigo</th>
-								<th>Nombres</th>
-								<th>Apellidos</th>
-								<th>Grupo</th>
+								<th>Identificacion</th>
+								<th>Nombre</th>
+								<th>Apellido</th>
+								<th>Email</th>
 								<th>Acciones</th>
 								</tr>
 								</thead>
-								<tbody id="datosEstudiante">
+								<tbody id="datosAcudientes">
 								
 
 								</tbody>
@@ -77,12 +78,126 @@
 		</section>
 	</div>
 </div>
+
+
+<!-- Dialogo para Buscar Estudiante  -->
+
+					<div id="estudiantes" style="display:none" >
+						<center><h1>Buscar un Estudiante</h1></center>
+						<br>
+						<input type="text" name="nombre" id="nombreE" placeholder="Nombre">
+						
+
+						<input type="text" name="apellido" id="apellidoE" placeholder="Apellido">
+						
+						
+						<input type="text" name="grupo" id="grupoE" class="span2" placeholder="Grupo">
+						<br>
+						<input type="button" value="Buscar" id="Busqueda" class="btn">
+						<input type="button" value="Limpiar" id="Limpiar" class="btn">
+						<br><br>
+						    <table class="table ">
+    						
+								<thead>
+								<tr class="ui-widget-header ">
+								<th>Codigo</th>
+								<th>Nombres</th>
+								<th>Apellidos</th>
+								<th>Grupo</th>
+								</tr>
+
+								</thead>
+								<tbody id="datosEstudiantes">
+									
+								</tbody>
+    						</table>
+    						<hr>
+					
+						<input type="button" value="Cancelar" id="cerrar" class="btn">
+					</div> 
+
+
+
+
 <script type="text/javascript">
 $(function() {
 	//activa las pestañas del Estudiantes
 	$("#tabs").tabs();
 
+	$('#estudiantes').dialog({
+		autoOpen: false,
+		title:"Buscar un Estudiante",
+		height: 470,
+		width: 680,
+		modal: true
 
+	});
+
+	$(".Ebuscar").click(function () {
+		$("#estudiantes").dialog('open');
+	});
+
+	$('#cerrar').click(function(){
+		$('#estudiantes').dialog('close');
+	});
+	//envia los datos de de la busqueda de los estudiantes
+	$('#Busqueda').click(function () {
+		var nombres = $('#nombreE').val();
+		
+		var apellidos = $('#apellidoE').val();
+		
+		var grupo = $('#grupoE').val();
+		
+		$.post("<?php echo site_url('llegadas_tarde/buscarEstudiante') ?>", { nombres: nombres, apellidos: apellidos,grupo:grupo},
+		  function(data){
+		   	$('#datosEstudiantes').html(data);
+		  });
+
+	});
+	//envia el codigo del estudinate en la lista a el campo para hacer el registro
+	$(document).delegate(".es","click",function() {
+		$("#Aestudiante").val($(this).attr('codigo'));
+		$("#Ecodigo").val($(this).attr('codigo'));
+		
+		$('#estudiantes').dialog('close');
+		return false;
+	});
+	// funcionalidad del boton Elimpiar del cuadro de busqueda de acudientes
+	$("#Limpiar").click(function() {
+		$('#nombreE').val("");
+		
+		$('#apellidoE').val("");
+		
+		$('#grupoE').val("");
+	});
+
+	$("#Elimpiar").click(function() {
+		$('#Aestudiante').val("");
+		
+		$('#Anombre').val("");
+		$('#Aapellido').val("");
+		$('#Aid').val("");
+		$('#Aemail').val("");
+	});
+
+	$("#limpiarA").click(function() {
+		$('#Ecodigo').val("");
+		
+		
+		$('#Aidentificacion').val("");
+		
+	});
+
+	$("#buscarA").click(function() {
+
+		var codigo = $("#Ecodigo").val();
+		var id = $("#Aidentificacion").val();
+
+		$.post("<?php echo site_url('acudientes/buscarAcudiente') ?>", {id:id,codigo:codigo},
+		  function(data){
+		  	$('#datosAcudientes').html(data);
+		  });
+	})
 })
 
 </script>

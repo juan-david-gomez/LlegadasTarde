@@ -49,17 +49,21 @@ class Acudiente extends CI_Model {
 			
 			'id' =>	$id,
 			'estudiante' => $estudiante,
-			'nombre' => $nombnre,
+			'nombre' => $nombre,
 			'apellido' => $apellido,
 			'email' => $email
 			);
 
 		if($this->db->insert('acudientes', $datos))
 		{
-			return true;
+			
 		}else
 		{
-			return false;
+			if($data['error'] = $this->db->_error_message())
+			{
+				return $data;
+			}
+
 		}
 	}
 

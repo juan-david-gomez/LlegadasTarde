@@ -67,6 +67,35 @@ class Acudiente extends CI_Model {
 		}
 	}
 
+	public function editar($estudiante,$nombre,$apellido,$id,$email)
+	{
+		$datos = array(
+			'estudiante' => $estudiante,
+			'nombre' => $nombre,
+			'apellido' => $apellido,
+			'email' => $email
+			);
+		$this->db->where('id', $id);
+		if($this->db->update('acudientes', $datos))
+		{
+			return true;
+		}else
+		{
+			return false;
+		}
+	}
+
+	public function borrar($id)	
+	{
+		$this->db->where('id', $id);
+		if($this->db->delete('acudientes'))
+		{
+			return true;
+		}else
+		{
+			return false;
+		}
+	}
 }
 
 /* End of file acudientes.php */

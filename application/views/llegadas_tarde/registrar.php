@@ -36,7 +36,7 @@
 								<label><strong>Apellido</strong></label>
 								<input type="text" id="Aapellido">
 								<label><strong>Email</strong></label>
-								<input type="text" id="Aemal">
+								<input type="text" id="Aemail">
 							</div>
 						</div>
 						<hr>
@@ -140,17 +140,24 @@ $(document).ready(function(){
 		
 		$.post("<?php echo site_url('llegadas_tarde/validarEstudiante') ?>", { codigo: codigo},
 		  function(xml){
-		  	
+		  
 			xmlDoc = $.parseXML(xml),
 			$xml = $(xmlDoc),
-			$estudiante = $xml.find( "estudiante" );
-			
+			$estudiante = $xml.find("estudiante");
+			$Acudiente = $xml.find("acudiente");
+
+			var nombreA = $Acudiente.find("nombre").text();
+		    var apellidoA = $Acudiente.find("apellido").text();
+		    var emailA = $Acudiente.find("email").text();
+		    var existenciaA = $Acudiente.find("existencia").text();
+
 		   
-		    var nombre = $estudiante.find("nombre").text();
-		    var apellido = $estudiante.find("apellido").text();
-		    var grupo = $estudiante.find("grupo").text();
-		    var existencia = $estudiante.find("existencia").text();
-		   if(existencia == "no")
+		    var nombreE = $estudiante.find("nombre").text();
+		    var apellidoE = $estudiante.find("apellido").text();
+		    var grupoE = $estudiante.find("grupo").text();
+		    var existenciaE = $estudiante.find("existencia").text();
+
+		   if(existenciaE == "no")
 		    {
 		    	$("#enviar").css('display','none');
 		    	validacion = 'false';
@@ -162,9 +169,14 @@ $(document).ready(function(){
 		    
 		    }
 
-		    $('#Enombre').val(nombre);
-		    $('#Eapellido').val(apellido);
-		    $('#Egrupo').val(grupo);
+		    $('#Enombre').val(nombreE);
+		    $('#Eapellido').val(apellidoE);
+		    $('#Egrupo').val(grupoE);
+
+		    $('#Anombre').val(nombreA);
+		    $('#Aapellido').val(apellidoA);
+		    $('#Aemail').val(emailA);
+
 		  });
 
 		$('#registrar').dialog('open');

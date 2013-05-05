@@ -33,7 +33,7 @@
 						<br>
 						<input type="submit" value="Insertar" id="Einsertar" class="btn">
 						<input type="button" value="Limpiar" id="Elimpiar" class="btn">
-						<input type="button" value="Buscar Estudiante" id="" class="btn Ebuscar">
+						<input type="button" value="Buscar Estudiante" id="1" class="btn Ebuscar">
 
 			 		</form>
 					
@@ -53,7 +53,7 @@
 						<br>
 						<input type="button" value="Buscar" id="buscarA" class="btn">
 						<input type="button" value="Limpiar" id="limpiarA" class="btn">
-						<input type="button" value="Buscar Estudiante" id="" class="btn Ebuscar">
+						<input type="button" value="Buscar Estudiante" id="2" class="btn Ebuscar">
 			 		</form>
 			 	</div>
 			 	<table class="table table-striped">
@@ -117,13 +117,51 @@
 					</div> 
 
 
+<!-- dialogo para editar los acudiantes  -->
+
+	<div id="DilogoEditar" style="display:none" >
+						<center><h1>Editar Acudientes</h1></center>
+						<div style="height:301px;width:470px">
+							<div style="float:left;">
+								<h4>Estudiante</h4>
+								<label><strong>Codigo</strong></label>
+								<input type="text" id="Ecodigos" readonly="readonly">
+								<label><strong>Nombre</strong></label>
+								<input type="text" id="Enombre" readonly="readonly">
+								<label><strong>Apellido</strong></label>
+								<input type="text" id="Eapellidos" readonly="readonly">
+								<label><strong>Grupo</strong></label>
+								<input type="text" id="Egrupo" readonly="readonly">
+							</div>
+							<div style="float:right;">
+								<h4>Acudiente</h4>
+								<label><strong>Id</strong></label>
+								<input type="text" id="DialogId"> 
+								<label><strong>Nombre</strong></label>
+								<input type="text" id="DialogNombre">  					
+								<label><strong>Apellido</strong></label>
+								<input type="text" id="DialogApellido">
+								<label><strong>Email</strong></label>
+								<input type="text" id="DialogEmail">
+							</div>
+						</div>
+						<hr>
+						<input type="button" value="Editar" id="editar" class="btn">
+						<input type="button" value="Cancelar" id="cancelar" class="btn">
+						<input type="button" value="Buscar Estudiante" id="3" class="btn Ebuscar">
+					</div> 
 
 
 <script type="text/javascript">
 $(function() {
+
+	//variable global para identificar el boton del cual se llama ala busqueda de estudiantes
+	var idBotonEstudiantes;
+
 	//activa las pestañas del Estudiantes
 	$("#tabs").tabs();
 
+	//define cuadro de dialogo para busqueda de estudiantes
 	$('#estudiantes').dialog({
 		autoOpen: false,
 		title:"Buscar un Estudiante",
@@ -133,10 +171,32 @@ $(function() {
 
 	});
 
-	$(".Ebuscar").click(function () {
-		$("#estudiantes").dialog('open');
+	//define cuadro de dialogo para la edicion de acudientes
+	$('#DilogoEditar').dialog({
+		autoOpen: false,
+		height: 500,
+		title:"Editar Acudiente",
+		width: 520,
+		modal: true,
+		
+
 	});
 
+	//boton cancelar de cuadro de dialogo de edicion de acudientes
+	$("#cancelar").click(function  () {
+		$("#DilogoEditar").dialog('close');
+	});
+
+	//clase que llama al cuadro de dialogo para buscar estudiantes 
+	$(".Ebuscar").click(function () {
+		$("#estudiantes").dialog('open');
+		//se toma el id del boton y se envia el valor a la variable global para identificar el boton
+		var id = $(this).attr('id');
+		
+		idBotonEstudiantes = id;
+	});
+
+	//boton cerrar de el cuadro de dialogo de buscar estudiantes
 	$('#cerrar').click(function(){
 		$('#estudiantes').dialog('close');
 	});
@@ -156,8 +216,27 @@ $(function() {
 	});
 	//envia el codigo del estudinate en la lista a el campo para hacer el registro
 	$(document).delegate(".es","click",function() {
-		$("#Aestudiante").val($(this).attr('codigo'));
-		$("#Ecodigo").val($(this).attr('codigo'));
+
+		var Codigo = $(this).attr('codigo');
+		var nombre = $(this).attr('nombre');
+		var apellido = $(this).attr('apellido');
+		var grupo = $(this).attr('grupo');
+
+		if (idBotonEstudiantes == 1) 
+		{
+			$("#Aestudiante").val(Codigo);
+		}else if (idBotonEstudiantes == 2) 
+		{
+			$("#Ecodigo").val(Codigo);
+		}else if (idBotonEstudiantes == 3) 
+		{
+			$("#Ecodigos").val(Codigo);
+			$("#Enombre").val(nombre);
+			$("#Eapellidos").val(apellido);
+			$("#Egrupo").val(grupo);
+		};
+		
+		
 		
 		$('#estudiantes').dialog('close');
 		return false;
@@ -188,6 +267,7 @@ $(function() {
 		
 	});
 
+	//boton buscar acudiantes
 	$("#buscarA").click(function() {
 
 		var codigo = $("#Ecodigo").val();
@@ -198,6 +278,103 @@ $(function() {
 		  	$('#datosAcudientes').html(data);
 		  });
 	})
+
+	//boton de editar en las acciones del registros
+	$(document).delegate('.editar',"click",function () {
+			//datos Acudientes
+			var id = $(this).attr('id');
+			var codigo = $("."+id+"  .id").html();
+			var nombre = $("."+id+"  .nombre").html();
+			var apellido = $("."+id+"  .apellido").html();
+			var email = $("."+id+"  .email").html();
+			
+			//datos estudiante
+			var estudiante = $("."+id+"  .id").attr('estudiante');
+			var nombres = $("."+id+"  .id").attr('nombres');
+			var apellidos = $("."+id+"  .id").attr('apellidos');
+			var grupo = $("."+id+"  .id").attr('grupo');
+			
+			$("#DialogId").val(codigo);
+			$("#DialogNombre").val(nombre);
+			$("#DialogApellido").val(apellido);
+			$("#DialogEmail").val(email);
+
+			$("#Ecodigos").val(estudiante);
+			$("#Enombre").val(nombres);
+			$("#Eapellidos").val(apellidos);
+			$("#Egrupo").val(grupo);
+			
+		
+			//abre el dialogo de editar
+			$('#DilogoEditar').dialog('open');
+		
+			return false;
+		})
+
+	//boton del cuadro de edicion de acudientes Boton Editar
+	$('#editar').click(function () {
+
+			
+			
+
+			var estudiante = $("#Ecodigos").val();
+			var id = $("#DialogId").val();
+			var nombre = $("#DialogNombre").val();
+			var apellido = $("#DialogApellido").val();
+			var email = $("#DialogEmail").val();
+				
+			$.post("<?php echo site_url('acudientes/modificar') ?>",{
+				  estudiante:estudiante,
+				  id: id,
+				  apellido:apellido,
+				  nombre:nombre,
+				  email:email
+				},
+			  function(data){
+			  	
+		  		if (data == "si") {
+
+		  			alert("Registro Modificado Correctamente");
+		  			$("."+id+"  .id").html(id);
+					$("."+id+"  .nombre").html(nombre);
+					$("."+id+"  .apellido").html(apellido);
+					$("."+id+"  .email").html(email);
+					
+	
+		  		}else
+		  		{
+		  			alert("Error al Actualizar el Registros");
+		  		}
+			  });
+			$('.DilogoEditar').dialog('close');
+			
+			return false;
+		});
+
+		//boton para eliminar acudiantes 
+		$(document).delegate('.borrar',"click",function () {
+
+			var id = $(this).attr('id');
+
+			var res = confirm('Esta seguro Que dese eliminar el Registros ?');
+			if (res ==  true)
+			{
+				
+			$.post("<?php echo site_url('acudientes/eliminar') ?>",
+				{
+				  id: id
+				},
+			  function(data){
+		  		alert(data); 
+
+			  });
+				$('.'+id).hide();
+			}else
+			{
+				
+			}
+			return false;
+		});
 })
 
 </script>

@@ -103,8 +103,11 @@ class Acudientes extends CI_Controller {
 				$info = "id='".$row->id."'
 						 estudiante='".$row->estudiante."' 
 						 nombre='".$row->nombre."'
-						 apellido='".$row->apellido."' 
-						 email='".$row->email."'' 
+						 apellido='".$row->apellido."'
+						 email='".$row->email."' 
+						 nombres='".$row->nombres."' 
+						 apellidos='".$row->apellidos."'
+						 grupo='".$row->grd_13."' 
 						 href='#' ";
 
 				echo '<tr class="'.$row->id.'">';
@@ -126,6 +129,39 @@ class Acudientes extends CI_Controller {
 			echo "<center><td colspan='4'>No se Encuentra Ningun Acudiante</td></center>";
 		}
 			
+	}
+	public function modificar()
+	{
+		$estudiante = $this->input->post('estudiante');
+		$id = $this->input->post('id');
+		$apellido = $this->input->post('apellido');
+		$nombre = $this->input->post('nombre');
+		$email = $this->input->post('email');
+
+		$respuesta = $this->acudiente->editar($estudiante,$nombre,$apellido,$id,$email);
+		
+		
+		if ($respuesta)
+		{
+			echo "si";
+		}else
+		{
+			echo "no";	
+		}
+
+
+	}
+
+	public function eliminar()
+	{
+		$id = $this->input->post('id');
+		if ($this->acudiente->borrar($id))
+		{
+			echo "Registro Eliminado Correctamente";
+		}else
+		{
+			echo "El Registro No se Pudo Insertar";
+		}
 	}
 }
 

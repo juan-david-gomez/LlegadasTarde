@@ -10,6 +10,7 @@ class Llegadas_tarde extends CI_Controller {
 		date_default_timezone_set("America/Bogota");
 		$this->load->model('ingresos');
 		$this->load->model('estudiante');
+		$this->load->model('acudiente');
 		$this->load->library('email','','correo');
 	
 	}
@@ -20,42 +21,64 @@ class Llegadas_tarde extends CI_Controller {
 		
 		$estudiante = $this->input->post('codigo');
 		$respuesta = $this->estudiante->consultar($estudiante,null,null,null);
+		$respuestaAcudiente = $this->acudiente->consutar(null,$estudiante,null,null,null) ;
 		if($respuesta)
 		{
-			foreach ($respuesta as $respuesta) {
-
-				
-					$NomEstudiante = $respuesta->nombres;
-					$ApeEstudiante = $respuesta->apellidos;
-					$GrupEstudiante = $respuesta->grd_13;
-					
-				}
-
-			$xml = "<xml version=\"1.0\" encoding=\"utf-8\">
-					<estudiante>
-					<nombre>$NomEstudiante</nombre>
-					<apellido>$ApeEstudiante</apellido>
-					<grupo>$GrupEstudiante</grupo>
-					<existencia>si</existencia>
-					</estudiante>
-					</xml>";
-			echo $xml;
-		
-			
-			//$this->registrar($estudiante);
+			foreach ($respuesta as $respuesta) 
+			{
+				$NomEstudiante = $respuesta->nombres;
+				$ApeEstudiante = $respuesta->apellidos;
+				$GrupEstudiante = $respuesta->grd_13;
+			}
+			$xmlE = "<estudiante>
+						<nombre>$NomEstudiante</nombre>
+						<apellido>$ApeEstudiante</apellido>
+						<grupo>$GrupEstudiante</grupo>
+						<existencia>si</existencia>
+					</estudiante>";
 		}else 
 		{
-			$xml = "<xml version=\"1.0\" encoding=\"utf-8\">
-					<estudiante>
-					<nombre>El Estudiante no Existe</nombre>
-					<apellido>El Estudiante no Existe</apellido>
-					<grupo>El Estudiante no Existe</grupo>
-					<existencia>no</existencia>
-					</estudiante>
-					</xml>";
+			$xmlE = "<estudiante>
+						<nombre>El Estudiante no Existe</nombre>
+						<apellido>El Estudiante no Existe</apellido>
+						<grupo>El Estudiante no Existe</grupo>
+						<existencia>no</existencia>
+					</estudiante>";
 			
-			echo $xml;
+			
 		}
+
+		if ($respuestaAcudiente) 
+			{
+				foreach ($respuestaAcudiente as $respuestaAcudiente) 
+				{
+				$idAcudiente = $respuestaAcudiente->id;
+				$nombreAcudiente = $respuestaAcudiente->nombre;
+				$apellidoAcudiente = $respuestaAcudiente->apellido;
+				$emailAcudiente = $respuestaAcudiente->email;
+				}
+			$xmlA = "<acudiente>
+						<nombre>$nombreAcudiente</nombre>
+						<apellido>$apellidoAcudiente</apellido>
+						<email>$emailAcudiente</email>
+						<existencia>si</existencia>
+					</acudiente>";
+			}else
+			{
+			$xmlA = "<acudiente>
+						<nombre>Acudiente no Registrado</nombre>
+						<apellido>Acudiente no Registrado</apellido>
+						<email>Acudiente no Registrado</email>
+						<existencia>no</existencia>
+					</acudiente>";
+			}
+
+
+		$xml = "<xml version=\"1.0\" encoding=\"utf-8\">
+					$xmlA
+					$xmlE
+				</xml>";
+		echo $xml;
 	}
 	// registra las llegadas tarede
 	public function registrar()
@@ -114,7 +137,11 @@ class Llegadas_tarde extends CI_Controller {
 		if($datos)
 		{
 			foreach ($datos as $row) {
-				$info = "nombre='".$row->nombres."' apellidos='".$row->apellidos."' grupo='".$row->grd_13."' codigo='".$row->codigo."' href='#			' ";
+				$info = "nombre='".$row->nombres."'
+					 	 apellido='".$row->apellidos."'
+					 	 grupo='".$row->grd_13."'
+					 	 codigo='".$row->codigo."'
+					 	 href='#' ";
 				echo '<tr>';
 				
 				echo '<td><a '.$info.'  class="es" >'.$row->codigo.'</a></td>';
@@ -223,7 +250,7 @@ class Llegadas_tarde extends CI_Controller {
 			 			<p>Fecha: ".$fecha."</p>
 			 			<p>Hora: ".$hora."</p>";
 
-			  $this->correo->from('info@santamaria.com', 'Santa Maria de la Paz');
+			  $this->correo->from('info@santamaria.com', 'colegio VID');
 			  $this->correo->to('jdavidg.e@hotmail.com');
 			  $this->correo->subject('Colegio VID');
 			  $this->correo->message($mensaje);

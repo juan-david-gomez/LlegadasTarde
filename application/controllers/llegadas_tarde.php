@@ -227,13 +227,18 @@ class Llegadas_tarde extends CI_Controller {
 	}
 	public function enviarCorreo($estudiante)
 	{
+		 $respuestaAcudiente = $this->acudiente->consutar(null,$estudiante,null,null,null);
+		 if ($respuestaAcudiente) 
+		 {
+		 	foreach ($respuestaAcudiente as $acudiente) {
+		 		$correo = $acudiente->email;
+		 	}
+		 }
 		 $datos =  $this->ingresos->consutar(null,null,null,null,null,null,null,null,null,null,$estudiante);
 		if($datos)
 		{
 			foreach ($datos as $row) {
-				
-				
-				
+								
 				$codigo = $row->codigo;
 				$nombre = $row->nombres;
 				$apellido = $row->apellidos;
@@ -243,7 +248,7 @@ class Llegadas_tarde extends CI_Controller {
 				$observaciones = $row->observaciones;
 			}
 			 $mensaje = "<h1>Colegio VID</h1>
-			 			<h4>Se Informa que el estudiante ah Llegado Terde</h4> 
+			 			<h4>Se Informa que el estudiante ah Llegado Tarde</h4> 
 			 			<p>Codigo: ".$codigo."</p>
 			 			<p>Nombre: ".$nombre." ".$apellido."</p>
 			 			<p>Grupo: ".$grupo."</p>
@@ -251,7 +256,7 @@ class Llegadas_tarde extends CI_Controller {
 			 			<p>Hora: ".$hora."</p>";
 
 			  $this->correo->from('info@santamaria.com', 'colegio VID');
-			  $this->correo->to('jdavidg.e@hotmail.com');
+			  $this->correo->to($correo);
 			  $this->correo->subject('Colegio VID');
 			  $this->correo->message($mensaje);
 			if($this->correo->send())

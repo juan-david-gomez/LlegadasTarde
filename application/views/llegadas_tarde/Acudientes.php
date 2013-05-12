@@ -136,7 +136,7 @@
 							<div style="float:right;">
 								<h4>Acudiente</h4>
 								<label><strong>Id</strong></label>
-								<input type="text" id="DialogId"> 
+								<input type="text" id="DialogId" readonly="readonly"> 
 								<label><strong>Nombre</strong></label>
 								<input type="text" id="DialogNombre">  					
 								<label><strong>Apellido</strong></label>
@@ -313,10 +313,6 @@ $(function() {
 
 	//boton del cuadro de edicion de acudientes Boton Editar
 	$('#editar').click(function () {
-
-			
-			
-
 			var estudiante = $("#Ecodigos").val();
 			var id = $("#DialogId").val();
 			var nombre = $("#DialogNombre").val();
@@ -332,7 +328,7 @@ $(function() {
 				},
 			  function(data){
 			  	
-		  		if (data == "si") {
+		  		if (data = "si") {
 
 		  			alert("Registro Modificado Correctamente");
 		  			$("."+id+"  .id").html(id);
@@ -340,14 +336,12 @@ $(function() {
 					$("."+id+"  .apellido").html(apellido);
 					$("."+id+"  .email").html(email);
 					
-	
 		  		}else
 		  		{
 		  			alert("Error al Actualizar el Registros");
 		  		}
 			  });
-			$('.DilogoEditar').dialog('close');
-			
+			$("#DilogoEditar").dialog('close');
 			return false;
 		});
 

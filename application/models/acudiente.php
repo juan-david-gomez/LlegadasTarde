@@ -32,6 +32,7 @@ class Acudiente extends CI_Model {
 			$this->db->like('email', $email);
 		}
 		
+		
 		$result = $this->db->get();		
 		if ($result->num_rows > 0)
 		 {

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 02-04-2013 a las 18:18:13
+-- Tiempo de generación: 15-05-2013 a las 05:07:54
 -- Versión del servidor: 6.0.0-alpha-community-nt-debug
 -- Versión de PHP: 5.4.3
 
@@ -23,18 +23,27 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `acudiente`
+-- Estructura de tabla para la tabla `acudientes`
 --
 
-CREATE TABLE IF NOT EXISTS `acudiente` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS `acudientes` (
+  `id` int(11) NOT NULL,
   `estudiante` int(11) NOT NULL,
   `nombre` varchar(45) NOT NULL,
   `apellido` varchar(45) NOT NULL,
   `email` varchar(60) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `acudiente-estudiante` (`estudiante`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `acudientes`
+--
+
+INSERT INTO `acudientes` (`id`, `estudiante`, `nombre`, `apellido`, `email`) VALUES
+(1, 31028, 'John Mario', 'Gomez ', 'jdavidg.e@hotmail.com'),
+(1233223, 7034, 'Juan David', 'Ramires del Rio', 'JUAN@RAMI.COM'),
+(2233312, 33004, 'Leidy Maria', 'Gomez Marin', 'leidygomez9512@hotmail.com');
 
 -- --------------------------------------------------------
 
@@ -1045,6 +1054,33 @@ INSERT INTO `estudiantes` (`codigo`, `apellidos`, `nombres`, `sexo`, `grd_13`) V
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `funciones`
+--
+
+CREATE TABLE IF NOT EXISTS `funciones` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `funcion_rango`
+--
+
+CREATE TABLE IF NOT EXISTS `funcion_rango` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `rango` int(11) DEFAULT NULL,
+  `funcion` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_funcion_rango_funciones1` (`funcion`),
+  KEY `fk_funcion_rango_rangos1` (`rango`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `ingresos`
 --
 
@@ -1058,7 +1094,7 @@ CREATE TABLE IF NOT EXISTS `ingresos` (
   PRIMARY KEY (`id`),
   KEY `usuario` (`usuario`),
   KEY `estudiante` (`estudiante`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=35 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=47 ;
 
 --
 -- Volcado de datos para la tabla `ingresos`
@@ -1090,7 +1126,31 @@ INSERT INTO `ingresos` (`id`, `usuario`, `estudiante`, `observaciones`, `fecha`,
 (31, 1, 31028, '', '2013-03-24', '07:44:19'),
 (32, 1, 32055, '', '2013-03-24', '07:45:09'),
 (33, 1, 14051, 'Se Durmio y se le olvido madrugar', '2013-03-29', '12:33:35'),
-(34, 4, 31028, '', '2013-04-02', '12:59:00');
+(34, 4, 31028, '', '2013-04-02', '12:59:00'),
+(35, 4, 14024, 'Llego muy tarde ', '2013-05-04', '03:44:45'),
+(36, 4, 7034, 'Llego tarde por culpa de un choque', '2013-05-12', '12:51:33'),
+(37, 4, 31028, '', '2013-05-12', '06:21:36'),
+(38, 4, 7034, '', '2013-05-12', '06:22:27'),
+(39, 4, 9040, '', '2013-05-12', '06:23:01'),
+(40, 4, 31028, '', '2013-05-12', '06:24:14'),
+(41, 4, 31028, '', '2013-05-12', '06:28:32'),
+(42, 4, 31028, 'se uedo dormido', '2013-05-13', '04:47:17'),
+(43, 4, 33004, '', '2013-05-13', '04:54:25'),
+(44, 1, 31028, '', '2013-05-14', '12:33:24'),
+(45, 1, 33004, '', '2013-05-14', '12:33:54'),
+(46, 1, 7034, '', '2013-05-14', '01:46:00');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `rangos`
+--
+
+CREATE TABLE IF NOT EXISTS `rangos` (
+  `id` int(11) NOT NULL,
+  `nombres` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -1103,9 +1163,10 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `nombre` varchar(45) DEFAULT NULL,
   `usuario` varchar(45) DEFAULT NULL,
   `clave` varchar(45) DEFAULT NULL,
-  `rango` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+  `rango` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_usuarios_rangos1` (`rango`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Volcado de datos para la tabla `usuarios`
@@ -1113,17 +1174,25 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 
 INSERT INTO `usuarios` (`id`, `nombre`, `usuario`, `clave`, `rango`) VALUES
 (1, 'Juan David', 'admin', 'admin', 1),
-(4, 'juan david', 'jdavidg.e@hotmail.com ', 'juanchito07', 1);
+(4, 'juan david', 'jdavidg.e@hotmail.com ', 'juanchito07', 1),
+(5, 'hola', 'camilo', 'camilo', 1);
 
 --
 -- Restricciones para tablas volcadas
 --
 
 --
--- Filtros para la tabla `acudiente`
+-- Filtros para la tabla `acudientes`
 --
-ALTER TABLE `acudiente`
+ALTER TABLE `acudientes`
   ADD CONSTRAINT `acudiente-estudiante` FOREIGN KEY (`estudiante`) REFERENCES `estudiantes` (`codigo`);
+
+--
+-- Filtros para la tabla `funcion_rango`
+--
+ALTER TABLE `funcion_rango`
+  ADD CONSTRAINT `fk_funcion_rango_funciones1` FOREIGN KEY (`funcion`) REFERENCES `funciones` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_funcion_rango_rangos1` FOREIGN KEY (`rango`) REFERENCES `rangos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `ingresos`
@@ -1131,6 +1200,12 @@ ALTER TABLE `acudiente`
 ALTER TABLE `ingresos`
   ADD CONSTRAINT `estudiante` FOREIGN KEY (`estudiante`) REFERENCES `estudiantes` (`codigo`),
   ADD CONSTRAINT `usuario` FOREIGN KEY (`usuario`) REFERENCES `usuarios` (`id`);
+
+--
+-- Filtros para la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD CONSTRAINT `fk_usuarios_rangos1` FOREIGN KEY (`rango`) REFERENCES `rangos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

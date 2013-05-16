@@ -6,6 +6,8 @@
 			 	<ul>
 			 		<li><a href="#tabs-1" >Insertar Acudiente</a></li>
 			 		<li><a href="#tabs-2" >Buscar Acudiente</a></li>
+			 		
+
 			 	</ul>
 			 	<div id="tabs-1">
 			 		<form action="<?php echo site_url('acudientes/validar') ?>" method="post" class="well" id="InsertAcudiente">
@@ -136,7 +138,7 @@
 							<div style="float:right;">
 								<h4>Acudiente</h4>
 								<label><strong>Id</strong></label>
-								<input type="text" id="DialogId" readonly="readonly"> 
+								<input type="text" id="DialogId" readonly="readonly
 								<label><strong>Nombre</strong></label>
 								<input type="text" id="DialogNombre">  					
 								<label><strong>Apellido</strong></label>

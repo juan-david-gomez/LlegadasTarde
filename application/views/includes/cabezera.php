@@ -2,8 +2,9 @@
 <html lang="es-ES">
 <head>
 	<meta charset="UTF-8"  >
-	<title><?= $titulo ?></title>
+	<title><?php echo $titulo ?></title>
 	
+	<?php echo link_tag("css/normalize.css") ?>
 	<?php echo link_tag("css/bootstrap.css") ?>
 	<?php echo link_tag("css/bootstrap.min.css") ?>
 	<?php echo link_tag("css/bootstrap-responsive.css") ?>

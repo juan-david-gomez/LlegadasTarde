@@ -17,7 +17,7 @@
 					</a>
 					
 					<a class="dock-item2" href="<?php echo site_url('inicio/abrir/acudientes') ?>">
-					  	<span>Acudiente</span>
+					  	<span>Acudientes</span>
 					  	<?php echo img('img/acudientes.png') ?>
 					</a>
 

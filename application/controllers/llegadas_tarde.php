@@ -247,17 +247,18 @@ class Llegadas_tarde extends CI_Controller {
 				$hora = $row->hora;
 				$observaciones = $row->observaciones;
 			}
-			 $mensaje = "<h1>Colegio VID</h1>
-			 			<h4>Se Informa que el estudiante ah Llegado Tarde</h4> 
-			 			<p>Codigo: ".$codigo."</p>
-			 			<p>Nombre: ".$nombre." ".$apellido."</p>
-			 			<p>Grupo: ".$grupo."</p>
-			 			<p>Fecha: ".$fecha."</p>
-			 			<p>Hora: ".$hora."</p>";
+			$datosEmail = array('codigo' => $codigo,
+								'nombre' =>$nombre,
+								'apellido' => $apellido,
+								'grupo' => $grupo,
+								'fecha' => $fecha,
+								'hora' => $hora );
 
-			  $this->correo->from('info@santamaria.com', 'colegio VID');
+			 $mensaje = $this->load->view('includes/email', $datosEmail, true);
+
+			  $this->correo->from('info@santamaria.com', 'Colegio VID');
 			  $this->correo->to($correo);
-			  $this->correo->subject('Colegio VID');
+			  $this->correo->subject('Llegada Tarde');
 			  $this->correo->message($mensaje);
 			if($this->correo->send())
 			  {
@@ -265,7 +266,8 @@ class Llegadas_tarde extends CI_Controller {
 			  }
 			  else
 			  {
-			   	return "No se envio el Correo al acudiente ";
+			  	 $error =  $this->correo->print_debugger();
+			   	return "No se envio el Correo al acudiente ".$error;
 			  }
 		
 		}

@@ -21,27 +21,30 @@ class Estudiantes extends CI_Controller {
 		
 		if($datos)
 		{
-			foreach ($datos as $row) {
+			$resultados['resultados'] = "";	
+			foreach ($datos[0] as $row) {
 				$info = "nombre='".$row->nombres."' apellidos='".$row->apellidos."' grupo='".$row->grd_13."' codigo='".$row->codigo."' sexo='".$row->sexo."'' href='#' ";
-				echo '<tr class="'.$row->codigo.'">';
+				$resultados['resultados'] .= '<tr class="'.$row->codigo.'">';
 				
-				echo '<td><a '.$info.'  class="codigo" >'.$row->codigo.'</a></td>';
-				echo '<td><a '.$info.'  class="nombre" >'.$row->nombres.'</a></td>';
-				echo '<td><a '.$info.' class="apellido" >'.$row->apellidos.'</a></td>';
-				echo '<td><a '.$info.'  class="grupo" >'.$row->grd_13.'</a></td>';
-				echo '<td style="display:none"><a '.$info.'  class="sexo" >'.$row->sexo.'</a></td>';
-				echo '<th>
-						<center>
-						<a class="borrar" href="" title="Borrar" id="'.$row->codigo.'" >'.img('img/eliminar.png').'</a>
-						<a href=""  id="'.$row->codigo.'" title="Editar" class="editar" >'.img('img/editar.png').'</a>
-						</center>
-					  </th>';
-				echo '</tr>';
+				$resultados['resultados'] .= '<td><a '.$info.'  class="codigo" >'.$row->codigo.'</a></td>';
+				$resultados['resultados'] .= '<td><a '.$info.'  class="nombre" >'.$row->nombres.'</a></td>';
+				$resultados['resultados'] .= '<td><a '.$info.' class="apellido" >'.$row->apellidos.'</a></td>';
+				$resultados['resultados'] .= '<td><a '.$info.'  class="grupo" >'.$row->grd_13.'</a></td>';
+				$resultados['resultados'] .= '<td style="display:none"><a '.$info.'  class="sexo" >'.$row->sexo.'</a></td>';
+				$resultados['resultados'] .= '<th>
+												<center>
+												<a class="borrar" href="" title="Borrar" id="'.$row->codigo.'" >'.img('img/eliminar.png').'</a>
+												<a href=""  id="'.$row->codigo.'" title="Editar" class="editar" >'.img('img/editar.png').'</a>
+												</center>
+											  </th>';
+				$resultados['resultados'] .= '</tr>';
 			}
 		}else
 		{
-			echo "<center><td colspan='4'>No se Encuentra Ningun Estudiante</td></center>";
+			$resultados['resultados'] = "<center><td colspan='4'>No se Encuentra Ningun Estudiante</td></center>";
 		}
+		$resultados['filas'] = $datos[1];
+		echo json_encode($resultados);
 			
 	}
 

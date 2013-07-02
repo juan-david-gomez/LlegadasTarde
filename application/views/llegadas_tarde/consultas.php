@@ -1,32 +1,32 @@
 <div class="row-fluid">
 	<div class="span10 offset1">
 		<section>
-			
 				<h1 align="center">Consultar</h1>
-				
 				<div id="tabs">
 					<ul>
-					<li><a href="#tabs-1">Por Fecha</a></li>
-					<li><a href="#tabs-2">Por Estudiante y Rango de Fechas</a></li>
-					
+						<li><a href="#tabs-1">Por Fecha</a></li>
+						<li><a href="#tabs-2">Por Estudiante y Rango de Fechas</a></li>
 					</ul>
-				<div id="tabs-1">
-					<form action="" class="well" method="post">
-					<div class="busquedaF" >
-							<center>
-								<center><h1>Buscar Por Fecha</h1></center>
-								<br>
-							<input type="text" name="date" id="fecha"  class="span3 fecha" placeholder="Fecha" >
-						
-					</center>
+					<div id="tabs-1">
+						<form action="" class="well" method="post">
+							<div class="busquedaF" >
+								<center>
+									<center><h1>Buscar Por Fecha</h1></center>
+									<br>
+									<input type="text" name="date" id="fecha"  class="span3 fecha" placeholder="Fecha" >
+								</center>
+							</div>
+						</form>
 					</div>
-					</form>
-				</div>
-				<div id="tabs-2">
-					<form action="" class="well" method="post" id="Bestudi">
-					<div class="busquedaF" >
-							<center><h1>Busqueda por Estudiante</h1></center>
+					<div id="tabs-2">
+						<form action="" class="well" method="post" id="Bestudi">
+							<div class="busquedaF" >
+								<center><h1>Busqueda por Estudiante</h1></center>
 								<br>
+								<center>
+									<input type="text" name="Codigo" id="idestudiante"  class="span6"  placeholder="Codigo">
+								</center>
+								
 								<input type="text" name="nombre" id="nombre"  class="span4"  placeholder="Nombre">
 								<input type="text" name="apellido" id="apellido" class="span4"  placeholder="Apellido" >
 								<input type="text" name="grupo" id="grupo" class="span4"   placeholder="Grupo">
@@ -38,37 +38,38 @@
 								<br>
 								<input type="submit" value="Buscar" class="btn">
 								<input type="button" value="limpiar" class="btn" id="limpiar">
+							</div>
+						</form>
 					</div>
-					</form>
-				
-				</div>
-				
-				<table class="table table-striped">
-    						
-								<thead>
-								<tr class="ui-widget-header ">
-								<th>Codigo</th>
-								<th>Nombres</th>
-								<th>Apellidos</th>
-								<th>Grupo</th>
-								<th>Fecha</th>
-								<th>Hora</th>
-								<th>Acciones</th>
-								</tr>
-								</thead>
-								<tbody id="datosIngresos">
-								
+					<div id="contador" style="text-align: center;">
+						Numero de Registros:<strong id="filas"></strong>
 
-								</tbody>
-    			</table>
-				</div>
+					</div>
+					<table class="table table-striped">
+    						
+						<thead>
+							<tr class="ui-widget-header ">
+								<th>Codigo</th>
+									<th>Nombres</th>
+									<th>Apellidos</th>
+									<th>Grupo</th>
+									<th>Fecha</th>
+									<th>Hora</th>
+									<th>Acciones</th>
+							</tr>
+						</thead>
+						<tbody id="datosIngresos">
+								
+						</tbody>
+    				</table>
+				</div><!--- Div Tabs -->
 		</section>
 	</div>
 </div>
 <!-- Dialogo para Buscar Estudiante  -->
 <div id="estudiantes" style="display:none" >
-						<center><h1>Registrar una Asistencia</h1></center>
-						<br>
+	<center><h1>Buscar Estudiante</h1></center>
+	<br>
 						<input type="text" name="nombre" id="nombreE" placeholder="Nombre">
 						
 
@@ -78,8 +79,11 @@
 						<input type="text" name="grupo" id="grupoE" class="span2" placeholder="Grupo">
 						<br>
 						<input type="button" value="Buscar" id="buscarE" class="btn">
-						<input type="button" value="Limpiar" id="limpiar" class="btn">
+						<input type="button" value="Limpiar" id="Limpiar" class="btn">
 						<br><br>
+							<div id="contador" style="text-align: center;">
+								Numero de Registros:<strong id="Filas"></strong>
+							</div>
 						    <table class="table ">
     						
 								<thead>
@@ -91,6 +95,7 @@
 								</tr>
 
 								</thead>
+
 								<tbody id="datosEstudiantes">
 									
 								</tbody>
@@ -184,6 +189,7 @@
 				$("#grupo").val("");
 				$("#fechaI").val("");
 				$("#fechaF").val("");
+				$("#idestudiante").val("");
 			})
 			// boton para abrir el dialogo de busqueda de estudiantes
 			$('#buscar').click(function () {
@@ -191,7 +197,7 @@
 				return false;
 			});
 			// funcionalidad del boton limpiar del cuadro de busqueda de estudiantes
-			$("#limpiar").click(function() {
+			$("#Limpiar").click(function() {
 				$('#nombreE').val("");
 				
 				$('#apellidoE').val("");
@@ -208,10 +214,14 @@
 			
 			$.post("<?php echo site_url('llegadas_tarde/buscarEstudiante') ?>", { nombres: nombres, apellidos: apellidos,grupo:grupo},
 			  function(data){
-			   	$('#datosEstudiantes').html(data);
-			  });
+			  
+		   	$('#datosEstudiantes').html(data.resultados);
+		   	$("#Filas").html(data.filas);
+		   	
+		},"json");
 
 		});
+
 		//envia el codigo del estudinate en la lista a el campo para hacer el registro
 		$(document).delegate(".es","click",function() {
 		var codigo = $(this).attr('codigo');
@@ -237,7 +247,7 @@
 			var hora = "";
 			var fechaI = $("#fechaI").val();
 			var fechaF = $("#fechaF").val();
-
+			var codigo = $("#idestudiante").val();
 			$.post("<?php echo site_url('llegadas_tarde/buscarIngresos') ?>",
 				{
 				  usuario: usuario, 
@@ -248,11 +258,13 @@
 				  fecha:fecha,
 				  hora:hora,
 				  fechaI:fechaI,
-				  fechaF:fechaF
+				  fechaF:fechaF, 
+				  codigo:codigo
 				},function(data){
-			  	//alert(data);
-			   	$('#datosIngresos').html(data);
-			  });
+			  
+			   	$('#datosIngresos').html(data.resultados);
+			   	$("#filas").html(data.filas);
+			  },"json");
 			return false;
 		})
 		//envia los datos de de la busqueda de registros
@@ -281,10 +293,12 @@
 				  fechaF:fechaF
 				},
 			  function(data){
-			  	//alert(data);
+			  
 
-			   	$('#datosIngresos').html(data);
-			  });
+			   	$('#datosIngresos').html(data.resultados);
+			   	$("#filas").html(data.filas);
+			  }, "json");
+			
 
 		});
 	

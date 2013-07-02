@@ -24,62 +24,57 @@ class Llegadas_tarde extends CI_Controller {
 		$respuestaAcudiente = $this->acudiente->consutar(null,$estudiante,null,null,null) ;
 		if($respuesta)
 		{
-			foreach ($respuesta as $respuesta) 
+			foreach ($respuesta[0] as $respuesta) 
 			{
 				$NomEstudiante = $respuesta->nombres;
 				$ApeEstudiante = $respuesta->apellidos;
 				$GrupEstudiante = $respuesta->grd_13;
 			}
-			$xmlE = "<estudiante>
-						<nombre>$NomEstudiante</nombre>
-						<apellido>$ApeEstudiante</apellido>
-						<grupo>$GrupEstudiante</grupo>
-						<existencia>si</existencia>
-					</estudiante>";
+			$Destudiante['nombre'] = $NomEstudiante;
+			$Destudiante['apellido'] =$ApeEstudiante;
+			$Destudiante['grupo'] =$GrupEstudiante;
+			$Destudiante['existencia'] ="si";
+			
 		}else 
 		{
-			$xmlE = "<estudiante>
-						<nombre>El Estudiante no Existe</nombre>
-						<apellido>El Estudiante no Existe</apellido>
-						<grupo>El Estudiante no Existe</grupo>
-						<existencia>no</existencia>
-					</estudiante>";
+			$Destudiante['nombre'] = "El estudiante no Existe";
+			$Destudiante['apellido'] ="El estudiante no Existe";
+			$Destudiante['grupo'] ="El estudiante no Existe";
+			$Destudiante['existencia'] ="no";
 			
 			
 		}
 
 		if ($respuestaAcudiente) 
 			{
-				foreach ($respuestaAcudiente as $respuestaAcudiente) 
+				foreach ($respuestaAcudiente[0] as $respuestaAcudiente) 
 				{
 				$idAcudiente = $respuestaAcudiente->id;
 				$nombreAcudiente = $respuestaAcudiente->nombre;
 				$apellidoAcudiente = $respuestaAcudiente->apellido;
 				$emailAcudiente = $respuestaAcudiente->email;
 				}
-			$xmlA = "<acudiente>
-						<nombre>$nombreAcudiente</nombre>
-						<apellido>$apellidoAcudiente</apellido>
-						<email>$emailAcudiente</email>
-						<existencia>si</existencia>
-					</acudiente>";
+
+				$Dacudiente['nombre'] = $nombreAcudiente;
+				$Dacudiente['apellido'] =$apellidoAcudiente;
+				$Dacudiente['email'] =$emailAcudiente;
+				$Dacudiente['existencia'] ="si";
+			
 			}else
 			{
-			$xmlA = "<acudiente>
-						<nombre>Acudiente no Registrado</nombre>
-						<apellido>Acudiente no Registrado</apellido>
-						<email>Acudiente no Registrado</email>
-						<existencia>no</existencia>
-					</acudiente>";
+				$Dacudiente['nombre'] = "Acudiente no Registrado";
+				$Dacudiente['apellido'] ="Acudiente no Registrado";
+				$Dacudiente['email'] ="Acudiente no Registrado";
+				$Dacudiente['existencia'] ="no";
+		
 			}
 
+			$AcudienteEstudiante['acudiente'] = $Dacudiente;
+			$AcudienteEstudiante['estudiante'] = $Destudiante;
 
-		$xml = "<xml version=\"1.0\" encoding=\"utf-8\">
-					$xmlA
-					$xmlE
-				</xml>";
-		echo $xml;
+			echo json_encode($AcudienteEstudiante);
 	}
+
 	// registra las llegadas tarede
 	public function registrar()
 	{
@@ -132,29 +127,32 @@ class Llegadas_tarde extends CI_Controller {
 		$apellidos = $this->input->post('apellidos');
 		$grupo = $this->input->post('grupo');
 		$datos =  $this->estudiante->consultar(null,$nombres,$apellidos,$grupo);
-
+		$resultados['resultados'] = "";
 		
 		if($datos)
 		{
-			foreach ($datos as $row) {
+			foreach ($datos[0] as $row) {
 				$info = "nombre='".$row->nombres."'
 					 	 apellido='".$row->apellidos."'
 					 	 grupo='".$row->grd_13."'
 					 	 codigo='".$row->codigo."'
 					 	 href='#' ";
-				echo '<tr>';
+				$resultados['resultados'] .= '<tr>';
 				
-				echo '<td><a '.$info.'  class="es" >'.$row->codigo.'</a></td>';
-				echo '<td><a '.$info.'  class="es" >'.$row->nombres.'</a></td>';
-				echo '<td><a '.$info.' class="es" >'.$row->apellidos.'</a></td>';
-				echo '<td><a '.$info.'  class="es" >'.$row->grd_13.'</a></td>';
-				echo '</tr>';
+				$resultados['resultados'] .= '<td><a '.$info.'  class="es" >'.$row->codigo.'</a></td>';
+				$resultados['resultados'] .= '<td><a '.$info.'  class="es" >'.$row->nombres.'</a></td>';
+				$resultados['resultados'] .= '<td><a '.$info.' class="es" >'.$row->apellidos.'</a></td>';
+				$resultados['resultados'] .= '<td><a '.$info.'  class="es" >'.$row->grd_13.'</a></td>';
+				$resultados['resultados'] .= '</tr>';
 			}
+		$resultados['filas'] = $datos[1];
+		
 		}else
 		{
-			echo "<td colspan='4'>No se Encuentra Ningun Estudiante</td>";
+			$resultados['resultados'] = "<td colspan='4'>No se Encuentra Ningun Estudiante</td>";
+			$resultados['filas'] = $datos[1];
 		}
-			
+		echo json_encode($resultados) ;	
 	}	
 
 	//buscar ingresos
@@ -170,34 +168,43 @@ class Llegadas_tarde extends CI_Controller {
 		$hora = $this->input->post('hora');
 		$fechaI = $this->input->post('fechaI');
 		$fechaF = $this->input->post('fechaF');
+		$codigo = $this->input->post('codigo');
 
-		$datos =  $this->ingresos->consutar($id,$usuario,$nombres,$apellidos,$grd_13,$observaciones,$fecha,$hora,$fechaI,$fechaF,"");
+		$datos =  $this->ingresos->consutar($id,$usuario,$nombres,$apellidos,$grd_13,$observaciones,$fecha,$hora,$fechaI,$fechaF,$codigo);
 		
 		if($datos)
 		{
-			foreach ($datos as $row) {
+			$resultados['resultados'] = "";
+			foreach ($datos[0] as $row) {
 				
-				echo '<tr class="'.$row->id.'">';
+				$resultados['resultados'] .= '<tr class="'.$row->id.'">';
 				
-				echo '<td class="codigo">'.$row->codigo.'</td>';
-				echo '<td class="nombre">'.$row->nombres.'</td>';
-				echo '<td class="apellido">'.$row->apellidos.'</td>';
-				echo '<td class="grupo">'.$row->grd_13.'</td>';
-				echo '<td class="fecha">'.$row->fecha.'</td>';
-				echo '<td class="hora">'.$row->hora.'</td>';
-				echo '<td style="display:none" class="observaciones">'.$row->observaciones.'</td>';
-				echo '<th>
+				$resultados['resultados'] .= '<td class="codigo">'.$row->codigo.' </td>';
+				$resultados['resultados'] .= '<td class="nombre">'.$row->nombres.'</td>';
+				$resultados['resultados'] .= '<td class="apellido">'.$row->apellidos.'</td>';
+				$resultados['resultados'] .= '<td class="grupo">'.$row->grd_13.'</td>';
+				$resultados['resultados'] .= '<td class="fecha">'.$row->fecha.'</td>';
+				$resultados['resultados'] .= '<td class="hora">'.$row->hora.'</td>';
+				$resultados['resultados'] .= '<td style="display:none" class="observaciones">'.$row->observaciones.'</td>';
+				$resultados['resultados'] .= '<th>
 						<center>
 						<a class="borrar" href="" title="Borrar" id="'.$row->id.'" >'.img('img/eliminar.png').'</a>
 						<a href=""  id="'.$row->id.'" title="Editar" class="editar" >'.img('img/editar.png').'</a>
 						</center>
 					  </th>';
-				echo '</tr>';
+				$resultados['resultados'] .= '</tr>';
+
+				
 			}
+			$resultados['filas'] = $datos[1];
+			
 		}else
-		{
-			echo "<td colspan='7'>No se Encuentra Ningun Registro</td>";
+		{ 
+			 $resultados['resultados']=  "<td colspan='7'>No se Encuentra Ningun Registro</td>";
+			 $resultados['filas'] = 0;
 		}
+
+		echo json_encode($resultados);
 	}
 	public function eliminar()
 	{
@@ -230,14 +237,14 @@ class Llegadas_tarde extends CI_Controller {
 		 $respuestaAcudiente = $this->acudiente->consutar(null,$estudiante,null,null,null);
 		 if ($respuestaAcudiente) 
 		 {
-		 	foreach ($respuestaAcudiente as $acudiente) {
+		 	foreach ($respuestaAcudiente[0] as $acudiente) {
 		 		$correo = $acudiente->email;
 		 	}
 		 }
 		 $datos =  $this->ingresos->consutar(null,null,null,null,null,null,null,null,null,null,$estudiante);
 		if($datos)
 		{
-			foreach ($datos as $row) {
+			foreach ($datos[0] as $row) {
 								
 				$codigo = $row->codigo;
 				$nombre = $row->nombres;

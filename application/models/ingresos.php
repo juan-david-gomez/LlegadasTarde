@@ -74,9 +74,14 @@ class Ingresos extends CI_Model {
 			$this->db->where('fecha >=', $fechaI);
 			$this->db->where('fecha <=', $fechaF);
 		}
+
 		$result = $this->db->get();
-		if ($result->num_rows > 0) {
-			$resultados = $result->result();
+		$filas = $result->num_rows;
+		if ($filas > 0) {
+
+			$resultados[0] = $result->result();
+
+			$resultados[1] = $filas;
 			return $resultados;
 		}else
 		{

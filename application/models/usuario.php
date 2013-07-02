@@ -70,12 +70,12 @@ class Usuario extends CI_Model {
 		}
 
 		$resul = $this->db->get();
-
+		 $filas = $resul->num_rows;
 		
 
-		if( $resul->num_rows > 0){ 
-			$resultados = $resul->result();
-			
+		if( $filas > 0){ 
+			$resultados[0]= $resul->result();
+			$resultados[1] = $filas;
 			return $resultados;
 		}else
 		{

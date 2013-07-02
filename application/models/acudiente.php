@@ -33,10 +33,12 @@ class Acudiente extends CI_Model {
 		}
 		
 		
-		$result = $this->db->get();		
-		if ($result->num_rows > 0)
+		$result = $this->db->get();	
+		$filas = $result->num_rows;
+		if ($filas > 0)
 		 {
-			$resultados = $result->result();
+			$resultados[0] = $result->result();
+			$resultados[1] = $filas;
 			return $resultados;
 		}else
 		{

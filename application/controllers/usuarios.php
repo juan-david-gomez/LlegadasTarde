@@ -145,31 +145,34 @@ class Usuarios extends CI_Controller {
 		$rango = $this->input->post('rango');
 		
 		$datos =  $this->usuario->consultar($id,$nombre,$usuario,$clave,$rango);
-
+		$respuesta['respuesta'] = "";
 		
 		if($datos)
 		{
-			foreach ($datos as $row) {
+			foreach ($datos[0] as $row) {
 				$info = "id ='".$row->id."' usuario='".$row->usuario."' clave='".$row->clave."' nombre='".$row->nombre."' rango='".$row->rango."'' href='#' ";
-				echo '<tr class="'.$row->id.'">';
+				$respuesta['respuesta'] .=  '<tr class="'.$row->id.'">';
 				
-				echo '<td><a '.$info.'  class="id" >'.$row->id.'</a></td>';
-				echo '<td><a '.$info.'  class="nombre" >'.$row->nombre.'</a></td>';
-				echo '<td><a '.$info.' class="usuario" >'.$row->usuario.'</a></td>';
-				echo '<td><a '.$info.'  class="rango" >'.$row->rango.'</a></td>';
-				echo '<td style="display:none"><a '.$info.'  class="clave" >'.$row->clave.'</a></td>';
-				echo '<th>
+				$respuesta['respuesta'] .=  '<td><a '.$info.'  class="id" >'.$row->id.'</a></td>';
+				$respuesta['respuesta'] .=  '<td><a '.$info.'  class="nombre" >'.$row->nombre.'</a></td>';
+				$respuesta['respuesta'] .=  '<td><a '.$info.' class="usuario" >'.$row->usuario.'</a></td>';
+				$respuesta['respuesta'] .=  '<td><a '.$info.'  class="rango" >'.$row->rango.'</a></td>';
+				$respuesta['respuesta'] .=  '<td style="display:none"><a '.$info.'  class="clave" >'.$row->clave.'</a></td>';
+				$respuesta['respuesta'] .=  '<th>
 						<center>
 						<a class="borrar" href="" title="Borrar" id="'.$row->id.'" >'.img('img/eliminar.png').'</a>
 						<a href=""  id="'.$row->id.'" title="Editar" class="editar" >'.img('img/editar.png').'</a>
 						</center>
 					  </th>';
-				echo '</tr>';
+				$respuesta['respuesta'] .=  '</tr>';
+				$respuesta['filas'] = $datos[1];
 			}
 		}else
 		{
-			echo "<center><td colspan='4'>No se Encuentra Ningun Usuario</td></center>";
+			$respuesta['respuesta'] =  "<center><td colspan='4'>No se Encuentra Ningun Usuario</td></center>";
+			$respuesta['filas'] = 0;
 		}
+		echo  json_encode($respuesta);
 			
 	}
 
@@ -209,25 +212,22 @@ class Usuarios extends CI_Controller {
 		$id = $this->session->userdata('id'); 
 		if ($id==null) 
 		{
-			echo "No se ah Iniciado ninguna Sesion";
+			//$respuesta['resultaods'] = "No se ah Iniciado ninguna Sesion";
 		}else
 		{ 
 			$datos =  $this->usuario->consultar($id,"","","","");
 			if ($datos)
 			{
-				foreach ($datos as $row) 
+				foreach ($datos[0] as $row) 
 				{
-					$xml = "<xml version=\"1.0\" encoding=\"utf-8\"> 
-								<usuarios>
-									<id>".$row->id."</id>
-									<nombre>".$row->nombre."</nombre>
-									<usuario>".$row->usuario."</usuario>
-									<clave>".$row->clave."</clave>
-									<rango>".$row->rango."</rango>
-								</usuarios>
-							</xml>";	
-					echo $xml;
+					$respuesta['ide'] =  $row->id;
+					$respuesta['nombre'] =  $row->nombre;
+					$respuesta['usuario'] =  $row->usuario;
+					$respuesta['clave'] =  $row->clave;
+					$respuesta['rango'] = $row->rango;
+								
 				}
+				echo json_encode($respuesta);
 			}
 		}
 	}

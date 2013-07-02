@@ -58,6 +58,10 @@
 						<input type="button" value="Buscar Estudiante" id="2" class="btn Ebuscar">
 			 		</form>
 			 	</div>
+			 		<div id="contador" style="text-align: center;">
+						Numero de Registros:<strong id="filas"></strong>
+
+					</div>
 			 	<table class="table table-striped">
     						
 								<thead>
@@ -98,6 +102,10 @@
 						<input type="button" value="Buscar" id="Busqueda" class="btn">
 						<input type="button" value="Limpiar" id="Limpiar" class="btn">
 						<br><br>
+					<div id="contador" style="text-align: center;">
+						Numero de Registros:<strong id="Filas"></strong>
+
+					</div>
 						    <table class="table ">
     						
 								<thead>
@@ -138,7 +146,7 @@
 							<div style="float:right;">
 								<h4>Acudiente</h4>
 								<label><strong>Id</strong></label>
-								<input type="text" id="DialogId" readonly="readonly
+								<input type="text" id="DialogId" readonly="readonly"
 								<label><strong>Nombre</strong></label>
 								<input type="text" id="DialogNombre">  					
 								<label><strong>Apellido</strong></label>
@@ -212,8 +220,9 @@ $(function() {
 		
 		$.post("<?php echo site_url('llegadas_tarde/buscarEstudiante') ?>", { nombres: nombres, apellidos: apellidos,grupo:grupo},
 		  function(data){
-		   	$('#datosEstudiantes').html(data);
-		  });
+		   	$('#datosEstudiantes').html(data.resultados);
+		   	$("#Filas").html(data.filas);
+		  },"json");
 
 	});
 	//envia el codigo del estudinate en la lista a el campo para hacer el registro
@@ -277,8 +286,10 @@ $(function() {
 
 		$.post("<?php echo site_url('acudientes/buscarAcudiente') ?>", {id:id,codigo:codigo},
 		  function(data){
-		  	$('#datosAcudientes').html(data);
-		  });
+		  	
+		  	$('#datosAcudientes').html(data.resultados);
+		  	$("#filas").html(data.filas);
+		  },"json");
 	})
 
 	//boton de editar en las acciones del registros

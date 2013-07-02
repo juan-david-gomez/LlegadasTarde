@@ -53,6 +53,9 @@
 						<input type="button" value="Limpiar" id="limpiar" class="btn">
 			 		</form>
 			 	</div>
+			 	<div id="contador" style="text-align: center;">
+					Numero de Registros:<strong id="filas"></strong>
+				</div>
 			 	<table class="table table-striped">
     						
 								<thead>
@@ -155,12 +158,14 @@ $(function() {
 		var nombre = $("#nombreE").val();
 		var apellido = $("#apellidoE").val();
 		var grupo = $("#grupoE").val();
-		
+	
 		$.post("<?php echo site_url('estudiantes/buscarEstudiante') ?>", {codigo:codigo, nombre: nombre, apellido: apellido,grupo:grupo},
 			  function(data){
-		   	$('#datosEstudiantes').html(data);
+			  	
+		   	$('#datosEstudiantes').html(data.resultados);
+		   	$("#filas").html(data.filas);
 		   	
-		});
+		},"json");
 	})
 	//boton de borrar en las acciones dle registros
 	$(document).delegate('.borrar',"click",function () {

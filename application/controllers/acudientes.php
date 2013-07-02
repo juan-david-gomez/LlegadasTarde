@@ -96,10 +96,10 @@ class Acudientes extends CI_Controller {
 		
 		$datos =  $this->acudiente->consutar($id,$estudiante,null,null,null);
 
-		
+		$respuesta['resultados']="";
 		if($datos)
 		{
-			foreach ($datos as $row) {
+			foreach ($datos[0] as $row) {
 				$info = "id='".$row->id."'
 						 estudiante='".$row->estudiante."' 
 						 nombre='".$row->nombre."'
@@ -110,24 +110,27 @@ class Acudientes extends CI_Controller {
 						 grupo='".$row->grd_13."' 
 						 href='#' ";
 
-				echo '<tr class="'.$row->id.'">';
+				$respuesta['resultados'] .= '<tr class="'.$row->id.'">';
 				
-				echo '<td><a '.$info.'  class="id" >'.$row->id.'</a></td>';
-				echo '<td><a '.$info.'  class="nombre" >'.$row->nombre.'</a></td>';
-				echo '<td><a '.$info.' class="apellido" >'.$row->apellido.'</a></td>';
-				echo '<td><a '.$info.'  class="email" >'.$row->email.'</a></td>';
-				echo '<th>
+				$respuesta['resultados'] .= '<td><a '.$info.'  class="id" >'.$row->id.'</a></td>';
+				$respuesta['resultados'] .= '<td><a '.$info.'  class="nombre" >'.$row->nombre.'</a></td>';
+				$respuesta['resultados'] .= '<td><a '.$info.' class="apellido" >'.$row->apellido.'</a></td>';
+				$respuesta['resultados'] .= '<td><a '.$info.'  class="email" >'.$row->email.'</a></td>';
+				$respuesta['resultados'] .= '<th>
 						<center>
 						<a class="borrar" href="" title="Borrar" id="'.$row->id.'" >'.img('img/eliminar.png').'</a>
 						<a href=""  id="'.$row->id.'" title="Editar" class="editar" >'.img('img/editar.png').'</a>
 						</center>
 					  </th>';
-				echo '</tr>';
+				$respuesta['resultados'] .= '</tr>';
+				$respuesta['filas'] = $datos[1];
 			}
 		}else
 		{
-			echo "<center><td colspan='4'>No se Encuentra Ningun Acudiante</td></center>";
+			$respuesta['resultados'] = "<center><td colspan='4'>No se Encuentra Ningun Acudiante</td></center>";
+			$respuesta['filas'] = 0;
 		}
+		echo json_encode($respuesta);
 			
 	}
 	public function modificar()

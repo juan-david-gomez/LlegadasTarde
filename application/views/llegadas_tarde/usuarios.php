@@ -50,6 +50,10 @@
 						<input type="button" value="Limpiar" id="limpiar" class="btn">
 			 		</form>
 			 	</div>
+			 		<div id="contador" style="text-align: center;">
+						Numero de Registros:<strong id="filas"></strong>
+
+					</div>
 			 	<table class="table table-striped">
     						
 								<thead>
@@ -151,11 +155,14 @@ $(function() {
 		var clave = $("#claveU").val();
 		//var rango = $("#rangoU").val();
 		var rango = "";
+	
 		$.post("<?php echo site_url('usuarios/buscarUsuario') ?>", {id:id, nombre: nombre, usuario: usuario, clave:clave,rango:rango },
 			  function(data){
-		   	$('#datosUsuarios').html(data);
+			  
+		   	$('#datosUsuarios').html(data.respuesta);
+		   	$("#filas").html(data.filas);
 		   	
-		});
+		},"json");
 	})
 
 	

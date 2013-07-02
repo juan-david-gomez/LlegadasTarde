@@ -63,6 +63,10 @@
 						<input type="button" value="Buscar" id="buscarE" class="btn">
 						<input type="button" value="Limpiar" id="limpiar" class="btn">
 						<br><br>
+						<div id="contador" style="text-align: center;">
+							Numero de Registros:<strong id="filas"></strong>
+
+						</div>
 						    <table class="table ">
     						
 								<thead>
@@ -139,23 +143,22 @@ $(document).ready(function(){
 		var codigo = $('#Tcodigo').val();
 		
 		$.post("<?php echo site_url('llegadas_tarde/validarEstudiante') ?>", { codigo: codigo},
-		  function(xml){
+		  function(data){
 		  
-			xmlDoc = $.parseXML(xml),
-			$xml = $(xmlDoc),
-			$estudiante = $xml.find("estudiante");
-			$Acudiente = $xml.find("acudiente");
+		  	var acudiente = data.acudiente;
+		  	var estudiante = data.estudiante;
+			
 
-			var nombreA = $Acudiente.find("nombre").text();
-		    var apellidoA = $Acudiente.find("apellido").text();
-		    var emailA = $Acudiente.find("email").text();
-		    var existenciaA = $Acudiente.find("existencia").text();
+			var nombreA = acudiente.nombre;
+		    var apellidoA = acudiente.apellido;
+		    var emailA = acudiente.email;
+		    var existenciaA = acudiente.existencia;
 
 		   
-		    var nombreE = $estudiante.find("nombre").text();
-		    var apellidoE = $estudiante.find("apellido").text();
-		    var grupoE = $estudiante.find("grupo").text();
-		    var existenciaE = $estudiante.find("existencia").text();
+		    var nombreE = estudiante.nombre;
+		    var apellidoE =estudiante.apellido;
+		    var grupoE = estudiante.grupo;
+		    var existenciaE = estudiante.existencia;
 
 		   if(existenciaE == "no")
 		    {
@@ -177,7 +180,7 @@ $(document).ready(function(){
 		    $('#Aapellido').val(apellidoA);
 		    $('#Aemail').val(emailA);
 
-		  });
+		  },"json");
 
 		$('#registrar').dialog('open');
 
@@ -199,8 +202,10 @@ $(document).ready(function(){
 		
 		$.post("<?php echo site_url('llegadas_tarde/buscarEstudiante') ?>", { nombres: nombres, apellidos: apellidos,grupo:grupo},
 		  function(data){
-		   	$('#datosEstudiantes').html(data);
-		  });
+
+		   	$('#datosEstudiantes').html(data.resultados);
+		   	$("#filas").html(data.filas);
+		  },"json");
 
 	});
 	//envia el codigo del estudinate en la lista a el campo para hacer el registro

@@ -69,16 +69,15 @@ $(function() {
 
 		$.post("<?php echo site_url('usuarios/usuarioSession') ?>",{id:id}, function(data){
 
-		   	documento = $.parseXML(data),
-		   	xml = $(documento),
-		   	usuarios = xml.find("usuarios");
+		   	
+		
+		   	var id = data.ide;
 
-		   	var id = usuarios.find("id").text();
-		   	var nombre = usuarios.find("nombre").text();
-		   	var usuario = usuarios.find("usuario").text();
-		   	var clave = usuarios.find("clave").text();
-		   	var rango = usuarios.find("rango").text();
-		 
+		   	var nombre = data.nombre;
+		   	var usuario = data.usuario;
+		   	var clave = data.clave;
+		   	var rango = data.rango;
+			
 		   	 $("#UDid").val(id);
 			 $("#UDnombre").val(nombre);
 		 	 $("#UDusuario").val(usuario);
@@ -86,7 +85,7 @@ $(function() {
 			 $("#UDrango").val(rango);
 		   		
 		   		
-		});
+		},"json");
 		
 
 		

@@ -21,7 +21,7 @@
 		<div id="contenedor">
 			<!-- <img src="../../../img/colegio.png"> -->
 			<?php echo img('img/colegio.png') ?>
-			<h4>Se Informa que el estudiante ah Llegado Tarde</h4> 
+			<h4>Se Informa que el estudiante ha Llegado Tarde</h4> 
 			<p><strong>Codigo:</strong> <?php echo $codigo ?></p>
 			<p><strong>Nombre:</strong> <?php echo $nombre." ".$apellido ?></p>
 			<p><strong>Grupo:</strong> <?php echo $grupo ?></p>

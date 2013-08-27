@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 14-06-2013 a las 06:44:45
+-- Tiempo de generación: 27-08-2013 a las 05:17:50
 -- Versión del servidor: 6.0.0-alpha-community-nt-debug
 -- Versión de PHP: 5.4.15
 
@@ -19,7 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `colegio`
 --
-
+CREATE DATABASE IF NOT EXISTS `colegio` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `colegio`;
 
 -- --------------------------------------------------------
 
@@ -28,14 +29,14 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `acudientes` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `estudiante` int(11) NOT NULL,
   `nombre` varchar(45) NOT NULL,
   `apellido` varchar(45) NOT NULL,
   `email` varchar(60) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `acudiente-estudiante` (`estudiante`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=98555203 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `acudientes`
@@ -1053,6 +1054,53 @@ INSERT INTO `estudiantes` (`codigo`, `apellidos`, `nombres`, `sexo`, `grd_13`) V
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `funciones`
+--
+
+CREATE TABLE IF NOT EXISTS `funciones` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Volcado de datos para la tabla `funciones`
+--
+
+INSERT INTO `funciones` (`id`, `nombre`) VALUES
+(1, 'registrar llegada'),
+(2, 'consultar llegada'),
+(3, 'editar llegada'),
+(4, 'eliminar llegada');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `funcion_rango`
+--
+
+CREATE TABLE IF NOT EXISTS `funcion_rango` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `rango` int(11) DEFAULT NULL,
+  `funcion` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_funcion_rango_funciones1` (`funcion`),
+  KEY `fk_funcion_rango_rangos1` (`rango`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Volcado de datos para la tabla `funcion_rango`
+--
+
+INSERT INTO `funcion_rango` (`id`, `rango`, `funcion`) VALUES
+(1, 1, 1),
+(2, 1, 2),
+(3, 1, 3),
+(4, 1, 4);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `ingresos`
 --
 
@@ -1066,7 +1114,7 @@ CREATE TABLE IF NOT EXISTS `ingresos` (
   PRIMARY KEY (`id`),
   KEY `usuario` (`usuario`),
   KEY `estudiante` (`estudiante`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=51 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=63 ;
 
 --
 -- Volcado de datos para la tabla `ingresos`
@@ -1113,7 +1161,38 @@ INSERT INTO `ingresos` (`id`, `usuario`, `estudiante`, `observaciones`, `fecha`,
 (47, 1, 31028, '', '2013-06-14', '12:28:49'),
 (48, 1, 31028, '', '2013-06-14', '12:36:26'),
 (49, 1, 33004, '', '2013-06-14', '01:36:19'),
-(50, 1, 33004, '', '2013-06-14', '01:36:42');
+(50, 1, 33004, '', '2013-06-14', '01:36:42'),
+(51, 1, 31028, '', '2013-06-14', '02:37:31'),
+(52, 1, 31028, '', '2013-06-14', '02:38:09'),
+(53, 1, 31028, '', '2013-06-14', '02:40:38'),
+(54, 1, 31028, '', '2013-06-14', '02:43:52'),
+(55, 1, 31028, '', '2013-06-14', '02:58:15'),
+(56, 1, 31028, '', '2013-06-14', '03:15:49'),
+(57, 1, 31028, '', '2013-06-14', '03:17:30'),
+(58, 1, 31028, '', '2013-06-20', '01:50:27'),
+(59, 1, 31028, '', '2013-06-30', '12:43:01'),
+(60, 1, 33004, '', '2013-06-30', '01:14:42'),
+(61, 1, 33004, '', '2013-07-01', '02:10:30'),
+(62, 1, 17071, 'se retraso el transporte...', '2013-07-02', '09:07:00');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `rangos`
+--
+
+CREATE TABLE IF NOT EXISTS `rangos` (
+  `id` int(11) NOT NULL,
+  `nombres` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `rangos`
+--
+
+INSERT INTO `rangos` (`id`, `nombres`) VALUES
+(1, 'administrador');
 
 -- --------------------------------------------------------
 
@@ -1126,8 +1205,9 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `nombre` varchar(45) DEFAULT NULL,
   `usuario` varchar(45) DEFAULT NULL,
   `clave` varchar(45) DEFAULT NULL,
-  `rango` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+  `rango` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_usuarios_rangos1` (`rango`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
@@ -1149,11 +1229,24 @@ ALTER TABLE `acudientes`
   ADD CONSTRAINT `acudiente-estudiante` FOREIGN KEY (`estudiante`) REFERENCES `estudiantes` (`codigo`);
 
 --
+-- Filtros para la tabla `funcion_rango`
+--
+ALTER TABLE `funcion_rango`
+  ADD CONSTRAINT `fk_funcion_rango_funciones1` FOREIGN KEY (`funcion`) REFERENCES `funciones` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_funcion_rango_rangos1` FOREIGN KEY (`rango`) REFERENCES `rangos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
 -- Filtros para la tabla `ingresos`
 --
 ALTER TABLE `ingresos`
   ADD CONSTRAINT `estudiante` FOREIGN KEY (`estudiante`) REFERENCES `estudiantes` (`codigo`),
   ADD CONSTRAINT `usuario` FOREIGN KEY (`usuario`) REFERENCES `usuarios` (`id`);
+
+--
+-- Filtros para la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD CONSTRAINT `fk_usuarios_rangos1` FOREIGN KEY (`rango`) REFERENCES `rangos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -307,6 +307,7 @@
 
 			var id = $(this).attr('id');
 			var res = confirm('Esta seguro Que dese eliminar el Registros ?');
+			var resEliminacion ;
 			if (res ==  true)
 			{
 				
@@ -315,13 +316,14 @@
 				  id: id
 				},
 			  function(data){
-		  		//alert(data); 
-
-			  });
-				$('.'+id).hide();
-			}else
-			{
+		  		alert(data.mensaje); 
+		  		resEliminacion = data.respuesta;
 				
+				if (resEliminacion == "true") 
+				{
+					$('.'+id).hide();
+				}
+			  }, "json");
 			}
 			return false;
 		});
@@ -371,9 +373,9 @@
 				},
 			  function(data){
 			  	
-		  		if (data == "si") {
+		  		if (data.respuesta == "true") {
 
-		  			alert("Registro Modificado Correctamente");
+		  			alert(data.mensaje);
 		  			$("."+id+"  .codigo").html(codigo);
 					$("."+id+"  .nombre").html(nombre);
 					$("."+id+"  .grupo").html(grupo);
@@ -383,9 +385,10 @@
 	
 		  		}else
 		  		{
-		  			alert("Error al Actualizar el Registros");
+		  			alert(data.mensaje);
 		  		}
-			  });
+			  }, "json");
+
 			$('.Dialogeditar').dialog('close');
 			
 			return false;

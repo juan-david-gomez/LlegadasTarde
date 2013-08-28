@@ -31,6 +31,22 @@ class Rango_funcion extends CI_Model {
 		}
 	}//fin de consultar
 
+	 public function validarFuncion($rango,$idfuncion)
+	 {
+	 	
+	 
+	 		//ahora buscaremos la funcion solicitada entre la que posee el rango
+			$funcionesRangos = $this->consultar("",$rango,$idfuncion);
+	 		if ($funcionesRangos)
+	 		{  
+ 			// si devolvio valores extraemos el nombre de diha funcion
+		 		return true;
+		 	}else
+	 		{
+	 			return false;
+	 		}
+	 	
+	 }
 	
 }
 

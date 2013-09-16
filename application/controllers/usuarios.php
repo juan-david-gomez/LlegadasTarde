@@ -5,6 +5,8 @@ class Usuarios extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('usuario');
+		$this->load->model('rangos');
+		$this->load->model('rango_funcion');
 	}
 
 	public function index()
@@ -119,58 +121,113 @@ class Usuarios extends CI_Controller {
 
 	public function registrar($nombre,$usuario,$clave,$rango)
 	{
-		$respuesta = $this->usuario->insertar($nombre,$usuario,$clave,$rango);
-		if ($respuesta) {
+		// extraigo de la session el id del usuario activo
+		$idusuario = $this->session->userdata('id');
+		//busco el rango con ese id
+		$datos = $this->usuario->consultar($idusuario,"","","","");
+		
+		if ($datos) 
+		{
+			foreach ($datos[0] as $row) 
+			{
+				//extraigo el rango y lo guardo
+				$rango = $row->rango;
+			}
+		}
+		//guardo el id de esta funcion
+		$idfuncion = 13;
+		//compruebo si este rango tiene dicho permiso
+		$permiso = $this->rango_funcion->validarFuncion($rango,$idfuncion);
+		
+		
+		if ($permiso)
+		{
+			$respuesta = $this->usuario->insertar($nombre,$usuario,$clave,$rango);
+			if ($respuesta) {
 
-			return "<div class='alert alert-success' >
+				return "<div class='alert alert-success' >
+					    <a class='close' data-dismiss='alert'>×</a>
+					    <p class='alert-heading'><strong>Felicidades!</strong>  El Usuario fue Insertado Correctamente</p>
+					    </div>";
+			}else 
+			{
+				return "<div class='alert alert-error' >
 				    <a class='close' data-dismiss='alert'>×</a>
-				    <p class='alert-heading'><strong>Felicidades!</strong>  El Usuario fue Insertado Correctamente</p>
-				    </div>";
-		}else 
+				    <p class='alert-heading'><strong>Lo Siento!</strong>  El Usuario no fue Insertado Correctamente </p>
+					</div>";
+			}
+
+		}else
 		{
 			return "<div class='alert alert-error' >
-			    <a class='close' data-dismiss='alert'>×</a>
-			    <p class='alert-heading'><strong>Lo Siento!</strong>  El Usuario no fue Insertado Correctamente </p>
-				</div>";
+				    <a class='close' data-dismiss='alert'>×</a>
+				    <p class='alert-heading'><strong>Lo Siento!</strong> Este usuario no tiene permiso para esta acción </p>
+					</div>";
 		}
 	}
 
 	public function buscarUsuario ()
-
 	{
-		$id = $this->input->post('id');
-		$nombre = $this->input->post('nombre');
-		$usuario = $this->input->post('usuario');
-		$clave = $this->input->post('clave');
-		$rango = $this->input->post('rango');
+		// extraigo de la session el id del usuario activo
+		$idusuario = $this->session->userdata('id');
+		//busco el rango con ese id
+		$datos = $this->usuario->consultar($idusuario,"","","","");
 		
-		$datos =  $this->usuario->consultar($id,$nombre,$usuario,$clave,$rango);
-		$respuesta['respuesta'] = "";
-		
-		if($datos)
+		if ($datos) 
 		{
-			foreach ($datos[0] as $row) {
-				$info = "id ='".$row->id."' usuario='".$row->usuario."' clave='".$row->clave."' nombre='".$row->nombre."' rango='".$row->rango."'' href='#' ";
-				$respuesta['respuesta'] .=  '<tr class="'.$row->id.'">';
-				
-				$respuesta['respuesta'] .=  '<td><a '.$info.'  class="id" >'.$row->id.'</a></td>';
-				$respuesta['respuesta'] .=  '<td><a '.$info.'  class="nombre" >'.$row->nombre.'</a></td>';
-				$respuesta['respuesta'] .=  '<td><a '.$info.' class="usuario" >'.$row->usuario.'</a></td>';
-				$respuesta['respuesta'] .=  '<td><a '.$info.'  class="rango" >'.$row->rango.'</a></td>';
-				$respuesta['respuesta'] .=  '<td style="display:none"><a '.$info.'  class="clave" >'.$row->clave.'</a></td>';
-				$respuesta['respuesta'] .=  '<th>
-						<center>
-						<a class="borrar" href="" title="Borrar" id="'.$row->id.'" >'.img('img/eliminar.png').'</a>
-						<a href=""  id="'.$row->id.'" title="Editar" class="editar" >'.img('img/editar.png').'</a>
-						</center>
-					  </th>';
-				$respuesta['respuesta'] .=  '</tr>';
-				$respuesta['filas'] = $datos[1];
+			foreach ($datos[0] as $row) 
+			{
+				//extraigo el rango y lo guardo
+				$rango = $row->rango;
 			}
+		}
+		//guardo el id de esta funcion
+		$idfuncion = 14;
+		//compruebo si este rango tiene dicho permiso
+		$permiso = $this->rango_funcion->validarFuncion($rango,$idfuncion);
+		
+		
+		if ($permiso)
+		{
+			$id = $this->input->post('id');
+			$nombre = $this->input->post('nombre');
+			$usuario = $this->input->post('usuario');
+			$clave = $this->input->post('clave');
+			$rango = $this->input->post('rango');
+			
+			$datos =  $this->usuario->consultar($id,$nombre,$usuario,$clave,$rango);
+			$respuesta['respuesta'] = "";
+			
+			if($datos)
+			{
+				foreach ($datos[0] as $row) {
+					$info = "id ='".$row->id."' usuario='".$row->usuario."' clave='".$row->clave."' nombre='".$row->nombre."' rango='".$row->rango."'' href='#' ";
+					$respuesta['respuesta'] .=  '<tr class="'.$row->id.'">';
+					
+					$respuesta['respuesta'] .=  '<td><a '.$info.'  class="id" >'.$row->id.'</a></td>';
+					$respuesta['respuesta'] .=  '<td><a '.$info.'  class="nombre" >'.$row->nombre.'</a></td>';
+					$respuesta['respuesta'] .=  '<td><a '.$info.' class="usuario" >'.$row->usuario.'</a></td>';
+					$respuesta['respuesta'] .=  '<td><a '.$info.'  class="rango" >'.$row->rango.'</a></td>';
+					$respuesta['respuesta'] .=  '<td style="display:none"><a '.$info.'  class="clave" >'.$row->clave.'</a></td>';
+					$respuesta['respuesta'] .=  '<th>
+							<center>
+							<a class="borrar" href="" title="Borrar" id="'.$row->id.'" >'.img('img/eliminar.png').'</a>
+							<a href=""  id="'.$row->id.'" title="Editar" class="editar" >'.img('img/editar.png').'</a>
+							</center>
+						  </th>';
+					$respuesta['respuesta'] .=  '</tr>';
+					$respuesta['filas'] = $datos[1];
+				}
+			}else
+			{
+				$respuesta['respuesta'] =  "<center><td colspan='4'>No se Encuentra Ningun Usuario</td></center>";
+				$respuesta['filas'] = 0;
+			}
+
 		}else
 		{
-			$respuesta['respuesta'] =  "<center><td colspan='4'>No se Encuentra Ningun Usuario</td></center>";
-			$respuesta['filas'] = 0;
+				$respuesta['respuesta'] =  "<center><td colspan='4'>Lo siento este usuario no tienpermiso para esta acción</td></center>";
+				$respuesta['filas'] = 0;
 		}
 		echo  json_encode($respuesta);
 			
@@ -178,34 +235,91 @@ class Usuarios extends CI_Controller {
 
 	public function eliminar()
 	{
-		$id = $this->input->post('id');
-		if ($this->usuario->borrar($id))
+		// extraigo de la session el id del usuario activo
+		$idusuario = $this->session->userdata('id');
+		//busco el rango con ese id
+		$datos = $this->usuario->consultar($idusuario,"","","","");
+		
+		if ($datos) 
 		{
-			echo "Registro Eliminado Correctamente";
+			foreach ($datos[0] as $row) 
+			{
+				//extraigo el rango y lo guardo
+				$rango = $row->rango;
+			}
+		}
+		//guardo el id de esta funcion
+		$idfuncion = 16;
+		//compruebo si este rango tiene dicho permiso
+		$permiso = $this->rango_funcion->validarFuncion($rango,$idfuncion);
+		
+		if ($permiso)
+		{
+			$id = $this->input->post('id');
+			if ($this->usuario->borrar($id))
+			{
+				$respuesta['mensaje'] = "Registro Eliminado Correctamente";
+				$respuesta['respuesta'] = "true";
+			}else
+			{
+				$respuesta['mensaje'] = "El Registro No se Pudo Insertar";
+				$respuesta['respuesta'] = "false";
+
+			}
+
 		}else
 		{
-			echo "El Registro No se Pudo Insertar";
+			$respuesta['mensaje'] = "este usuario no tiene permiso para esta acción";
+			$respuesta['respuesta'] = "false";
 		}
+
+		echo json_encode($respuesta);
 	}
 
 	public function modificar()
 	{
-		$id = $this->input->post('id');
-		$nombre = $this->input->post('nombre');
-		$usuario = $this->input->post('usuario');
-		$clave = $this->input->post('clave');
-		$rango = $this->input->post('rango');
+			// extraigo de la session el id del usuario activo
+		$idusuario = $this->session->userdata('id');
+		//busco el rango con ese id
+		$datos = $this->usuario->consultar($idusuario,"","","","");
+		
+		if ($datos) 
+		{
+			foreach ($datos[0] as $row) 
+			{
+				//extraigo el rango y lo guardo
+				$rango = $row->rango;
+			}
+		}
+		//guardo el id de esta funcion
+		$idfuncion = 16;
+		//compruebo si este rango tiene dicho permiso
+		$permiso = $this->rango_funcion->validarFuncion($rango,$idfuncion);
+		
+		if ($permiso)
+		{
+			$id = $this->input->post('id');
+			$nombre = $this->input->post('nombre');
+			$usuario = $this->input->post('usuario');
+			$clave = $this->input->post('clave');
+			$rango = $this->input->post('rango');
 
-		$respuesta = $this->usuario->editar($id,$nombre,$usuario,$clave,$rango);
-		if ($respuesta) {
+			$respuesta = $this->usuario->editar($id,$nombre,$usuario,$clave,$rango);
+			if ($respuesta) {
 
-			echo "Datos Actualizados";
+				$respuesta['mensaje'] = "Datos Actualizados";
+			}else
+			{
+				$respuesta['mensaje'] = "No se Pudieron Actualizar los Datos";
+			}
+
 		}else
 		{
-			echo "No se Pudieron Actualizar los Datos";
+			$respuesta['mensaje'] = "este usuario no tiene permiso para esta acción";
+			
 		}
 
-
+		echo json_encode($respuesta);
 	}
 	public function usuarioSession()
 	{
@@ -231,6 +345,38 @@ class Usuarios extends CI_Controller {
 			}
 		}
 	}
+	public function buscarRango ()
+	{
+
+		$id = $this->input->post('id');
+		$nombre = $this->input->post('nombres');
+		
+		$datos =  $this->rangos->consultar($id,$nombre);
+		$resultados['resultados'] = "";
+
+
+		
+		if($datos)
+		{
+			foreach ($datos[0] as $row) {
+				$info = "nombre='".$row->nombres."'
+					 	 id='".$row->id."'
+					 	 href='#' ";
+				$resultados['resultados'] .= '<tr>';
+				
+				$resultados['resultados'] .= '<td><a '.$info.'  class="es" >'.$row->id.'</a></td>';
+				$resultados['resultados'] .= '<td><a '.$info.'  class="es" >'.$row->nombres.'</a></td>';
+				$resultados['resultados'] .= '</tr>';
+			}
+		$resultados['filas'] = $datos[1];
+		
+		}else
+		{
+			$resultados['resultados'] = "<td colspan='4'>No se Encuentra Ningun Rango</td>";
+			$resultados['filas'] = 0;
+		}
+		echo json_encode($resultados);	
+	}	
 
 }/* End of file login.php */
 

@@ -16,8 +16,9 @@ body
 }
 .menu 
 {
-  width: 700px;
-	 margin: 0 auto;
+  /*anchura de el menu*/
+  width: 770px;
+	margin: 0 auto;
 }
 .menu a span
 {

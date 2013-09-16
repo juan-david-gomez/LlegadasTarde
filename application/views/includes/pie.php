@@ -1,5 +1,5 @@
 <div class="row-fluid" >
-			<div class="span11 offset1" >
+			<div class="span10 offset1" >
 				<div class="menu">
 					<a class="dock-item2" href="<?php echo site_url('inicio/abrir/registrar') ?>">
 			  			<span>Registrar Llegada</span>
@@ -31,6 +31,10 @@
 					  	<?php echo img('img/users.png') ?>
 					</a> 
 
+					<a class="dock-item2" href="<?php echo site_url('inicio/abrir/rangos') ?>">
+					  	<span>Administrar Rangos</span>
+					  	<?php echo img('img/rangos.png') ?>
+					</a>
 					<a class="dock-item2" href="<?php echo site_url('usuarios/logout') ?>">
 					  	<span>Cerrar Sesion</span>
 					  	<?php echo img('img/logout.png') ?>

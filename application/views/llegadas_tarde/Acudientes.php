@@ -143,7 +143,7 @@
 								<label><strong>Grupo</strong></label>
 								<input type="text" id="Egrupo" readonly="readonly">
 							</div>
-							<div style="float:right;">
+							<div style="float:right;width:200px">
 								<h4>Acudiente</h4>
 								<label><strong>Id</strong></label>
 								<input type="text" id="DialogId" readonly="readonly"
@@ -341,19 +341,16 @@ $(function() {
 				},
 			  function(data){
 			  	
-		  		if (data = "si") {
+		  		if (data.validar == "si") {
 
-		  			alert("Registro Modificado Correctamente");
 		  			$("."+id+"  .id").html(id);
 					$("."+id+"  .nombre").html(nombre);
 					$("."+id+"  .apellido").html(apellido);
 					$("."+id+"  .email").html(email);
 					
-		  		}else
-		  		{
-		  			alert("Error al Actualizar el Registros");
 		  		}
-			  });
+		  			alert(data.mensaje);
+			  }, "json");
 			$("#DilogoEditar").dialog('close');
 			return false;
 		});
@@ -371,16 +368,18 @@ $(function() {
 				{
 				  id: id
 				},
-			  function(data){
-		  		alert(data); 
-
-			  });
-				$('.'+id).hide();
-			}else
-			{
+			 	  function(data){
+		  		alert(data.mensaje); 
+		  		resEliminacion = data.respuesta;
 				
+				if (resEliminacion == "true") 
+				{
+					$('.'+id).hide();
+				}
+			  }, "json");
 			}
 			return false;
+			
 		});
 })
 

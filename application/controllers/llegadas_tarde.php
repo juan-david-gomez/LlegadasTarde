@@ -322,7 +322,7 @@ class Llegadas_tarde extends CI_Controller {
 			}
 		}else
 		{
-			$respuesta["mensaje"] = "Este usuario no tiene permisos para esat acción";
+			$respuesta["mensaje"] = "Este usuario no tiene permisos para esta acción";
 			$respuesta["respuesta"] = "false";
 		}
 		echo json_encode($respuesta);

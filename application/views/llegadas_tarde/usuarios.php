@@ -32,6 +32,7 @@
 						<br>
 						<input type="submit" value="Insertar" id="Uinsertar" class="btn">
 						<input type="button" value="Limpiar" id="Ulimpiar" class="btn">
+						<input type="button" value="Buscar Rangos" id="RBuscar" class="btn">
 			 		</form>
 			 	</div>
 			 	<div id="tabs-1">
@@ -48,6 +49,7 @@
 						<br>
 						<input type="button" value="Buscar" id="buscarU" class="btn">
 						<input type="button" value="Limpiar" id="limpiar" class="btn">
+						
 			 		</form>
 			 	</div>
 			 		<div id="contador" style="text-align: center;">
@@ -76,7 +78,7 @@
 		</section>
 	</div>
 </div><!-- row fluid -->
-<!-- dialogo para editar los estudiantes  -->
+<!-- dialogo para editar los usuarios  -->
 <div class="Dialogeditar" style="display:none">
 	<h1 align="center">Editar  Usuario</h1>
 	<hr>
@@ -111,11 +113,45 @@
 		</div>
 		
 	</form>
-</div>				
+</div>			
+<!-- dialogo para buscar los rangos  -->
+<div id="rangos" style="display:none" >
+						<center><h1>Buscar un Rango</h1></center>
+						<br>
+						<input type="text" name="nombre" id="id" placeholder="Identificación">
+						<input type="text" name="nombre" id="nombreR" placeholder="Nombre">
+						
+						<br>
+						<input type="button" value="Buscar" id="Busqueda" class="btn">
+					
+						<br><br>
+					<div id="contador" style="text-align: center;">
+						Numero de Registros:<strong id="Filas"></strong>
+
+					</div>
+						    <table class="table ">
+    						
+								<thead>
+								<tr class="ui-widget-header ">
+								<th>id</th>
+								<th>Nombre</th>
+								</tr>
+
+								</thead>
+								<tbody id="datosrangos">
+									
+								</tbody>
+    						</table>
+    						<hr>
+					
+						<input type="button" value="Cancelar" id="cerrar" class="btn">
+					</div> 	
 <script type="text/javascript">
 $(function() {
+	var idbotonRango;
 	//activa las pestañas del Estudiantes
 	$("#tabs").tabs();
+	
 	//dialogo para editar estudiantes
 	$('.Dialogeditar').dialog({
 				autoOpen: false,
@@ -124,6 +160,50 @@ $(function() {
 				width: 543,
 				modal: true
 	});
+
+	//define cuadro de dialogo para busqueda de estudiantes
+	$('#rangos').dialog({
+		autoOpen: false,
+		title:"Buscar un rangos",
+		height: 450,
+		width: 500,
+		modal: true                                      
+
+	});
+	//envia los datos para buscar los rangos
+	$('#Busqueda').click(function () {
+		var id = $('#id').val();
+		
+		var nombre = $('#nombreR').val();
+				
+		$.post("<?php echo site_url('usuarios/buscarRango') ?>", { nombres: nombre, id: id},
+		  function(data){
+			
+		   	$('#datosrangos').html(data.resultados);
+		   	$("#Filas").html(data.filas);
+		  },"json");
+
+	});
+	//envia el codigo del estudinate en la lista a el campo para hacer el registro
+	$(document).delegate(".es","click",function() {
+
+		var id = $(this).attr('id');
+	
+		$("#Urango").val(id);
+		
+		
+		
+		
+		$('#rangos').dialog('close');
+		return false;
+	});
+
+	$("#RBuscar").click(function () {
+		$("#rangos").dialog('open');
+				
+	});
+	
+
 	//Boton cancelar del dialogo para editar
 	$("#cancelar").click(function() {
 			
@@ -141,9 +221,9 @@ $(function() {
 		
 		$.post("<?php echo site_url('usuarios/modificar') ?>", {id:id, nombre:nombre, usuario: usuario,clave:clave,rango:rango},
 			  function(data){
-		   	alert(data);
+		   	alert(data.mensaje);
 		   		
-		});
+		},"json");
 		$('.Dialogeditar').dialog('close');
 	})
 
@@ -181,15 +261,14 @@ $(function() {
 				  id: iden
 				},
 			  function(data){
-		  		//alert(data); 
-
-			  });
-				var id = "."+iden;
-			
-				$(id).hide();
-			}else
-			{
+		  		alert(data.mensaje); 
+		  		resEliminacion = data.respuesta;
 				
+				if (resEliminacion == "true") 
+				{
+					$('.'+iden).hide();
+				}
+			  }, "json");
 			}
 			return false;
 		});

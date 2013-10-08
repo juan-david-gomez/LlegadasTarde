@@ -187,7 +187,7 @@ class Rango extends CI_Controller {
 		 $idfuncion = 19;
 		// //compruebo si este rango tiene dicho permiso
 		 $permiso = $this->rango_funcion->validarFuncion($rango,$idfuncion);
-		$permiso = true;
+		
 		
 		if ($permiso)
 		{
@@ -249,6 +249,33 @@ class Rango extends CI_Controller {
 			echo json_encode($respuesta);
 		
 
+	}
+
+	public function jsonRangos()
+	{
+		// extraigo de la session el id del usuario activo
+		
+			// $id = $this->input->post('id');
+			// $nombre = $this->input->post('nombre');
+
+			// $datos =  $this->rangos->consultar($id,$nombre);	
+			$nombre 
+			$resultados['resultados'] = ""
+			
+			// if($datos)
+			// {
+			// 	$resultados['resultados'] = "";	
+			// 	foreach ($datos[0] as $row) {
+					
+			// 	}
+			// }else
+			// {
+			// 	$resultados['resultados'] = "";
+			// }
+			// $resultados['filas'] = $datos[1];
+				
+
+		echo json_encode($resultados);
 	}
 }
 

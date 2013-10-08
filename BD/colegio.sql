@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 27-08-2013 a las 05:17:50
+-- Tiempo de generación: 16-09-2013 a las 12:53:02
 -- Versión del servidor: 6.0.0-alpha-community-nt-debug
 -- Versión de PHP: 5.4.15
 
@@ -43,6 +43,8 @@ CREATE TABLE IF NOT EXISTS `acudientes` (
 --
 
 INSERT INTO `acudientes` (`id`, `estudiante`, `nombre`, `apellido`, `email`) VALUES
+(12314567, 24033, 'john jairo', 'ateortua', 'santiaval9@hotmail.com'),
+(13658723, 33004, 'leidy', 'gomez', 'leidygomez9512@hotmail.com'),
 (98555202, 31028, 'John Mario ', 'Gomez Lopez', 'jdavidg.e@hotmail.com');
 
 -- --------------------------------------------------------
@@ -1061,7 +1063,7 @@ CREATE TABLE IF NOT EXISTS `funciones` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=21 ;
 
 --
 -- Volcado de datos para la tabla `funciones`
@@ -1071,7 +1073,23 @@ INSERT INTO `funciones` (`id`, `nombre`) VALUES
 (1, 'registrar llegada'),
 (2, 'consultar llegada'),
 (3, 'editar llegada'),
-(4, 'eliminar llegada');
+(4, 'eliminar llegada'),
+(5, 'registrar estudiante'),
+(6, 'consultar estudiante'),
+(7, 'editar estudiante'),
+(8, 'eliminar estudiante'),
+(9, 'registrar acudiente'),
+(10, 'consultar acudiente'),
+(11, 'editar acudiente'),
+(12, 'eliminar acudiente'),
+(13, 'registrar usuario'),
+(14, 'cosultar usuario'),
+(15, 'editar usuario'),
+(16, 'eliminar usuario'),
+(17, 'registrar rango'),
+(18, 'consultar rango'),
+(19, 'editar rango'),
+(20, 'eliminar rango');
 
 -- --------------------------------------------------------
 
@@ -1086,7 +1104,7 @@ CREATE TABLE IF NOT EXISTS `funcion_rango` (
   PRIMARY KEY (`id`),
   KEY `fk_funcion_rango_funciones1` (`funcion`),
   KEY `fk_funcion_rango_rangos1` (`rango`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 --
 -- Volcado de datos para la tabla `funcion_rango`
@@ -1096,7 +1114,15 @@ INSERT INTO `funcion_rango` (`id`, `rango`, `funcion`) VALUES
 (1, 1, 1),
 (2, 1, 2),
 (3, 1, 3),
-(4, 1, 4);
+(4, 1, 4),
+(5, 2, 2),
+(6, 1, 5),
+(7, 1, 6),
+(8, 1, 8),
+(9, 1, 7),
+(10, 2, 10),
+(11, 2, 14),
+(12, 1, 9);
 
 -- --------------------------------------------------------
 
@@ -1114,7 +1140,7 @@ CREATE TABLE IF NOT EXISTS `ingresos` (
   PRIMARY KEY (`id`),
   KEY `usuario` (`usuario`),
   KEY `estudiante` (`estudiante`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=63 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=72 ;
 
 --
 -- Volcado de datos para la tabla `ingresos`
@@ -1123,11 +1149,9 @@ CREATE TABLE IF NOT EXISTS `ingresos` (
 INSERT INTO `ingresos` (`id`, `usuario`, `estudiante`, `observaciones`, `fecha`, `hora`) VALUES
 (4, 1, 31028, 'hola juan david', '2013-03-04', '01:06:27'),
 (5, 1, 32055, 'se callo miestras llegaba', '2013-03-04', '01:11:03'),
-(9, 1, 15055, 'le dio pereza madrugar', '2013-03-05', '12:33:00'),
 (10, 1, 31028, 'es un dormilon', '2013-03-05', '12:33:46'),
 (11, 1, 17071, 'por es muy bobo', '2013-03-05', '01:06:41'),
 (12, 1, 33004, '', '2013-03-10', '11:04:37'),
-(13, 1, 21066, '', '2013-03-11', '05:34:29'),
 (14, 1, 14054, '', '2013-03-12', '12:34:01'),
 (15, 1, 15058, '', '2013-03-12', '12:37:30'),
 (16, 1, 31012, '', '2013-03-12', '12:38:38'),
@@ -1173,7 +1197,10 @@ INSERT INTO `ingresos` (`id`, `usuario`, `estudiante`, `observaciones`, `fecha`,
 (59, 1, 31028, '', '2013-06-30', '12:43:01'),
 (60, 1, 33004, '', '2013-06-30', '01:14:42'),
 (61, 1, 33004, '', '2013-07-01', '02:10:30'),
-(62, 1, 17071, 'se retraso el transporte...', '2013-07-02', '09:07:00');
+(62, 1, 17071, 'se retraso el transporte...', '2013-07-02', '09:07:00'),
+(63, 1, 31028, '', '2013-08-27', '06:00:30'),
+(70, 1, 31026, '', '2013-08-27', '07:37:29'),
+(71, 1, 17030, 'llego tarde por quedarse dormido', '2013-09-05', '11:39:41');
 
 -- --------------------------------------------------------
 
@@ -1183,7 +1210,7 @@ INSERT INTO `ingresos` (`id`, `usuario`, `estudiante`, `observaciones`, `fecha`,
 
 CREATE TABLE IF NOT EXISTS `rangos` (
   `id` int(11) NOT NULL,
-  `nombres` varchar(45) DEFAULT NULL,
+  `nombre` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -1191,8 +1218,9 @@ CREATE TABLE IF NOT EXISTS `rangos` (
 -- Volcado de datos para la tabla `rangos`
 --
 
-INSERT INTO `rangos` (`id`, `nombres`) VALUES
-(1, 'administrador');
+INSERT INTO `rangos` (`id`, `nombre`) VALUES
+(1, 'administrador'),
+(2, 'recepcionista');
 
 -- --------------------------------------------------------
 
@@ -1216,7 +1244,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 
 INSERT INTO `usuarios` (`id`, `nombre`, `usuario`, `clave`, `rango`) VALUES
 (1, 'Juan David', 'admin', 'admin', 1),
-(4, 'juan david', 'jdavidg.e@hotmail.com ', 'juanchito07', 1);
+(4, 'juan', 'juan', 'juan', 2);
 
 --
 -- Restricciones para tablas volcadas

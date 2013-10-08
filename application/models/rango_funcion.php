@@ -47,6 +47,65 @@ class Rango_funcion extends CI_Model {
 	 		}
 	 	
 	 }
+	 public function consultarPermisos($idRango)
+	 {
+	 	// $this->db->select('f.nombre,if ((select count(*) from funcion_rango fr where fr.rango = '.$idRango.' and fr.funcion = f.id)>= 1,"si","no") as permiso');
+	 	// $this->db->from('funciones f');
+
+	 	// $resul = $this->db->get();
+	 	$resul = $this->db->query('select f.id,f.nombre,
+	if ((select count(*) from funcion_rango fr where fr.rango = '.$idRango.' and fr.funcion = f.id)>= 1,1,0) as permiso
+	from funciones f;');
+		 $filas = $resul->num_rows;
+		
+
+		if( $filas > 0){ 
+			$resultados[0]= $resul->result();
+			$resultados[1] = $filas;
+			$resultados[2] = $idRango;
+			return $resultados;
+		}else
+		{
+			return false;
+		}
+
+	 }
+
+	 public function insertar($rango,$funcion)
+	 {
+
+	 	$object = array('rango' => $rango ,'funcion'  => $funcion);
+
+		
+		
+
+		if($this->db->insert('funcion_rango', $object))
+		{
+			return true;
+			
+		}else
+		{
+			if($data['error'] = $this->db->_error_message())
+			{
+				return $data;
+			}
+
+		}
+	 }
+	 
+	 public function eliminar($rango,$funcion)
+	 {
+	 	$this->db->where('rango', $rango);
+	 	$this->db->where('funcion', $funcion);
+
+		if($this->db->delete('funcion_rango'))
+		{
+			return true;
+		}else
+		{
+			return false;
+		}
+	 }
 	
 }
 

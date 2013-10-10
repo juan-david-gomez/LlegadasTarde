@@ -253,27 +253,50 @@ class Rango extends CI_Controller {
 
 	public function jsonRangos()
 	{
-		// extraigo de la session el id del usuario activo
+			// extraigo de la session el id del usuario activo
+		// $idusuario = $this->session->userdata('id');
+		// //busco el rango con ese id
+		// $datos = $this->usuario->consultar($idusuario,"","","","");
 		
-			// $id = $this->input->post('id');
-			// $nombre = $this->input->post('nombre');
-
-			// $datos =  $this->rangos->consultar($id,$nombre);	
-			$nombre 
-			$resultados['resultados'] = ""
+		// if ($datos) 
+		// {
+		// 	foreach ($datos[0] as $row) 
+		// 	{
+		// 		//extraigo el rango y lo guardo
+		// 		$rango = $row->rango;
+		// 	}
+		// }
+		//guardo el id de esta funcion
+		// $idfuncion = 18;
+		// //compruebo si este rango tiene dicho permiso
+		// $permiso = $this->rango_funcion->validarFuncion($rango,$idfuncion);
+		$permiso = true;
+		
+		if ($permiso)
+		{
 			
-			// if($datos)
-			// {
-			// 	$resultados['resultados'] = "";	
-			// 	foreach ($datos[0] as $row) {
+
+			$datos =  $this->rangos->consultar("","");
+
+			
+			if($datos)
+			{
+				$resultados['resultados'] = "";	
+				foreach ($datos[0] as $row) {
 					
-			// 	}
-			// }else
-			// {
-			// 	$resultados['resultados'] = "";
-			// }
-			// $resultados['filas'] = $datos[1];
+					
+					$resultados['resultados'] .= '<option value="'.$row->id.'">'. $row->nombre .'</option>';
 				
+				}
+			}else
+			{
+				$resultados['resultados'] = "<option>No se Encuentra Ningun rango</option>";
+			}
+			
+		}else
+		{
+			
+		}
 
 		echo json_encode($resultados);
 	}

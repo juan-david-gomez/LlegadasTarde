@@ -12,14 +12,15 @@
 			 	
 			 	<div id="tabs-1">
 			 		<form action="" method="post" class="well">
-			 			<h2 align="center">Buscar Funciones por Rango</h2>
-			 			<br>
 			 			<center>
-				 			<input type="text" class="span6" id="rango">
+				 		<select id="selectrango"  class="span6" >
+				 			 <option value="0">Seleccione un Rango </option>
+						  
+					
+						</select>
+				 			
 						</center>
-						<br>
-						
-						<input type="button" value="Limpiar" id="limpiar" class="btn">
+					
 			 		</form>
 			 	</div>
 			 
@@ -51,81 +52,45 @@
 $(function() {
 
 
-
-
-
-
 	//activa las pestañas del Estudiantes
 	$("#tabs").tabs();
 
-
-	
-	
-
-
-	  var projects = [
-      {
-        value: "1",
-        label: "Administrador"
-       
-      },
-      {
-        value: "2",
-        label: "Recepcionista"
-      
-      }
-    ];
-
-
-	$( "#rango" ).autocomplete({
-      source: function( request, response ) {
-        $.ajax({
-          url: "<?php echo site_url('rango/jsonRangos') ?>",
-          dataType: "jsonp",
-          data: {
-            featureClass: "P",
-            style: "full",
-            maxRows: 12,
-            name_startsWith: request.term
-          },
-          success: function( data ) {
-            response( $.map( data.geonames, function( item ) {
-              return {
-                label: item.name + (item.adminName1 ? ", " + item.adminName1 : "") + ", " + item.countryName,
-                value: item.name
-              }
-            }));
-          }
-        });
-      },
-      focus: function( event, ui ) {
-        $( "#rango" ).val( ui.item.label );
-        return false;
-      },
-      select: function( event, ui ) {
-        $( "#rango" ).val( ui.item.label );
-       var idRango = ui.item.value ;
-       
-      	
-      		
+	function llenarCombo () {
 		
-		$.post("<?php echo site_url('rango_funciones/permisos') ?>", {idRango:idRango},
+
+			$.post("<?php echo site_url('rango/jsonRangos') ?>",
+			  function(data){
+			
+		  $('#selectrango').append(data.resultados);
+		  
+		   	
+		},"json");
+	}
+ 	 llenarCombo();
+
+
+	
+	$('#selectrango').change(function() {
+		 var $selectedOption = $(this).find('option:selected');
+	     var idRango = $selectedOption.val();
+   		if (idRango == 0) 
+   			{
+   				 	$('#datosPermisos').html("");
+   				 		$("#filas").html("");
+   			}else{ 
+
+   		$.post("<?php echo site_url('rango_funciones/permisos') ?>", {idRango:idRango},
 			  function(data){
 			  	
 		   	$('#datosPermisos').html(data.resultados);
 		   	$("#filas").html(data.filas);
 		   	
 		},"json");
+   			}
  
-        return false;
-      }
-    })
-    .data( "ui-autocomplete" )._renderItem = function( ul, item ) {
-      return $( "<li>" )
-        .append( "<a>" + item.label + "</a>" )
-        .appendTo( ul );
-    };
-
+		
+		
+	})	
 
 
 	//boton de editar en las acciones del registros
@@ -134,7 +99,7 @@ $(function() {
 			var estado = $(this).is(':checked');
 			var idRango = $(this).attr('rango');
 			var confir = confirm("Estas seguro que deseas modificar el permiso de esta funcion")
-			alert(estado);
+			
 			if (confir)
 			{
 			$.post("<?php echo site_url('rango_funciones/agregarQuitarPermiso') ?>", {idFuncion:id,estado:estado,idRango:idRango},
@@ -148,11 +113,7 @@ $(function() {
 				
 			};
 		})
-	// funcionalidad del boton limpiar del cuadro de busqueda de estudiantes
-		$("#limpiar").click(function() {
-			$('#rango').val("");
-			
-		});
+	
 			
 		
 })//fin function principal
